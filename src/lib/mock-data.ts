@@ -32,7 +32,7 @@ export const MOCK_JOBS: Job[] = [
     salary_amount: '월 3,200,000원 ~ 3,600,000원',
     work_hours: '주간/야간 교대 (잔업수당 별도)',
     description: 'E-7 특정활동비자 보유자 및 F-4 외국국적동포 환영. 기숙사 1인 1실 제공.',
-    contact_phone: '010-7169-2255',
+    contact_phone: '010-5731-8578',
     status: 'active',
     views_count: 89,
     created_at: '2026-09-14'
@@ -68,7 +68,7 @@ export const MOCK_JOBS: Job[] = [
     salary_amount: '시급 35,000원',
     work_hours: '화/목 14:00 ~ 18:00',
     description: '어학연수 및 유학생 시간제 취업허가(D-2) 학생 지원 가능.',
-    contact_phone: '010-7169-2255',
+    contact_phone: '010-5731-8578',
     status: 'active',
     views_count: 215,
     created_at: '2026-09-12'

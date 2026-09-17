@@ -228,7 +228,7 @@ export default function AboutPage() {
               </div>
               <div className="flex border-b border-slate-100 pb-2.5">
                 <span className="w-28 text-slate-400 font-bold shrink-0">직통 휴대폰</span>
-                <span className="font-bold text-emerald-700">010-7169-2255</span>
+                <span className="font-bold text-emerald-700">010-5731-8578</span>
               </div>
               <div className="flex border-b border-slate-100 pb-2.5">
                 <span className="w-28 text-slate-400 font-bold shrink-0">팩스</span>

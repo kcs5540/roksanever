@@ -79,12 +79,12 @@ export default function FloatingActionButtons() {
               </a>
 
               <a
-                href="tel:010-7169-2255"
+                href="tel:010-5731-8578"
                 className="w-full flex items-center justify-between p-3.5 bg-slate-50 hover:bg-emerald-50 border border-slate-200 hover:border-emerald-500 rounded-2xl transition group"
               >
                 <div className="text-left">
                   <div className="text-xs text-slate-500 font-medium">24시 상담 직통 휴대폰</div>
-                  <div className="text-base font-bold text-slate-900 group-hover:text-emerald-700">010-7169-2255</div>
+                  <div className="text-base font-bold text-slate-900 group-hover:text-emerald-700">010-5731-8578</div>
                 </div>
                 <span className="text-xs font-bold text-emerald-600 bg-emerald-100/80 px-2.5 py-1 rounded-lg">통화</span>
               </a>

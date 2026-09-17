@@ -184,7 +184,7 @@ export default function VisaInquiryPage() {
               </div>
 
               <div className="relative z-10 mt-4 pt-3 border-t border-white/30 flex items-center justify-between text-xs font-bold text-white bg-slate-900/40 backdrop-blur-sm -mx-6 -mb-6 px-6 py-3">
-                <a href="tel:010-7169-2255" className="hover:underline flex items-center gap-1">
+                <a href="tel:010-5731-8578" className="hover:underline flex items-center gap-1">
                   <span>기업 직통 인력 요청</span>
                   <ChevronRight className="w-3.5 h-3.5 text-amber-300" />
                 </a>
@@ -205,15 +205,15 @@ export default function VisaInquiryPage() {
                   Quick Consultation
                 </div>
                 <h3 className="text-xl sm:text-2xl font-black text-white tracking-tight mb-2 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
-                  긴급 상담 직통 전화<br />010-7169-2255
+                  긴급 상담 직통 전화<br />010-5731-8578
                 </h3>
                 <p className="text-xs text-white font-medium leading-relaxed mb-3 drop-shadow-[0_1px_3px_rgba(0,0,0,0.9)] max-w-xs">
-                  본사: 064-711-8578 (평일 09~18시) / 야간 및 주말은 직통 휴대폰 상시 연결
+                  본사: 064-711-8578 (평일 09~18시) / 이메일: roksan22@daum.net
                 </p>
               </div>
 
               <div className="relative z-10 mt-4 pt-3 border-t border-white/30 flex items-center justify-between text-xs font-bold text-white bg-slate-900/40 backdrop-blur-sm -mx-6 -mb-6 px-6 py-3">
-                <a href="tel:010-7169-2255" className="hover:underline flex items-center gap-1 font-black text-amber-300">
+                <a href="tel:010-5731-8578" className="hover:underline flex items-center gap-1 font-black text-amber-300">
                   <span>지금 바로 전화걸기</span>
                   <ChevronRight className="w-3.5 h-3.5" />
                 </a>
@@ -462,13 +462,16 @@ export default function VisaInquiryPage() {
                 </div>
                 <div className="text-xs text-emerald-200 font-bold mb-1">인력 급구 & 비자 실시간 직통</div>
                 <div className="text-2xl sm:text-3xl font-black tracking-tight mb-1">
-                  010-7169-2255
+                  010-5731-8578
                 </div>
-                <div className="text-xs text-emerald-100/90 mb-4">
+                <div className="text-xs text-emerald-100/90 mb-1">
                   본사: 064-711-8578 (평일 09:00 ~ 18:00)
                 </div>
+                <div className="text-xs text-emerald-200 font-bold mb-4">
+                  이메일: roksan22@daum.net
+                </div>
                 <a
-                  href="tel:010-7169-2255"
+                  href="tel:010-5731-8578"
                   className="block w-full py-2.5 bg-white text-emerald-800 font-bold text-xs rounded-xl shadow transition hover:bg-emerald-50"
                 >
                   담당자 전화 바로 연결

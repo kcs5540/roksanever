@@ -57,7 +57,7 @@ const translations: Record<Language, Record<string, string>> = {
     address: '제주특별자치도 제주시 서광로 107-6 (용담이동)',
     ceo: '대표자 : 김찬식',
     bizNum: '사업자등록번호 : 616-81-02802',
-    phone: '전화 : 064-711-8578 / 010-7169-2255',
+    phone: '전화 : 064-711-8578 / 010-5731-8578',
     email: '이메일 : roksan22@daum.net',
     affiliates: '유관기관 바로가기'
   },

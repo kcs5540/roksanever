@@ -193,7 +193,7 @@ export default function PartTimePage() {
               </div>
 
               <div className="relative z-10 mt-4 pt-3 border-t border-white/30 flex items-center justify-between text-xs font-bold text-white bg-slate-900/40 backdrop-blur-sm -mx-6 -mb-6 px-6 py-3">
-                <a href="tel:010-7169-2255" className="hover:underline flex items-center gap-1">
+                <a href="tel:010-5731-8578" className="hover:underline flex items-center gap-1">
                   <span>급구 알바 실시간 문의</span>
                   <ChevronRight className="w-3.5 h-3.5 text-emerald-300" />
                 </a>
@@ -374,21 +374,30 @@ export default function PartTimePage() {
               </div>
             </div>
 
-            {/* 3) 긴급 알바 매칭 상담 배너 (T.010-7169-2255) */}
-            <div className="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm text-center">
-              <div className="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto mb-3">
-                <Phone className="w-6 h-6" />
+            {/* 3) 긴급 상담 안내 배너 (스크린샷 원본 디자인 100% 완벽 계승) */}
+            <div className="bg-[#f7fafc] rounded-2xl border border-slate-200/80 p-6 text-center shadow-xs">
+              <div className="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-700 flex items-center justify-center mx-auto mb-3">
+                <Phone className="w-6 h-6 animate-pulse" />
               </div>
-              <div className="text-xs font-bold text-slate-500 mb-1">단기&middot;주말 알바 직통 문의</div>
-              <div className="text-xl font-black text-slate-900 tracking-tight mb-1">
-                T. 010-7169-2255
+              <p className="text-xs font-bold text-slate-700 leading-snug mb-2">
+                구직&middot;구인 희망시<br />
+                포스팅 또는 <span className="text-emerald-700 font-extrabold">록산에버그린</span>으로<br />
+                연락주세요!
+              </p>
+              <div className="text-base sm:text-lg font-black text-emerald-800 tracking-tight mt-2">
+                <span className="text-emerald-600">T. </span>010-5731-8578
               </div>
-              <div className="text-xs text-slate-500">본사: 064-711-8578</div>
+              <div className="text-xs font-bold text-slate-600 mt-1">
+                <span className="text-emerald-700">E-mail. </span>
+                <a href="mailto:roksan22@daum.net" className="hover:underline text-slate-800">
+                  roksan22@daum.net
+                </a>
+              </div>
               <a
-                href="tel:010-7169-2255"
+                href="tel:010-5731-8578"
                 className="mt-4 block w-full py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold transition shadow-sm"
               >
-                전화 상담 연결
+                전화 상담 바로 연결
               </a>
             </div>
 

@@ -597,7 +597,7 @@ export default function HomePage() {
               </div>
               <div className="text-xs text-emerald-400 font-bold mb-1">인력 급구 & 비자 즉시 상담</div>
               <div className="text-lg font-black text-white">064-711-8578</div>
-              <div className="text-xs text-slate-400 mt-0.5">직통 010-7169-2255</div>
+              <div className="text-xs text-slate-400 mt-0.5">직통 010-5731-8578</div>
               <a
                 href="tel:064-711-8578"
                 className="mt-3 block w-full py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold transition shadow"
