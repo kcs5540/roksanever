@@ -18,7 +18,8 @@ import {
   Clock,
   CheckCircle2,
   Sparkles,
-  Award
+  Award,
+  Calendar
 } from 'lucide-react';
 
 export default function StudentJobsPage() {
@@ -442,10 +443,9 @@ export default function StudentJobsPage() {
               </div>
             </div>
 
-            {/* 유학생 취업 게시판 테이블 (스크린샷 컬럼: 분야, 제목, 지역, 비자, 나이/성별, 등록일 완벽 재현) */}
-            <div className="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
-              {/* PC 및 태블릿: 정통 테이블 뷰 (md 이상) */}
-              <div className="hidden md:block overflow-x-auto">
+            {/* PC 및 태블릿: 정통 테이블 뷰 (md 이상) */}
+            <div className="hidden md:block bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+              <div className="overflow-x-auto">
                 <table className="w-full text-left border-collapse">
                   <thead>
                     <tr className="bg-slate-50/90 text-slate-600 text-xs font-bold border-b border-slate-200">
@@ -521,81 +521,85 @@ export default function StudentJobsPage() {
                   </tbody>
                 </table>
               </div>
+            </div>
 
-              {/* 모바일 전용: 한눈에 쏙 들어오는 유학생 취업 카드 피드 (< md) */}
-              <div className="md:hidden divide-y divide-slate-100">
-                {filteredPosts.length > 0 ? (
-                  filteredPosts.map((post) => (
-                    <div
-                      key={post.id}
-                      className="p-4 hover:bg-emerald-50/50 transition-all active:bg-slate-50 cursor-pointer"
-                    >
-                      <div className="flex items-center justify-between gap-2 mb-2">
-                        <div className="flex items-center gap-1.5 flex-wrap">
-                          <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-emerald-50 text-emerald-700 border border-emerald-200">
-                            {post.category}
+            {/* 모바일 전용: 커뮤니티처럼 각 항목이 독립된 둥근 카드 박스로 분리된 피드 (< md) */}
+            <div className="md:hidden space-y-3.5">
+              {filteredPosts.length > 0 ? (
+                filteredPosts.map((post) => (
+                  <div
+                    key={post.id}
+                    className="block bg-white rounded-2xl border border-slate-200 p-4 shadow-xs hover:border-emerald-300 hover:shadow-md transition-all active:bg-slate-50 cursor-pointer"
+                  >
+                    <div className="flex items-center justify-between gap-2 mb-2">
+                      <div className="flex items-center gap-1.5 flex-wrap">
+                        <span className="text-[11px] font-bold px-2 py-0.5 rounded-md bg-emerald-50 text-emerald-700 border border-emerald-200">
+                          {post.category}
+                        </span>
+                        <span className="text-[11px] font-bold px-2 py-0.5 rounded-md bg-blue-50 text-blue-700 border border-blue-200">
+                          {post.visa}
+                        </span>
+                        {post.isHot && (
+                          <span className="text-[10px] font-black text-rose-600 bg-rose-50 border border-rose-200 px-1.5 py-0.2 rounded italic">
+                            HOT
                           </span>
-                          <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-blue-50 text-blue-700 border border-blue-200">
-                            {post.visa}
-                          </span>
-                          {post.isHot && (
-                            <span className="text-[10px] font-black text-rose-600 bg-rose-50 border border-rose-200 px-1.5 py-0.2 rounded italic">
-                              HOT
-                            </span>
-                          )}
-                        </div>
-                        <span className="text-[11px] text-slate-400">{post.date}</span>
+                        )}
                       </div>
+                      <span className="text-xs text-slate-400 flex items-center gap-1">
+                        <Calendar className="w-3.5 h-3.5" />
+                        {post.date}
+                      </span>
+                    </div>
 
-                      <h3 className="text-sm font-bold text-slate-900 leading-snug mb-1.5">
-                        {post.title}
-                      </h3>
+                    <h3 className="text-sm font-bold text-slate-900 leading-snug mb-2">
+                      {post.title}
+                    </h3>
 
-                      <p className="text-xs text-slate-500 leading-relaxed line-clamp-2 mb-2.5">
-                        {post.desc}
-                      </p>
+                    <p className="text-xs text-slate-500 leading-relaxed line-clamp-2 mb-3">
+                      {post.desc}
+                    </p>
 
-                      <div className="flex items-center justify-between text-xs pt-2 border-t border-slate-100 text-slate-600">
-                        <span className="font-semibold text-slate-700">{post.personInfo}</span>
-                        <div className="flex items-center gap-1 text-slate-500 font-medium">
-                          <MapPin className="w-3.5 h-3.5 text-slate-400" />
-                          <span>{post.region}</span>
-                        </div>
+                    <div className="flex items-center justify-between text-xs pt-2.5 border-t border-slate-100 text-slate-600">
+                      <span className="font-semibold text-slate-700 bg-slate-100 px-2 py-0.5 rounded">
+                        {post.personInfo}
+                      </span>
+                      <div className="flex items-center gap-1 text-slate-500 font-medium">
+                        <MapPin className="w-3.5 h-3.5 text-slate-400" />
+                        <span>{post.region}</span>
                       </div>
                     </div>
-                  ))
-                ) : (
-                  <div className="py-12 text-center text-slate-400 text-xs">
-                    해당 조건에 부합하는 유학생 취업 게시글이 없습니다.
                   </div>
-                )}
+                ))
+              ) : (
+                <div className="bg-white rounded-2xl border border-slate-200 p-12 text-center text-slate-400 text-xs">
+                  해당 조건에 부합하는 유학생 취업 게시글이 없습니다.
+                </div>
+              )}
+            </div>
+
+            {/* 하단 페이지네이션 & 글쓰기 바 */}
+            <div className="bg-white rounded-2xl border border-slate-200 p-4 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4">
+              <div className="text-xs text-slate-400">
+                표시 중: 1 ~ {filteredPosts.length} of {filteredPosts.length} 건
               </div>
 
-              {/* 테이블 하단 페이지네이션 & 글쓰기 버튼 */}
-              <div className="p-4 bg-slate-50/50 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-4">
-                <div className="text-xs text-slate-400">
-                  표시 중: 1 ~ {filteredPosts.length} of {filteredPosts.length} 건
-                </div>
-
-                {/* 페이지 네비게이션 (스크린샷 원본의 << < > >> 완벽 재현) */}
-                <div className="flex items-center gap-1 text-xs font-bold text-slate-600">
-                  <button className="px-2 py-1.5 rounded border border-slate-200 hover:bg-slate-100">&lt;&lt;</button>
-                  <button className="px-2 py-1.5 rounded border border-slate-200 hover:bg-slate-100">&lt;</button>
-                  <button className="px-3 py-1.5 rounded bg-emerald-600 text-white font-bold">1</button>
-                  <button className="px-2 py-1.5 rounded border border-slate-200 hover:bg-slate-100">&gt;</button>
-                  <button className="px-2 py-1.5 rounded border border-slate-200 hover:bg-slate-100">&gt;&gt;</button>
-                </div>
-
-                {/* 글쓰기 버튼 (스크린샷 원본 우측 하단 글쓰기 버튼 스타일 계승) */}
-                <Link
-                  href="/visa-inquiry"
-                  className="bg-slate-900 hover:bg-emerald-700 text-white font-bold text-xs sm:text-sm px-6 py-2.5 rounded-xl shadow transition flex items-center gap-1.5"
-                >
-                  <PlusCircle className="w-4 h-4" />
-                  <span>글쓰기 (유학생 문의/등록)</span>
-                </Link>
+              {/* 페이지 네비게이션 (스크린샷 원본의 << < > >> 완벽 재현) */}
+              <div className="flex items-center gap-1 text-xs font-bold text-slate-600">
+                <button className="px-2 py-1.5 rounded border border-slate-200 hover:bg-slate-100">&lt;&lt;</button>
+                <button className="px-2 py-1.5 rounded border border-slate-200 hover:bg-slate-100">&lt;</button>
+                <button className="px-3 py-1.5 rounded bg-emerald-600 text-white font-bold">1</button>
+                <button className="px-2 py-1.5 rounded border border-slate-200 hover:bg-slate-100">&gt;</button>
+                <button className="px-2 py-1.5 rounded border border-slate-200 hover:bg-slate-100">&gt;&gt;</button>
               </div>
 
+              {/* 글쓰기 버튼 (스크린샷 원본 우측 하단 글쓰기 버튼 스타일 계승) */}
+              <Link
+                href="/visa-inquiry"
+                className="w-full sm:w-auto text-center justify-center bg-slate-900 hover:bg-emerald-700 text-white font-bold text-xs sm:text-sm px-6 py-2.5 rounded-xl shadow transition flex items-center gap-1.5"
+              >
+                <PlusCircle className="w-4 h-4" />
+                <span>글쓰기 (유학생 문의/등록)</span>
+              </Link>
             </div>
 
           </main>

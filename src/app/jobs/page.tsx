@@ -406,10 +406,9 @@ export default function JobsPage() {
               </div>
             </div>
 
-            {/* 3) 구인 리스트 테이블 (스크린샷 속 컬럼: 분야, 제목 [내/외국인], 지역, 등록일 완벽 구현) */}
-            <div className="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
-              {/* PC 및 태블릿: 정통 테이블 뷰 (md 이상) */}
-              <div className="hidden md:block overflow-x-auto">
+            {/* PC 및 태블릿: 정통 테이블 뷰 (md 이상) */}
+            <div className="hidden md:block bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+              <div className="overflow-x-auto">
                 <table className="w-full text-left border-collapse">
                   <thead>
                     <tr className="bg-slate-50/90 text-slate-500 text-xs font-bold border-b border-slate-200">
@@ -481,84 +480,86 @@ export default function JobsPage() {
                   </tbody>
                 </table>
               </div>
+            </div>
 
-              {/* 모바일 전용: 한눈에 쏙 들어오는 카드형 피드 (< md) */}
-              <div className="md:hidden divide-y divide-slate-100">
-                {filteredJobs.length > 0 ? (
-                  filteredJobs.map((job) => (
-                    <Link
-                      key={job.id}
-                      href={`/jobs/${job.id}`}
-                      className="block p-4 hover:bg-emerald-50/50 transition-all active:bg-slate-50"
-                    >
-                      <div className="flex items-center justify-between gap-2 mb-2">
-                        <div className="flex items-center gap-1.5 flex-wrap">
-                          <span className={`text-[10px] font-extrabold px-2 py-0.5 rounded ${
-                            job.target === 'foreigner' 
-                              ? 'bg-blue-100 text-blue-800' 
-                              : 'bg-slate-200 text-slate-800'
-                          }`}>
-                            [{job.targetLabel}]
+            {/* 모바일 전용: 커뮤니티처럼 각 항목이 독립된 둥근 카드 박스로 분리된 피드 (< md) */}
+            <div className="md:hidden space-y-3.5">
+              {filteredJobs.length > 0 ? (
+                filteredJobs.map((job) => (
+                  <Link
+                    key={job.id}
+                    href={`/jobs/${job.id}`}
+                    className="block bg-white rounded-2xl border border-slate-200 p-4 shadow-xs hover:border-emerald-300 hover:shadow-md transition-all active:bg-slate-50"
+                  >
+                    <div className="flex items-center justify-between gap-2 mb-2">
+                      <div className="flex items-center gap-1.5 flex-wrap">
+                        <span className={`text-[11px] font-extrabold px-2 py-0.5 rounded-full ${
+                          job.target === 'foreigner' 
+                            ? 'bg-blue-100 text-blue-800' 
+                            : 'bg-slate-200 text-slate-800'
+                        }`}>
+                          [{job.targetLabel}]
+                        </span>
+                        <span className="text-[11px] font-bold px-2 py-0.5 rounded-md bg-emerald-50 text-emerald-700 border border-emerald-200">
+                          {job.category}
+                        </span>
+                        {job.isHot && (
+                          <span className="text-[10px] font-black text-rose-600 bg-rose-50 border border-rose-200 px-1.5 py-0.2 rounded italic">
+                            HOT
                           </span>
-                          <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-emerald-50 text-emerald-700 border border-emerald-200">
-                            {job.category}
-                          </span>
-                          {job.isHot && (
-                            <span className="text-[10px] font-black text-rose-600 bg-rose-50 border border-rose-200 px-1.5 py-0.2 rounded italic">
-                              HOT
-                            </span>
-                          )}
-                        </div>
-                        <span className="text-[11px] text-slate-400">{job.date}</span>
+                        )}
                       </div>
+                      <span className="text-xs text-slate-400 flex items-center gap-1">
+                        <Calendar className="w-3.5 h-3.5" />
+                        {job.date}
+                      </span>
+                    </div>
 
-                      <h3 className="text-sm font-bold text-slate-900 leading-snug mb-2.5">
-                        {job.title}
-                      </h3>
+                    <h3 className="text-sm sm:text-base font-bold text-slate-900 leading-snug mb-3">
+                      {job.title}
+                    </h3>
 
-                      <div className="flex items-center justify-between text-xs pt-2 border-t border-slate-100">
-                        <div className="font-extrabold text-emerald-700">
-                          {job.salary}
-                        </div>
-                        <div className="flex items-center gap-1 text-slate-500 font-medium">
-                          <MapPin className="w-3.5 h-3.5 text-slate-400" />
-                          <span>{job.region}</span>
-                        </div>
+                    <div className="flex items-center justify-between text-xs pt-2.5 border-t border-slate-100">
+                      <span className="font-black text-emerald-700 text-sm">
+                        {job.salary}
+                      </span>
+                      <div className="flex items-center gap-1 text-slate-600 font-semibold bg-slate-50 px-2 py-1 rounded-md">
+                        <MapPin className="w-3.5 h-3.5 text-emerald-600" />
+                        <span>{job.region}</span>
                       </div>
-                    </Link>
-                  ))
-                ) : (
-                  <div className="py-12 text-center text-slate-400 text-xs">
-                    해당 조건에 부합하는 구인 공고가 없습니다.
-                  </div>
-                )}
+                    </div>
+                  </Link>
+                ))
+              ) : (
+                <div className="bg-white rounded-2xl border border-slate-200 p-12 text-center text-slate-400 text-xs">
+                  해당 조건에 부합하는 구인 공고가 없습니다.
+                </div>
+              )}
+            </div>
+
+            {/* 하단 페이지네이션 & 공고 등록 바 */}
+            <div className="bg-white rounded-2xl border border-slate-200 p-4 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4">
+              <div className="text-xs text-slate-400">
+                표시 중: 1 ~ {filteredJobs.length} of {filteredJobs.length} 건
               </div>
 
-              {/* 테이블 하단 페이지네이션 & 글쓰기 버튼 (스크린샷 원본의 << < > >> 및 글쓰기 버튼 완벽 지원) */}
-              <div className="p-4 bg-slate-50/50 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-4">
-                <div className="text-xs text-slate-400">
-                  표시 중: 1 ~ {filteredJobs.length} of {filteredJobs.length} 건
-                </div>
-
-                {/* 페이지 네비게이션 */}
-                <div className="flex items-center gap-1 text-xs font-bold text-slate-600">
-                  <button className="px-2 py-1.5 rounded border border-slate-200 hover:bg-slate-100">&lt;&lt;</button>
-                  <button className="px-2 py-1.5 rounded border border-slate-200 hover:bg-slate-100">&lt;</button>
-                  <button className="px-3 py-1.5 rounded bg-emerald-600 text-white font-bold">1</button>
-                  <button className="px-2 py-1.5 rounded border border-slate-200 hover:bg-slate-100">&gt;</button>
-                  <button className="px-2 py-1.5 rounded border border-slate-200 hover:bg-slate-100">&gt;&gt;</button>
-                </div>
-
-                {/* 글쓰기 버튼 */}
-                <Link
-                  href="/jobs/new"
-                  className="bg-slate-900 hover:bg-emerald-700 text-white font-bold text-xs sm:text-sm px-6 py-2.5 rounded-xl shadow transition flex items-center gap-1.5"
-                >
-                  <PlusCircle className="w-4 h-4" />
-                  <span>글쓰기 (공고 등록)</span>
-                </Link>
+              {/* 페이지 네비게이션 */}
+              <div className="flex items-center gap-1 text-xs font-bold text-slate-600">
+                <button className="px-2 py-1.5 rounded border border-slate-200 hover:bg-slate-100">&lt;&lt;</button>
+                <button className="px-2 py-1.5 rounded border border-slate-200 hover:bg-slate-100">&lt;</button>
+                <button className="px-3 py-1.5 rounded bg-emerald-600 text-white font-bold">1</button>
+                <button className="px-2 py-1.5 rounded border border-slate-200 hover:bg-slate-100">&gt;</button>
+                <button className="px-2 py-1.5 rounded border border-slate-200 hover:bg-slate-100">&gt;&gt;</button>
               </div>
 
+              {/* 글쓰기 버튼 */}
+              <Link
+                href="/jobs/new"
+                className="w-full sm:w-auto text-center justify-center bg-slate-900 hover:bg-emerald-700 text-white font-bold text-xs sm:text-sm px-6 py-2.5 rounded-xl shadow transition flex items-center gap-1.5"
+              >
+                <PlusCircle className="w-4 h-4" />
+                <span>글쓰기 (공고 등록)</span>
+              </Link>
             </div>
 
           </main>
