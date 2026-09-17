@@ -2,12 +2,30 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { useLanguage } from '@/context/LanguageContext';
 import { Globe, Menu, X, PhoneCall, PlusCircle, Search } from 'lucide-react';
 
 export default function Header() {
   const { lang, setLang, t } = useLanguage();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const pathname = usePathname();
+
+  // 현재 경로와 메뉴 링크의 일치 여부 판별 함수
+  const isActive = (path: string) => {
+    if (path === '/') return pathname === '/';
+    return pathname.startsWith(path);
+  };
+
+  const navItems = [
+    { href: '/about', label: '회사소개' },
+    { href: '/jobs', label: '구인' },
+    { href: '/resumes', label: '구직' },
+    { href: '/student-jobs', label: '유학생 취업', badge: 'D-2' },
+    { href: '/part-time', label: '아르바이트' },
+    { href: '/visa-inquiry', label: '문의하기 (비자·행정)' },
+    { href: '/community', label: '커뮤니티' },
+  ];
 
   return (
     <header className="sticky top-0 z-50 bg-white border-b border-slate-200 shadow-sm">
@@ -81,59 +99,43 @@ export default function Header() {
         </div>
       </div>
 
-      {/* 2. 메인 GNB 그린 바 (기존 친숙한 그린 톤앤매너 완벽 승계) */}
+      {/* 2. 메인 GNB 그린 바 (현재 활성화된 메뉴 하이라이트 표시) */}
       <nav className="bg-emerald-600 text-white font-bold shadow-md">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
-          <div className="flex items-center space-x-1 sm:space-x-4 md:space-x-8 text-sm sm:text-base overflow-x-auto scrollbar-none py-1">
-            <Link
-              href="/about"
-              className="px-3 py-3 hover:bg-emerald-700/70 rounded-lg transition whitespace-nowrap text-emerald-100 hover:text-white"
-            >
-              회사소개
-            </Link>
-            <Link
-              href="/jobs"
-              className="px-3 py-3 hover:bg-emerald-700/70 rounded-lg transition whitespace-nowrap"
-            >
-              구인
-            </Link>
-            <Link
-              href="/resumes"
-              className="px-3 py-3 hover:bg-emerald-700/70 rounded-lg transition whitespace-nowrap"
-            >
-              구직
-            </Link>
-            <Link
-              href="/student-jobs"
-              className="px-3 py-3 hover:bg-emerald-700/70 rounded-lg transition whitespace-nowrap flex items-center gap-1.5"
-            >
-              <span>유학생 취업</span>
-              <span className="bg-white/20 text-[10px] px-1.5 py-0.5 rounded font-bold">D-2</span>
-            </Link>
-            <Link
-              href="/part-time"
-              className="px-3 py-3 hover:bg-emerald-700/70 rounded-lg transition whitespace-nowrap"
-            >
-              아르바이트
-            </Link>
-            <Link
-              href="/visa-inquiry"
-              className="px-3 py-3 hover:bg-emerald-700/70 rounded-lg transition whitespace-nowrap"
-            >
-              문의하기 (비자·행정)
-            </Link>
-            <Link
-              href="/community"
-              className="px-3 py-3 hover:bg-emerald-700/70 rounded-lg transition whitespace-nowrap"
-            >
-              커뮤니티
-            </Link>
+          <div className="flex items-center space-x-1 sm:space-x-2 md:space-x-3 text-sm sm:text-base overflow-x-auto scrollbar-none py-1.5">
+            {navItems.map((item) => {
+              const active = isActive(item.href);
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={`px-3.5 py-2 rounded-xl transition-all whitespace-nowrap flex items-center gap-1.5 text-sm sm:text-base ${
+                    active
+                      ? 'bg-emerald-800/90 text-white shadow-inner ring-2 ring-white/70 font-extrabold'
+                      : 'text-emerald-50 hover:bg-emerald-700/60 hover:text-white font-bold'
+                  }`}
+                >
+                  <span>{item.label}</span>
+                  {item.badge && (
+                    <span className={`text-[10px] px-1.5 py-0.5 rounded font-bold ${
+                      active ? 'bg-white text-emerald-800' : 'bg-white/20 text-white'
+                    }`}>
+                      {item.badge}
+                    </span>
+                  )}
+                </Link>
+              );
+            })}
           </div>
 
           <div className="hidden lg:flex items-center gap-2">
             <Link
               href="/jobs/new"
-              className="bg-white text-emerald-700 hover:bg-emerald-50 text-xs font-bold px-3 py-1.5 rounded-full shadow transition flex items-center gap-1"
+              className={`text-xs font-bold px-3.5 py-1.5 rounded-full shadow transition flex items-center gap-1 ${
+                isActive('/jobs/new')
+                  ? 'bg-emerald-950 text-white ring-2 ring-white'
+                  : 'bg-white text-emerald-700 hover:bg-emerald-50'
+              }`}
             >
               <PlusCircle className="w-3.5 h-3.5" />
               <span>공고 등록</span>
@@ -144,27 +146,30 @@ export default function Header() {
 
       {/* 모바일 팝다운 메뉴 */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-white border-b border-slate-200 px-6 py-4 space-y-3">
-          <Link href="/jobs" onClick={() => setMobileMenuOpen(false)} className="block py-2 font-bold text-slate-800 border-b border-slate-100">
-            구인 정보
-          </Link>
-          <Link href="/resumes" onClick={() => setMobileMenuOpen(false)} className="block py-2 font-bold text-slate-800 border-b border-slate-100">
-            구직 정보
-          </Link>
-          <Link href="/student-jobs" onClick={() => setMobileMenuOpen(false)} className="block py-2 font-bold text-slate-800 border-b border-slate-100 flex items-center justify-between">
-            <span>유학생 취업</span>
-            <span className="bg-emerald-100 text-emerald-800 text-[10px] px-1.5 py-0.5 rounded font-bold">D-2</span>
-          </Link>
-          <Link href="/part-time" onClick={() => setMobileMenuOpen(false)} className="block py-2 font-bold text-slate-800 border-b border-slate-100">
-            아르바이트 (단기&middot;주말&middot;시간제)
-          </Link>
-          <Link href="/visa-inquiry" onClick={() => setMobileMenuOpen(false)} className="block py-2 font-bold text-slate-800 border-b border-slate-100">
-            비자 및 채용 문의
-          </Link>
-          <Link href="/community" onClick={() => setMobileMenuOpen(false)} className="block py-2 font-bold text-slate-800 border-b border-slate-100">
-            커뮤니티
-          </Link>
-          <div className="pt-2">
+        <div className="md:hidden bg-white border-b border-slate-200 px-6 py-4 space-y-2">
+          {navItems.map((item) => {
+            const active = isActive(item.href);
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                onClick={() => setMobileMenuOpen(false)}
+                className={`block py-2.5 px-3 rounded-xl font-bold transition flex items-center justify-between ${
+                  active
+                    ? 'bg-emerald-50 text-emerald-700 border-l-4 border-emerald-600'
+                    : 'text-slate-800 hover:bg-slate-50'
+                }`}
+              >
+                <span>{item.label}</span>
+                {item.badge && (
+                  <span className="bg-emerald-100 text-emerald-800 text-[10px] px-1.5 py-0.5 rounded font-bold">
+                    {item.badge}
+                  </span>
+                )}
+              </Link>
+            );
+          })}
+          <div className="pt-2 border-t border-slate-100">
             <Link
               href="/jobs/new"
               onClick={() => setMobileMenuOpen(false)}
@@ -179,3 +184,4 @@ export default function Header() {
     </header>
   );
 }
+
