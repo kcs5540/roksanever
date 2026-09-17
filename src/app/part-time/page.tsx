@@ -508,7 +508,8 @@ export default function PartTimePage() {
 
             {/* 아르바이트 리스트 테이블 */}
             <div className="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
-              <div className="overflow-x-auto">
+              {/* PC 및 태블릿: 정통 테이블 뷰 (md 이상) */}
+              <div className="hidden md:block overflow-x-auto">
                 <table className="w-full text-left border-collapse">
                   <thead>
                     <tr className="bg-slate-50/90 text-slate-500 text-xs font-bold border-b border-slate-200">
@@ -594,6 +595,66 @@ export default function PartTimePage() {
                     )}
                   </tbody>
                 </table>
+              </div>
+
+              {/* 모바일 전용: 한눈에 쏙 들어오는 알바 카드 피드 (< md) */}
+              <div className="md:hidden divide-y divide-slate-100">
+                {filteredJobs.length > 0 ? (
+                  filteredJobs.map((job) => (
+                    <div
+                      key={job.id}
+                      className="p-4 hover:bg-emerald-50/50 transition-all active:bg-slate-50 cursor-pointer"
+                    >
+                      <div className="flex items-center justify-between gap-2 mb-2">
+                        <div className="flex items-center gap-1.5 flex-wrap">
+                          <span className="text-[10px] font-extrabold px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 border border-emerald-200">
+                            {job.targetLabel}
+                          </span>
+                          <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-slate-100 text-slate-700">
+                            {job.category}
+                          </span>
+                          <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-amber-50 text-amber-800 border border-amber-200">
+                            {job.periodLabel}
+                          </span>
+                          {job.isHot && (
+                            <span className="text-[10px] font-black text-rose-600 bg-rose-50 border border-rose-200 px-1.5 py-0.2 rounded italic">
+                              급구
+                            </span>
+                          )}
+                        </div>
+                        <span className="text-[11px] text-slate-400">{job.date}</span>
+                      </div>
+
+                      <h3 className="text-sm font-bold text-slate-900 leading-snug mb-1.5">
+                        {job.title}
+                      </h3>
+
+                      <p className="text-xs text-slate-500 leading-relaxed line-clamp-2 mb-2.5">
+                        {job.desc}
+                      </p>
+
+                      <div className="flex items-center justify-between text-xs pt-2 border-t border-slate-100">
+                        <span className="font-extrabold text-emerald-700">
+                          {job.wage}
+                        </span>
+                        <div className="flex items-center gap-3 text-slate-500 font-medium">
+                          <span className="flex items-center gap-1">
+                            <Clock className="w-3.5 h-3.5 text-slate-400" />
+                            {job.workTime.split(' ')[0]}
+                          </span>
+                          <span className="flex items-center gap-1">
+                            <MapPin className="w-3.5 h-3.5 text-slate-400" />
+                            {job.region}
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  ))
+                ) : (
+                  <div className="py-12 text-center text-slate-400 text-xs">
+                    해당 조건에 부합하는 아르바이트 공고가 없습니다.
+                  </div>
+                )}
               </div>
 
               {/* 테이블 하단 페이지네이션 & 알바 공고 등록 버튼 */}

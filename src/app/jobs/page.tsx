@@ -408,7 +408,8 @@ export default function JobsPage() {
 
             {/* 3) 구인 리스트 테이블 (스크린샷 속 컬럼: 분야, 제목 [내/외국인], 지역, 등록일 완벽 구현) */}
             <div className="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
-              <div className="overflow-x-auto">
+              {/* PC 및 태블릿: 정통 테이블 뷰 (md 이상) */}
+              <div className="hidden md:block overflow-x-auto">
                 <table className="w-full text-left border-collapse">
                   <thead>
                     <tr className="bg-slate-50/90 text-slate-500 text-xs font-bold border-b border-slate-200">
@@ -479,6 +480,58 @@ export default function JobsPage() {
                     )}
                   </tbody>
                 </table>
+              </div>
+
+              {/* 모바일 전용: 한눈에 쏙 들어오는 카드형 피드 (< md) */}
+              <div className="md:hidden divide-y divide-slate-100">
+                {filteredJobs.length > 0 ? (
+                  filteredJobs.map((job) => (
+                    <Link
+                      key={job.id}
+                      href={`/jobs/${job.id}`}
+                      className="block p-4 hover:bg-emerald-50/50 transition-all active:bg-slate-50"
+                    >
+                      <div className="flex items-center justify-between gap-2 mb-2">
+                        <div className="flex items-center gap-1.5 flex-wrap">
+                          <span className={`text-[10px] font-extrabold px-2 py-0.5 rounded ${
+                            job.target === 'foreigner' 
+                              ? 'bg-blue-100 text-blue-800' 
+                              : 'bg-slate-200 text-slate-800'
+                          }`}>
+                            [{job.targetLabel}]
+                          </span>
+                          <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-emerald-50 text-emerald-700 border border-emerald-200">
+                            {job.category}
+                          </span>
+                          {job.isHot && (
+                            <span className="text-[10px] font-black text-rose-600 bg-rose-50 border border-rose-200 px-1.5 py-0.2 rounded italic">
+                              HOT
+                            </span>
+                          )}
+                        </div>
+                        <span className="text-[11px] text-slate-400">{job.date}</span>
+                      </div>
+
+                      <h3 className="text-sm font-bold text-slate-900 leading-snug mb-2.5">
+                        {job.title}
+                      </h3>
+
+                      <div className="flex items-center justify-between text-xs pt-2 border-t border-slate-100">
+                        <div className="font-extrabold text-emerald-700">
+                          {job.salary}
+                        </div>
+                        <div className="flex items-center gap-1 text-slate-500 font-medium">
+                          <MapPin className="w-3.5 h-3.5 text-slate-400" />
+                          <span>{job.region}</span>
+                        </div>
+                      </div>
+                    </Link>
+                  ))
+                ) : (
+                  <div className="py-12 text-center text-slate-400 text-xs">
+                    해당 조건에 부합하는 구인 공고가 없습니다.
+                  </div>
+                )}
               </div>
 
               {/* 테이블 하단 페이지네이션 & 글쓰기 버튼 (스크린샷 원본의 << < > >> 및 글쓰기 버튼 완벽 지원) */}

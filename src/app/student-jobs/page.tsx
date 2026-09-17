@@ -444,7 +444,8 @@ export default function StudentJobsPage() {
 
             {/* 유학생 취업 게시판 테이블 (스크린샷 컬럼: 분야, 제목, 지역, 비자, 나이/성별, 등록일 완벽 재현) */}
             <div className="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
-              <div className="overflow-x-auto">
+              {/* PC 및 태블릿: 정통 테이블 뷰 (md 이상) */}
+              <div className="hidden md:block overflow-x-auto">
                 <table className="w-full text-left border-collapse">
                   <thead>
                     <tr className="bg-slate-50/90 text-slate-600 text-xs font-bold border-b border-slate-200">
@@ -519,6 +520,55 @@ export default function StudentJobsPage() {
                     )}
                   </tbody>
                 </table>
+              </div>
+
+              {/* 모바일 전용: 한눈에 쏙 들어오는 유학생 취업 카드 피드 (< md) */}
+              <div className="md:hidden divide-y divide-slate-100">
+                {filteredPosts.length > 0 ? (
+                  filteredPosts.map((post) => (
+                    <div
+                      key={post.id}
+                      className="p-4 hover:bg-emerald-50/50 transition-all active:bg-slate-50 cursor-pointer"
+                    >
+                      <div className="flex items-center justify-between gap-2 mb-2">
+                        <div className="flex items-center gap-1.5 flex-wrap">
+                          <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-emerald-50 text-emerald-700 border border-emerald-200">
+                            {post.category}
+                          </span>
+                          <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-blue-50 text-blue-700 border border-blue-200">
+                            {post.visa}
+                          </span>
+                          {post.isHot && (
+                            <span className="text-[10px] font-black text-rose-600 bg-rose-50 border border-rose-200 px-1.5 py-0.2 rounded italic">
+                              HOT
+                            </span>
+                          )}
+                        </div>
+                        <span className="text-[11px] text-slate-400">{post.date}</span>
+                      </div>
+
+                      <h3 className="text-sm font-bold text-slate-900 leading-snug mb-1.5">
+                        {post.title}
+                      </h3>
+
+                      <p className="text-xs text-slate-500 leading-relaxed line-clamp-2 mb-2.5">
+                        {post.desc}
+                      </p>
+
+                      <div className="flex items-center justify-between text-xs pt-2 border-t border-slate-100 text-slate-600">
+                        <span className="font-semibold text-slate-700">{post.personInfo}</span>
+                        <div className="flex items-center gap-1 text-slate-500 font-medium">
+                          <MapPin className="w-3.5 h-3.5 text-slate-400" />
+                          <span>{post.region}</span>
+                        </div>
+                      </div>
+                    </div>
+                  ))
+                ) : (
+                  <div className="py-12 text-center text-slate-400 text-xs">
+                    해당 조건에 부합하는 유학생 취업 게시글이 없습니다.
+                  </div>
+                )}
               </div>
 
               {/* 테이블 하단 페이지네이션 & 글쓰기 버튼 */}
