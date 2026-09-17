@@ -79,7 +79,7 @@ export default function Footer() {
           <div className="text-slate-400 flex flex-wrap gap-x-4 gap-y-1">
             <span>대표자 : 김찬식</span>
             <span>사업자등록번호 : 616-81-02802</span>
-            <span>전화 : <strong className="text-emerald-400 font-bold">064-711-8578</strong>, 010-5731-8578</span>
+            <span>전화 : <strong className="text-emerald-400 font-bold">064-711-8578</strong>, 010-7169-2255</span>
             <span>팩스 : 064-712-5512</span>
             <span>이메일 : roksan22@daum.net</span>
           </div>

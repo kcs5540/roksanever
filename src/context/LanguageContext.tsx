@@ -57,7 +57,7 @@ const translations: Record<Language, Record<string, string>> = {
     address: '제주특별자치도 제주시 서광로 107-6 (용담이동)',
     ceo: '대표자 : 김찬식',
     bizNum: '사업자등록번호 : 616-81-02802',
-    phone: '전화 : 064-711-8578 / 010-5731-8578',
+    phone: '전화 : 064-711-8578 / 010-7169-2255',
     email: '이메일 : roksan22@daum.net',
     affiliates: '유관기관 바로가기'
   },
@@ -107,7 +107,7 @@ const translations: Record<Language, Record<string, string>> = {
     address: '107-6, Seogwang-ro, Jeju-si, Jeju-do, Republic of Korea',
     ceo: 'CEO: Chan-sik Kim',
     bizNum: 'Business Reg. No: 616-81-02802',
-    phone: 'Tel : +82-64-711-8578 / +82-10-5731-8578',
+    phone: 'Tel : +82-64-711-8578 / +82-10-7169-2255',
     email: 'Email : roksan22@daum.net',
     affiliates: 'Related Organizations'
   }

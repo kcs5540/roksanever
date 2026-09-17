@@ -274,24 +274,21 @@ export default function JobsPage() {
               </div>
             </div>
 
-            {/* 3) 긴급 상담 안내 배너 (스크린샷 원본의 T.010-5731-8578 안내 박스 완벽 계승) */}
-            <div className="bg-white rounded-2xl border-2 border-emerald-500/30 p-5 shadow-sm text-center">
-              <div className="w-12 h-12 bg-emerald-100 text-emerald-700 rounded-full flex items-center justify-center mx-auto mb-3 shadow-inner">
-                <Phone className="w-6 h-6 animate-pulse" />
+            {/* 3) 긴급 상담 안내 배너 (T.010-7169-2255 안내 박스) */}
+            <div className="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm text-center">
+              <div className="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto mb-3">
+                <Phone className="w-6 h-6" />
               </div>
-              <p className="text-xs font-bold text-slate-700 leading-snug mb-1">
-                구직&middot;구인 희망시 포스팅 또는<br />
-                <span className="text-emerald-700 font-black">록산에버그린</span>으로 연락주세요!
-              </p>
-              <div className="text-lg font-black text-slate-900 mt-2">
-                T. 010-5731-8578
+              <div className="text-xs font-bold text-slate-500 mb-1">긴급 인력 수급 / 구인 문의</div>
+              <div className="text-xl font-black text-slate-900 tracking-tight mb-1">
+                T. 010-7169-2255
               </div>
               <div className="text-xs text-slate-500">본사: 064-711-8578</div>
               <a
-                href="tel:010-5731-8578"
-                className="mt-3 block w-full py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold transition shadow"
+                href="tel:010-7169-2255"
+                className="mt-4 block w-full py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold transition shadow-sm"
               >
-                직통 상담 전화하기
+                전화 상담 연결
               </a>
             </div>
 
