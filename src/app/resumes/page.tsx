@@ -543,7 +543,7 @@ export default function ResumesPage() {
 
                           {/* 구직 제목 및 [내/외국인] 뱃지 */}
                           <td className="py-4 px-4 font-semibold text-slate-800">
-                            <div className="flex items-center gap-2 flex-wrap">
+                            <Link href={`/resumes/${resume.id}`} className="flex items-center gap-2 flex-wrap">
                               <span className={`text-[11px] font-extrabold px-1.5 py-0.5 rounded ${
                                 resume.target === 'foreigner' 
                                   ? 'bg-blue-100 text-blue-800' 
@@ -559,7 +559,7 @@ export default function ResumesPage() {
                                   HOT
                                 </span>
                               )}
-                            </div>
+                            </Link>
                           </td>
 
                           {/* 인적사항 / 비자 */}
@@ -596,8 +596,9 @@ export default function ResumesPage() {
             <div className="md:hidden space-y-3.5">
               {filteredResumes.length > 0 ? (
                 filteredResumes.map((resume) => (
-                  <div
+                  <Link
                     key={resume.id}
+                    href={`/resumes/${resume.id}`}
                     className="block bg-white rounded-2xl border border-slate-200 p-4 shadow-xs hover:border-emerald-300 hover:shadow-md transition-all active:bg-slate-50 cursor-pointer"
                   >
                     <div className="flex items-center justify-between gap-2 mb-2">
@@ -637,7 +638,7 @@ export default function ResumesPage() {
                         <span>희망: {resume.region}</span>
                       </div>
                     </div>
-                  </div>
+                  </Link>
                 ))
               ) : (
                 <div className="bg-white rounded-2xl border border-slate-200 p-12 text-center text-slate-400 text-xs">
