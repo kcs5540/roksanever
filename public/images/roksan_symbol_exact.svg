@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" width="100%" height="100%">
+  <!-- 부드러운 스카이블루 배경 (기존 원본 하늘색 계열) -->
+  <defs>
+    <linearGradient id="skyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#80b8ff"/>
+      <stop offset="100%" stop-color="#5599f5"/>
+    </linearGradient>
+    <filter id="softGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#003d80" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+  <rect width="240" height="240" rx="44" fill="url(#skyGrad)"/>
+
+  <!-- 원본 록산 고유 심볼: 부드러운 곡선의 산봉우리('ㅅ'/'A') + 유려하게 회전하는 타원 링 -->
+  <g filter="url(#softGlow)">
+    <!-- 뒤쪽 링 호 -->
+    <path d="M 52 136 C 52 118, 188 118, 188 136 C 188 142, 172 147, 150 150" 
+          fill="none" stroke="#ffffff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" opacity="0.9"/>
+    
+    <!-- 중앙 메인 봉우리/곡선 (원본의 특유의 곡선 기둥 형태) -->
+    <!-- 위는 둥근 꼭지점, 아래는 부드럽게 양옆으로 퍼지는 유선형 다리 -->
+    <path d="M 120 44 
+             C 126 44, 134 68, 137 100 
+             C 140 130, 146 156, 168 174 
+             C 173 178, 172 184, 164 184 
+             C 148 184, 136 168, 128 142 
+             C 124 128, 116 128, 112 142 
+             C 104 168, 92 184, 76 184 
+             C 68 184, 67 178, 72 174 
+             C 94 156, 100 130, 103 100 
+             C 106 68, 114 44, 120 44 Z" 
+          fill="#ffffff"/>
+
+    <!-- 앞쪽으로 감싸고 도는 입체 링 호 -->
+    <path d="M 50 138 C 50 158, 190 158, 190 138" 
+          fill="none" stroke="#ffffff" stroke-width="13" stroke-linecap="round"/>
+  </g>
+</svg>

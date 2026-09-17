@@ -1,69 +1,850 @@
-import Image from "next/image";
+'use client';
 
-export default function Home() {
+import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
+import { useLanguage } from '@/context/LanguageContext';
+import { 
+  Search, 
+  MapPin, 
+  Briefcase, 
+  ChevronRight, 
+  Phone, 
+  Calendar, 
+  Building2, 
+  CheckCircle2, 
+  Globe2, 
+  Users, 
+  Sparkles,
+  ArrowRight,
+  TrendingUp,
+  FileCheck2,
+  Award
+} from 'lucide-react';
+
+export default function HomePage() {
+  const { t } = useLanguage();
+  
+  // 히어로 슬라이더 상태 및 자동 재생
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev >= 2 ? 0 : prev + 1));
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev <= 0 ? 2 : prev - 1));
+  };
+
+  // 모바일 터치 스와이프 제어
+  const [touchStartX, setTouchStartX] = useState<number | null>(null);
+  const [touchStartY, setTouchStartY] = useState<number | null>(null);
+  const [touchEndX, setTouchEndX] = useState<number | null>(null);
+  const [touchEndY, setTouchEndY] = useState<number | null>(null);
+
+  const minSwipeDistance = 30; // 스와이프 감지 최소 픽셀 거리 (모바일 반응성 대폭 향상)
+
+  const onTouchStart = (e: React.TouchEvent) => {
+    setTouchEndX(null);
+    setTouchEndY(null);
+    setTouchStartX(e.touches[0].clientX);
+    setTouchStartY(e.touches[0].clientY);
+  };
+
+  const onTouchMove = (e: React.TouchEvent) => {
+    setTouchEndX(e.touches[0].clientX);
+    setTouchEndY(e.touches[0].clientY);
+  };
+
+  const onTouchEnd = (e: React.TouchEvent) => {
+    const endX = touchEndX !== null ? touchEndX : (e.changedTouches?.[0]?.clientX ?? null);
+    const endY = touchEndY !== null ? touchEndY : (e.changedTouches?.[0]?.clientY ?? null);
+
+    if (touchStartX === null || endX === null) return;
+    
+    const distanceX = touchStartX - endX;
+    const distanceY = (touchStartY !== null && endY !== null) ? Math.abs(touchStartY - endY) : 0;
+
+    // 가로 이동 거리가 30px 이상이고 세로 스크롤보다 크면 즉시 전환
+    if (Math.abs(distanceX) > distanceY && Math.abs(distanceX) > minSwipeDistance) {
+      if (distanceX > 0) {
+        nextSlide();
+      } else {
+        prevSlide();
+      }
+    }
+  };
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev >= 2 ? 0 : prev + 1));
+    }, 5000);
+    return () => clearInterval(timer);
+  }, []);
+
+  // 필터 상태
+  const [selectedRegion, setSelectedRegion] = useState('전체');
+  const [selectedJobType, setSelectedJobType] = useState('전체'); // 직종
+  const [activeTab, setActiveTab] = useState<'offer' | 'seek'>('offer'); // 구인정보 vs 구직정보 모바일/탭 전환용
+  const [searchKeyword, setSearchKeyword] = useState('');
+
+  // 16개 송출/협력국 국기 데이터 (ISO 코드 포함)
+  const countries = [
+    { name: 'Philippines', iso: 'ph' },
+    { name: 'Vietnam', iso: 'vn' },
+    { name: 'Thailand', iso: 'th' },
+    { name: 'Indonesia', iso: 'id' },
+    { name: 'Sri Lanka', iso: 'lk' },
+    { name: 'Mongolia', iso: 'mn' },
+    { name: 'Uzbekistan', iso: 'uz' },
+    { name: 'Pakistan', iso: 'pk' },
+    { name: 'Cambodia', iso: 'kh' },
+    { name: 'China', iso: 'cn' },
+    { name: 'Bangladesh', iso: 'bd' },
+    { name: 'Kyrgyzstan', iso: 'kg' },
+    { name: 'Nepal', iso: 'np' },
+    { name: 'Myanmar', iso: 'mm' },
+    { name: 'East Timor', iso: 'tl' },
+    { name: 'Laos', iso: 'la' },
+  ];
+
+  // 지역 목록
+  const regions = [
+    '전체', '서울', '경기', '인천', '부산',
+    '경남', '경북', '대구', '광주',
+    '대전', '전남', '전북', '충남',
+    '충북', '세종', '울산', '강원',
+    '제주'
+  ];
+
+  // 직종 목록
+  const jobCategories = [
+    '전체', '룸메이드', '청소', '가사 도우미', '영어 도우미', 
+    '용접공', '유학생 알바', '제조업', '간병인', '기타'
+  ];
+
+  // 실제 구인 데이터 (기존 사이트 실제 데이터 반영)
+  const jobOffers = [
+    { id: '1', category: '룸메이드', title: '룸메이드 구합니다. 태국여성 환영 / 기숙사 완비', region: '경기', target: '외국인', date: '08-14', urgent: true, salary: '월 270만' },
+    { id: '2', category: '기타', title: 'S.N 및 리조트 시설 관리 인력 모십니다.', region: '제주', target: '무관', date: '08-08', urgent: false, salary: '월 260만' },
+    { id: '3', category: '제조업', title: '화장품 포장 및 생산직 급구 (초보자 가능)', region: '전국', target: '무관', date: '08-07', urgent: true, salary: '월 290만' },
+    { id: '4', category: '기타', title: '식자재 물류 패킹 및 소분 포장 야간/주간', region: '인천', target: '외국인', date: '08-06', urgent: false, salary: '시급 11,500원' },
+    { id: '5', category: '제조업', title: '화장지 원료 제조 및 라인 단순 작업자 모집', region: '경기', target: '무관', date: '08-06', urgent: false, salary: '월 285만' },
+    { id: '6', category: '용접공', title: '선박 TIG 배관 용접사 (E-7 비자 지원 가능)', region: '울산', target: '외국인', date: '08-04', urgent: true, salary: '월 420만' },
+  ];
+
+  // 실제 구직 데이터 (기존 사이트 실제 데이터 반영)
+  const jobSeekers = [
+    { id: '1', category: '영어 도우미', title: '영어 관련 일자리 찾고 있습니다 (외국인 학교/학원 등)', region: '서울', type: '외국인', info: '23세 / 여자', visa: 'D-2(유학)', date: '08-14' },
+    { id: '2', category: '제조업', title: '일자리를 구하는 성실한 외국인 여성입니다.', region: '전국', type: '외국인', info: '34세 / 여자', visa: 'F-4', date: '08-14' },
+    { id: '3', category: '기타', title: 'F2 비자 남자 일자리 구합니다. 제조업, 물류 가능', region: '부산', type: '외국인', info: '36세 / 남자', visa: 'F-2', date: '08-07' },
+    { id: '4', category: '기타', title: '주야간 교대 생산직 일자리 찾읍니다.', region: '서울', type: '외국인', info: '38세 / 남자', visa: 'H-2', date: '08-07' },
+    { id: '5', category: '기타', title: 'F4남(30세), H2남(34세) 함께 일할 공장 구합니다.', region: '서울', type: '외국인', info: '30대 / 남2', visa: 'F-4/H-2', date: '08-06' },
+    { id: '6', category: '룸메이드', title: '호텔 객실 청소 경력 2년 유학생 주말/평일 알바', region: '제주', type: '외국인', info: '25세 / 여자', visa: 'D-2', date: '08-05' },
+  ];
+
+  // 필터링
+  const filteredOffers = jobOffers.filter(job => {
+    if (selectedRegion !== '전체' && job.region !== selectedRegion) return false;
+    if (selectedJobType !== '전체' && job.category !== selectedJobType) return false;
+    if (searchKeyword.trim() && !job.title.includes(searchKeyword) && !job.category.includes(searchKeyword)) return false;
+    return true;
+  });
+
+  const filteredSeekers = jobSeekers.filter(job => {
+    if (selectedRegion !== '전체' && job.region !== selectedRegion) return false;
+    if (selectedJobType !== '전체' && job.category !== selectedJobType) return false;
+    if (searchKeyword.trim() && !job.title.includes(searchKeyword) && !job.category.includes(searchKeyword)) return false;
+    return true;
+  });
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+    <div className="bg-[#f8fafc] text-slate-900 min-h-screen">
+      
+      {/* 1. HERO BANNER: 3대 핵심 테마 자동 스와이프 슬라이더 */}
+      <section 
+        className="relative bg-gradient-to-b from-[#f0fdf4] via-white to-slate-50 border-b border-slate-200/80 overflow-hidden select-none touch-pan-y cursor-grab active:cursor-grabbing"
+        onTouchStart={onTouchStart}
+        onTouchMove={onTouchMove}
+        onTouchEnd={onTouchEnd}
+      >
+        {/* 슬라이드 컨테이너 */}
+        <div className="relative min-h-[440px] sm:min-h-[460px] flex items-center">
+          
+          {/* SLIDE 1: 글로벌 인력공급 & 비자 행정 (좌측: 슬로건 / 우측: 16개국 국기 카드) */}
+          <div className={`w-full transition-opacity duration-700 py-10 px-4 sm:px-6 lg:px-8 ${currentSlide === 0 ? 'opacity-100 block' : 'opacity-0 hidden'}`}>
+            <div className="max-w-6xl mx-auto">
+              <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+                
+                {/* 좌측 7컬럼: 텍스트 & 비자 슬로건 & CTA 버튼 */}
+                <div className="md:col-span-7 text-left space-y-4">
+                  <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-100 text-emerald-800 text-xs font-bold border border-emerald-200 shadow-2xs">
+                    <Sparkles className="w-3.5 h-3.5 text-emerald-600" />
+                    <span>외국인 맞춤 인력공급 &middot; 합법 비자 행정 대행 기관</span>
+                  </div>
+
+                  <h1 className="text-2xl sm:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight leading-snug sm:leading-tight break-keep-all">
+                    신뢰와 책임을 다하는<br />
+                    <span className="text-emerald-600">외국인 종합 일자리 &middot; 인력 매칭 파트너</span>
+                  </h1>
+
+                  {/* 비자 핵심 슬로건 화이트 라운드 박스 */}
+                  <div className="bg-white rounded-2xl p-4 shadow-md border border-slate-200/90 space-y-2.5">
+                    <div className="text-xs sm:text-sm font-extrabold text-slate-800 flex flex-wrap items-center gap-x-2.5 gap-y-1">
+                      <span>외국인 인력공급</span>
+                      <span className="text-emerald-500 font-bold">&bull;</span>
+                      <span>취업알선</span>
+                      <span className="text-emerald-500 font-bold">&bull;</span>
+                      <span>비자발급&middot;대행</span>
+                      <span className="text-emerald-500 font-bold">&bull;</span>
+                      <span>한국유학 취업지원</span>
+                    </div>
+                    <div className="pt-1 border-t border-slate-100 flex items-center justify-between">
+                      <span className="text-xs font-bold text-slate-500">지원 대상 비자:</span>
+                      <span className="bg-emerald-600 text-white px-2.5 py-1 rounded-lg text-xs font-black shadow-xs">
+                        E7 &middot; E9 &middot; D2 &middot; H2 &middot; F1~F6 취업
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className="pt-2 flex flex-wrap items-center gap-3">
+                    <Link
+                      href="/jobs"
+                      className="bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs sm:text-sm px-6 py-3 rounded-xl shadow-md transition flex items-center gap-1.5"
+                    >
+                      <span>외국인 일자리 찾기</span>
+                      <ArrowRight className="w-4 h-4" />
+                    </Link>
+                    <Link
+                      href="/visa-inquiry"
+                      className="border border-slate-300 hover:bg-slate-100 text-slate-800 font-bold text-xs sm:text-sm px-5 py-3 rounded-xl transition"
+                    >
+                      비자 발급 무료 상담
+                    </Link>
+                  </div>
+                </div>
+
+                {/* 우측 5컬럼: 16개국 공식 국기 카드 그리드 (슬라이드 2/3과 동일한 규격의 우측 카드) */}
+                <div className="md:col-span-5">
+                  <div className="bg-white rounded-3xl p-5 shadow-xl border border-slate-200/90 relative overflow-hidden">
+                    {/* 상단 타이틀 바 */}
+                    <div className="flex items-center justify-between pb-3 mb-3 border-b border-slate-100">
+                      <div className="flex items-center gap-2">
+                        <Globe2 className="w-4 h-4 text-emerald-600" />
+                        <span className="text-xs font-extrabold text-slate-800">16개국 공식 송출 &middot; 취업 네트워크</span>
+                      </div>
+                      <span className="text-[10px] font-bold bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded-full border border-emerald-200">
+                        16 Countries
+                      </span>
+                    </div>
+
+                    {/* 4x4 국기 그리드 */}
+                    <div className="grid grid-cols-4 gap-2.5 sm:gap-3 py-1">
+                      {countries.map((c, idx) => (
+                        <div 
+                          key={idx} 
+                          className="flex flex-col items-center justify-center p-2 rounded-xl bg-slate-50/80 hover:bg-emerald-50 hover:border-emerald-300 border border-slate-200/60 transition-all hover:scale-105 cursor-pointer group"
+                        >
+                          <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full overflow-hidden shadow-2xs border border-slate-200 bg-white p-0.5 mb-1 flex items-center justify-center">
+                            {/* eslint-disable-next-line @next/next/no-img-element */}
+                            <img 
+                              src={`https://flagcdn.com/w80/${c.iso}.png`}
+                              alt={`${c.name} 국기`} 
+                              className="w-full h-full object-cover rounded-full"
+                              loading="lazy"
+                            />
+                          </div>
+                          <span className="text-[10px] font-bold text-slate-700 group-hover:text-emerald-700 text-center truncate w-full">
+                            {c.name}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+
+                    {/* 하단 안내 태그 */}
+                    <div className="mt-3 pt-2.5 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-500">
+                      <span className="flex items-center gap-1 font-medium">
+                        <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
+                        합법 비자 취업 지원 협약국
+                      </span>
+                      <span className="font-bold text-emerald-700">신원 보증</span>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          {/* SLIDE 2: We supply Manpower (호텔 룸메이드, 청소, 용접, 제조업 전문 인력) */}
+          <div className={`w-full transition-opacity duration-700 py-10 px-4 sm:px-6 lg:px-8 ${currentSlide === 1 ? 'opacity-100 block' : 'opacity-0 hidden'}`}>
+            <div className="max-w-6xl mx-auto">
+              <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+                <div className="md:col-span-7 text-left space-y-4">
+                  <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-orange-100 text-orange-800 text-xs font-bold border border-orange-200">
+                    <Briefcase className="w-3.5 h-3.5 text-orange-600" />
+                    <span>기업 맞춤형 상시 인력 파견 &middot; 도급 &middot; 채용 대행</span>
+                  </div>
+                  <h2 className="text-3xl sm:text-5xl font-black text-slate-900 tracking-tight leading-tight">
+                    필요한 현장에 검증된 인재를,<br />
+                    <span className="text-orange-600">We supply Manpower</span>
+                  </h2>
+                  <p className="text-sm sm:text-base text-slate-600 leading-relaxed max-w-xl">
+                    특급 호텔&middot;리조트 룸메이드, 하우스키퍼, 조선소 선박 배관 용접사, 자동차 부품 및 식품 가공 제조업 숙련 인력을 신속하고 정확하게 공급합니다.
+                  </p>
+                  
+                  {/* 주요 직종 태그 칩 */}
+                  <div className="flex flex-wrap gap-2 pt-2">
+                    {['룸메이드 (Room-maid)', '하우스키퍼', '실내외 클리닝', '선박/플랜트 TIG 용접', '제조업 생산직', '간병인/가사도우미'].map((job, idx) => (
+                      <span key={idx} className="bg-white border border-slate-200 px-3 py-1.5 rounded-xl text-xs font-bold text-slate-800 shadow-2xs">
+                        &bull; {job}
+                      </span>
+                    ))}
+                  </div>
+
+                  <div className="pt-2 flex items-center gap-3">
+                    <Link
+                      href="/jobs"
+                      className="bg-orange-600 hover:bg-orange-700 text-white font-bold text-xs sm:text-sm px-6 py-3 rounded-xl shadow-md transition flex items-center gap-1.5"
+                    >
+                      <span>전문 인력 공고 보러가기</span>
+                      <ArrowRight className="w-4 h-4" />
+                    </Link>
+                    <a
+                      href="tel:064-711-8578"
+                      className="border border-slate-300 hover:bg-slate-100 text-slate-800 font-bold text-xs sm:text-sm px-5 py-3 rounded-xl transition"
+                    >
+                      기업 인력 요청 상담 (064-711-8578)
+                    </a>
+                  </div>
+                </div>
+
+                <div className="md:col-span-5">
+                  <div className="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white bg-slate-900 aspect-video md:aspect-square flex items-center justify-center">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img 
+                      src="/images/banners/banner2.jpg" 
+                      alt="전문 직종 인력 공급" 
+                      className="w-full h-full object-cover" 
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent flex items-end p-6">
+                      <div className="text-white">
+                        <div className="text-xs font-bold text-amber-300 uppercase">Verified Talent Pool</div>
+                        <div className="text-lg font-bold">철저한 신원 보증 & 합법 비자 체류 확인</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* SLIDE 3: Language Training & 유학생 취업 (D-2) & 비자 행정 대행 */}
+          <div className={`w-full transition-opacity duration-700 py-10 px-4 sm:px-6 lg:px-8 ${currentSlide === 2 ? 'opacity-100 block' : 'opacity-0 hidden'}`}>
+            <div className="max-w-6xl mx-auto">
+              <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+                <div className="md:col-span-7 text-left space-y-4">
+                  <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-blue-100 text-blue-800 text-xs font-bold border border-blue-200">
+                    <Sparkles className="w-3.5 h-3.5 text-blue-600" />
+                    <span>글로벌 어학연수 &middot; 유학 &middot; 비자 행정 전문</span>
+                  </div>
+                  <h2 className="text-3xl sm:text-5xl font-black text-slate-900 tracking-tight leading-tight">
+                    한국 유학부터 합법 취업까지,<br />
+                    <span className="text-blue-600">Language Training Arrangement</span>
+                  </h2>
+                  <p className="text-sm sm:text-base text-slate-600 leading-relaxed max-w-xl">
+                    외국인 유학생(D-2, D-4) 비자 발급, 어학연수 매칭 및 출입국관리사무소 시간제 취업 허가증 발급 행정 절차를 완벽 지원합니다.
+                  </p>
+
+                  <div className="grid grid-cols-2 gap-3 max-w-lg pt-1">
+                    <div className="bg-white p-3.5 rounded-2xl border border-slate-200 shadow-2xs">
+                      <div className="font-bold text-slate-900 text-sm mb-0.5">D-2 유학생 시간제 취업</div>
+                      <div className="text-xs text-slate-500">주중 식음료/서비스 및 주말 파트타임 알선</div>
+                    </div>
+                    <div className="bg-white p-3.5 rounded-2xl border border-slate-200 shadow-2xs">
+                      <div className="font-bold text-slate-900 text-sm mb-0.5">E-7/F-4 체류자격 변경</div>
+                      <div className="text-xs text-slate-500">졸업 후 전문 취업비자 연계 및 체류 연장</div>
+                    </div>
+                  </div>
+
+                  <div className="pt-2">
+                    <Link
+                      href="/visa-inquiry"
+                      className="bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs sm:text-sm px-6 py-3 rounded-xl shadow-md transition inline-flex items-center gap-1.5"
+                    >
+                      <span>유학&middot;비자 무료 행정상담 신청</span>
+                      <ArrowRight className="w-4 h-4" />
+                    </Link>
+                  </div>
+                </div>
+
+                <div className="md:col-span-5">
+                  <div className="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white bg-slate-900 aspect-video md:aspect-square flex items-center justify-center">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img 
+                      src="/images/banners/banner3.jpg" 
+                      alt="유학생 비자 및 어학연수 매칭" 
+                      className="w-full h-full object-cover" 
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent flex items-end p-6">
+                      <div className="text-white">
+                        <div className="text-xs font-bold text-emerald-300 uppercase">Global Campus & Visa</div>
+                        <div className="text-lg font-bold">100% 합법적 유학생 시간제 취업 지원</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* 화면 좌/우 고정 플로팅 화살표 (스크롤 내리지 않아도 모바일 화면 중앙에 항상 표시) */}
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              prevSlide();
+            }}
+            className="absolute left-2 top-1/2 -translate-y-1/2 z-30 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/95 shadow-xl border border-slate-200 text-slate-800 hover:text-emerald-600 flex items-center justify-center transition active:scale-90 text-lg sm:text-xl font-black cursor-pointer"
+            aria-label="Previous slide"
           >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            &#10094;
+          </button>
+
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              nextSlide();
+            }}
+            className="absolute right-2 top-1/2 -translate-y-1/2 z-30 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/95 shadow-xl border border-slate-200 text-slate-800 hover:text-emerald-600 flex items-center justify-center transition active:scale-90 text-lg sm:text-xl font-black cursor-pointer"
+            aria-label="Next slide"
           >
-            Documentation
-          </a>
+            &#10095;
+          </button>
+
         </div>
-      </main>
+
+        {/* 슬라이더 컨트롤러 (이전/다음 화살표 + 불릿 인디케이터 + 모바일 제스처 힌트) */}
+        <div className="max-w-6xl mx-auto px-4 pb-6 flex items-center justify-between">
+          {/* 이전 슬라이드 버튼 */}
+          <button
+            onClick={() => setCurrentSlide((prev) => (prev === 0 ? 2 : prev - 1))}
+            className="w-10 h-10 rounded-full bg-white/90 backdrop-blur-sm border border-slate-200 text-slate-700 hover:text-emerald-600 hover:border-emerald-500 shadow-sm flex items-center justify-center transition active:scale-95 text-lg font-bold"
+            aria-label="Previous slide"
+          >
+            &#8592;
+          </button>
+
+          {/* 중앙 인디케이터 불릿 3개 & 모바일 제스처 알림 */}
+          <div className="flex flex-col items-center gap-1.5">
+            <div className="flex items-center gap-2">
+              {[0, 1, 2].map((idx) => (
+                <button
+                  key={idx}
+                  onClick={() => setCurrentSlide(idx)}
+                  className={`h-2.5 rounded-full transition-all duration-300 ${
+                    currentSlide === idx
+                      ? 'w-8 bg-emerald-600'
+                      : 'w-2.5 bg-slate-300 hover:bg-slate-400'
+                  }`}
+                  aria-label={`Slide ${idx + 1}`}
+                />
+              ))}
+            </div>
+            {/* 모바일 화면에서만 보이는 스와이프 안내 문구 */}
+            <span className="text-[11px] text-slate-400 sm:hidden flex items-center gap-1">
+              <span>좌우로 밀어서 넘기기</span>
+            </span>
+          </div>
+
+          {/* 다음 슬라이드 버튼 */}
+          <button
+            onClick={() => setCurrentSlide((prev) => (prev === 2 ? 0 : prev + 1))}
+            className="w-10 h-10 rounded-full bg-white/90 backdrop-blur-sm border border-slate-200 text-slate-700 hover:text-emerald-600 hover:border-emerald-500 shadow-sm flex items-center justify-center transition active:scale-95 text-lg font-bold"
+            aria-label="Next slide"
+          >
+            &#8594;
+          </button>
+        </div>
+
+        {/* 하단 고정 검색바 (모든 슬라이드 공통) */}
+        <div className="max-w-3xl mx-auto pb-10 px-4">
+          <div className="bg-white rounded-2xl p-2 shadow-xl shadow-slate-900/5 flex items-center gap-2 text-slate-800 border-2 border-emerald-500">
+            <div className="flex-1 flex items-center gap-2.5 px-3 py-2">
+              <Search className="w-5 h-5 text-emerald-600 shrink-0" />
+              <input
+                type="text"
+                value={searchKeyword}
+                onChange={(e) => setSearchKeyword(e.target.value)}
+                placeholder="찾으시는 회사명, 직종(룸메이드, 용접 등), 지역을 입력해주세요."
+                className="w-full text-xs sm:text-sm font-medium outline-none bg-transparent placeholder:text-slate-400"
+              />
+            </div>
+            <button
+              onClick={() => {}}
+              className="bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-7 py-3 rounded-xl transition text-xs sm:text-sm shrink-0 flex items-center gap-1.5 shadow-md shadow-emerald-600/30"
+            >
+              <span>검색하기</span>
+              <ArrowRight className="w-4 h-4" />
+            </button>
+          </div>
+        </div>
+
+      </section>
+
+      {/* 2. MAIN 2열 레이아웃: 좌측(지역/직종 네비게이션) + 우측(구인/구직 현대화 테이블) */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+        
+        {/* 모바일용 직종/지역 빠른 탭 전환 (PC에서는 사이드바로 노출) */}
+        <div className="lg:hidden mb-6 flex gap-2 overflow-x-auto pb-2">
+          {jobCategories.map((cat, idx) => (
+            <button
+              key={idx}
+              onClick={() => setSelectedJobType(cat)}
+              className={`px-3 py-1.5 rounded-xl text-xs font-bold shrink-0 transition ${
+                selectedJobType === cat
+                  ? 'bg-emerald-600 text-white'
+                  : 'bg-white text-slate-700 border border-slate-200'
+              }`}
+            >
+              {cat}
+            </button>
+          ))}
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+          
+          {/* [좌측 사이드바: 12 중 3.5컬럼] 기존 사이트의 '지역별 구인/구직' + '직종별 구인/구직' 승계 */}
+          <aside className="hidden lg:block lg:col-span-4 xl:col-span-3 space-y-6">
+            
+            {/* 1) 지역별 구인/구직 박스 */}
+            <div className="bg-white rounded-2xl border border-slate-200/90 shadow-sm overflow-hidden">
+              <div className="bg-gradient-to-r from-emerald-600 to-teal-600 text-white px-5 py-3.5 flex items-center justify-between">
+                <div className="flex items-center gap-2 font-bold text-sm">
+                  <MapPin className="w-4 h-4 text-emerald-200" />
+                  <span>지역별 구인 / 구직</span>
+                </div>
+                <span className="text-[11px] bg-emerald-700/80 px-2 py-0.5 rounded text-emerald-100">전국</span>
+              </div>
+              <div className="p-4">
+                <div className="grid grid-cols-4 gap-1.5 text-center text-xs">
+                  {regions.map((region, idx) => (
+                    <button
+                      key={idx}
+                      onClick={() => setSelectedRegion(region)}
+                      className={`py-2 rounded-lg font-medium transition-all ${
+                        selectedRegion === region
+                          ? 'bg-emerald-600 text-white font-bold shadow-sm'
+                          : 'bg-slate-50 hover:bg-emerald-50 text-slate-700 hover:text-emerald-700'
+                      }`}
+                    >
+                      {region}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* 2) 직종별 구인/구직 박스 (기존 구인/구직 분기 링크 완벽 승계) */}
+            <div className="bg-white rounded-2xl border border-slate-200/90 shadow-sm overflow-hidden">
+              <div className="bg-slate-900 text-white px-5 py-3.5 flex items-center justify-between">
+                <div className="flex items-center gap-2 font-bold text-sm">
+                  <Briefcase className="w-4 h-4 text-emerald-400" />
+                  <span>직종별 구인 / 구직</span>
+                </div>
+                <span className="text-[11px] text-slate-400">원클릭 이동</span>
+              </div>
+              
+              <div className="divide-y divide-slate-100 text-xs">
+                {jobCategories.map((cat, idx) => (
+                  <div
+                    key={idx}
+                    className={`flex items-center justify-between px-4 py-2.5 hover:bg-slate-50 transition ${
+                      selectedJobType === cat ? 'bg-emerald-50/70' : ''
+                    }`}
+                  >
+                    <button
+                      onClick={() => setSelectedJobType(cat)}
+                      className={`text-left font-medium hover:text-emerald-700 flex-1 ${
+                        selectedJobType === cat ? 'text-emerald-700 font-bold' : 'text-slate-700'
+                      }`}
+                    >
+                      {cat}
+                    </button>
+                    <div className="flex items-center gap-1.5 shrink-0">
+                      <button
+                        onClick={() => { setSelectedJobType(cat); setActiveTab('offer'); }}
+                        className="px-2 py-1 rounded bg-slate-100 hover:bg-emerald-600 hover:text-white text-slate-600 font-bold text-[11px] transition"
+                      >
+                        구인
+                      </button>
+                      <button
+                        onClick={() => { setSelectedJobType(cat); setActiveTab('seek'); }}
+                        className="px-2 py-1 rounded bg-slate-100 hover:bg-teal-600 hover:text-white text-slate-600 font-bold text-[11px] transition"
+                      >
+                        구직
+                      </button>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* 3) 긴급 전화 상담 배너 */}
+            <div className="bg-gradient-to-tr from-slate-900 to-slate-800 text-white rounded-2xl p-5 shadow-sm border border-slate-800 text-center">
+              <div className="w-10 h-10 bg-emerald-500 text-white rounded-full flex items-center justify-center mx-auto mb-3">
+                <Phone className="w-5 h-5" />
+              </div>
+              <div className="text-xs text-emerald-400 font-bold mb-1">인력 급구 & 비자 즉시 상담</div>
+              <div className="text-lg font-black text-white">064-711-8578</div>
+              <div className="text-xs text-slate-400 mt-0.5">직통 010-5731-8578</div>
+              <a
+                href="tel:064-711-8578"
+                className="mt-3 block w-full py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold transition shadow"
+              >
+                전화 바로 걸기
+              </a>
+            </div>
+
+          </aside>
+
+          {/* [우측 본문: 12 중 8.5컬럼] 구인정보 목록 + 구직정보 목록 */}
+          <main className="lg:col-span-8 xl:col-span-9 space-y-10">
+
+            {/* 활성화 필터 안내 */}
+            {(selectedRegion !== '전체' || selectedJobType !== '전체' || searchKeyword) && (
+              <div className="bg-emerald-50 border border-emerald-200 rounded-2xl px-4 py-3 flex items-center justify-between text-xs sm:text-sm text-emerald-800">
+                <div className="flex items-center gap-2">
+                  <span className="font-bold">선택 필터:</span>
+                  {selectedRegion !== '전체' && <span className="bg-white px-2.5 py-0.5 rounded-md font-semibold border border-emerald-300">지역: {selectedRegion}</span>}
+                  {selectedJobType !== '전체' && <span className="bg-white px-2.5 py-0.5 rounded-md font-semibold border border-emerald-300">직종: {selectedJobType}</span>}
+                  {searchKeyword && <span className="bg-white px-2.5 py-0.5 rounded-md font-semibold border border-emerald-300">검색어: {searchKeyword}</span>}
+                </div>
+                <button
+                  onClick={() => { setSelectedRegion('전체'); setSelectedJobType('전체'); setSearchKeyword(''); }}
+                  className="font-bold text-emerald-700 underline text-xs hover:text-emerald-900"
+                >
+                  초기화
+                </button>
+              </div>
+            )}
+
+            {/* 1. 구인정보 (Job Offers) 섹션 */}
+            <div className="bg-white rounded-3xl border border-slate-200/90 shadow-sm p-5 sm:p-7">
+              <div className="flex items-center justify-between pb-4 border-b border-slate-100 mb-4">
+                <div className="flex items-center gap-2.5">
+                  <div className="w-3 h-6 bg-emerald-600 rounded-full"></div>
+                  <h2 className="text-lg sm:text-xl font-black text-slate-900">구인정보</h2>
+                  <span className="text-xs bg-emerald-50 text-emerald-700 font-bold px-2 py-0.5 rounded-md">
+                    총 {filteredOffers.length}건
+                  </span>
+                </div>
+                <Link
+                  href="/jobs"
+                  className="text-xs font-bold text-slate-500 hover:text-emerald-600 flex items-center gap-1 transition"
+                >
+                  <span>더보기</span>
+                  <ChevronRight className="w-4 h-4" />
+                </Link>
+              </div>
+
+              {/* 모던 테이블 뷰 (PC/태블릿) */}
+              <div className="hidden sm:block overflow-x-auto">
+                <table className="w-full text-left border-collapse">
+                  <thead>
+                    <tr className="bg-slate-50 text-slate-500 text-xs font-bold border-y border-slate-100">
+                      <th className="py-3 px-4 w-24">분야</th>
+                      <th className="py-3 px-4">제목</th>
+                      <th className="py-3 px-4 w-28 text-center">급여</th>
+                      <th className="py-3 px-4 w-20 text-center">지역</th>
+                      <th className="py-3 px-4 w-20 text-center">등록일</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-slate-100 text-sm">
+                    {filteredOffers.map((item) => (
+                      <tr key={item.id} className="hover:bg-slate-50/80 transition-colors group">
+                        <td className="py-3.5 px-4">
+                          <span className="inline-block px-2.5 py-1 rounded-md text-xs font-bold bg-emerald-50 text-emerald-700 border border-emerald-100">
+                            {item.category}
+                          </span>
+                        </td>
+                        <td className="py-3.5 px-4 font-semibold text-slate-800 group-hover:text-emerald-600 transition">
+                          <Link href={`/jobs/${item.id}`} className="flex items-center gap-2">
+                            {item.urgent && (
+                              <span className="bg-rose-50 text-rose-600 text-[10px] font-black px-1.5 py-0.5 rounded shrink-0">
+                                급구
+                              </span>
+                            )}
+                            <span className="line-clamp-1">{item.title}</span>
+                          </Link>
+                        </td>
+                        <td className="py-3.5 px-4 text-center text-xs font-bold text-emerald-600">
+                          {item.salary}
+                        </td>
+                        <td className="py-3.5 px-4 text-center text-xs font-medium text-slate-600">
+                          {item.region}
+                        </td>
+                        <td className="py-3.5 px-4 text-center text-xs text-slate-400 font-medium">
+                          {item.date}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+
+              {/* 모바일 카드 리스트 뷰 */}
+              <div className="sm:hidden space-y-3">
+                {filteredOffers.map((item) => (
+                  <Link
+                    key={item.id}
+                    href={`/jobs/${item.id}`}
+                    className="block p-4 rounded-2xl bg-slate-50 border border-slate-200/80 hover:border-emerald-500 transition"
+                  >
+                    <div className="flex items-center justify-between text-xs mb-1.5">
+                      <span className="font-bold text-emerald-700 bg-emerald-100/60 px-2 py-0.5 rounded">
+                        {item.category}
+                      </span>
+                      <span className="text-slate-400">{item.date}</span>
+                    </div>
+                    <div className="font-bold text-slate-900 text-sm mb-2 leading-snug">
+                      {item.title}
+                    </div>
+                    <div className="flex items-center justify-between text-xs text-slate-500 pt-2 border-t border-slate-200/60">
+                      <span className="text-emerald-600 font-bold">{item.salary}</span>
+                      <span>지역: {item.region}</span>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            </div>
+
+            {/* 2. 구직정보 (Job Seekers) 섹션 */}
+            <div className="bg-white rounded-3xl border border-slate-200/90 shadow-sm p-5 sm:p-7">
+              <div className="flex items-center justify-between pb-4 border-b border-slate-100 mb-4">
+                <div className="flex items-center gap-2.5">
+                  <div className="w-3 h-6 bg-teal-600 rounded-full"></div>
+                  <h2 className="text-lg sm:text-xl font-black text-slate-900">구직정보</h2>
+                  <span className="text-xs bg-teal-50 text-teal-700 font-bold px-2 py-0.5 rounded-md">
+                    총 {filteredSeekers.length}명
+                  </span>
+                </div>
+                <Link
+                  href="/resumes"
+                  className="text-xs font-bold text-slate-500 hover:text-teal-600 flex items-center gap-1 transition"
+                >
+                  <span>더보기</span>
+                  <ChevronRight className="w-4 h-4" />
+                </Link>
+              </div>
+
+              {/* 모던 테이블 뷰 (PC/태블릿) */}
+              <div className="hidden sm:block overflow-x-auto">
+                <table className="w-full text-left border-collapse">
+                  <thead>
+                    <tr className="bg-slate-50 text-slate-500 text-xs font-bold border-y border-slate-100">
+                      <th className="py-3 px-4 w-24">분야</th>
+                      <th className="py-3 px-4">제목</th>
+                      <th className="py-3 px-4 w-20 text-center">지역</th>
+                      <th className="py-3 px-4 w-20 text-center">구분</th>
+                      <th className="py-3 px-4 w-24 text-center">비자/연령</th>
+                      <th className="py-3 px-4 w-20 text-center">등록일</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-slate-100 text-sm">
+                    {filteredSeekers.map((item) => (
+                      <tr key={item.id} className="hover:bg-slate-50/80 transition-colors group">
+                        <td className="py-3.5 px-4">
+                          <span className="inline-block px-2.5 py-1 rounded-md text-xs font-bold bg-teal-50 text-teal-700 border border-teal-100">
+                            {item.category}
+                          </span>
+                        </td>
+                        <td className="py-3.5 px-4 font-semibold text-slate-800 group-hover:text-teal-600 transition">
+                          <span className="line-clamp-1">{item.title}</span>
+                        </td>
+                        <td className="py-3.5 px-4 text-center text-xs font-medium text-slate-600">
+                          {item.region}
+                        </td>
+                        <td className="py-3.5 px-4 text-center text-xs font-semibold text-slate-700">
+                          <span className="bg-slate-100 px-1.5 py-0.5 rounded">{item.type}</span>
+                        </td>
+                        <td className="py-3.5 px-4 text-center text-xs text-slate-600">
+                          <div className="font-bold text-teal-700">{item.visa}</div>
+                          <div className="text-[11px] text-slate-400">{item.info}</div>
+                        </td>
+                        <td className="py-3.5 px-4 text-center text-xs text-slate-400 font-medium">
+                          {item.date}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+
+              {/* 모바일 카드 리스트 뷰 */}
+              <div className="sm:hidden space-y-3">
+                {filteredSeekers.map((item) => (
+                  <div
+                    key={item.id}
+                    className="p-4 rounded-2xl bg-slate-50 border border-slate-200/80"
+                  >
+                    <div className="flex items-center justify-between text-xs mb-1.5">
+                      <span className="font-bold text-teal-700 bg-teal-100/60 px-2 py-0.5 rounded">
+                        {item.category} ({item.visa})
+                      </span>
+                      <span className="text-slate-400">{item.date}</span>
+                    </div>
+                    <div className="font-bold text-slate-900 text-sm mb-2 leading-snug">
+                      {item.title}
+                    </div>
+                    <div className="flex items-center justify-between text-xs text-slate-500 pt-2 border-t border-slate-200/60">
+                      <span className="font-semibold text-slate-700">{item.info}</span>
+                      <span>희망지역: {item.region}</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* 3. 특화 솔루션 4대 카드 섹션 */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm hover:border-emerald-500 transition">
+                <div className="w-10 h-10 bg-emerald-100 text-emerald-700 rounded-xl flex items-center justify-center font-black mb-3">
+                  1
+                </div>
+                <h3 className="font-bold text-sm text-slate-900 mb-1">호텔 &middot; 룸메이드</h3>
+                <p className="text-xs text-slate-500 leading-relaxed">제주 및 전국 특급 리조트 객실정비 맞춤 인력</p>
+              </div>
+
+              <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm hover:border-emerald-500 transition">
+                <div className="w-10 h-10 bg-teal-100 text-teal-700 rounded-xl flex items-center justify-center font-black mb-3">
+                  2
+                </div>
+                <h3 className="font-bold text-sm text-slate-900 mb-1">비자 발급 &middot; 행정대행</h3>
+                <p className="text-xs text-slate-500 leading-relaxed">E-7, E-9, D-2, F-4 합법 체류 자격 전문 상담</p>
+              </div>
+
+              <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm hover:border-emerald-500 transition">
+                <div className="w-10 h-10 bg-blue-100 text-blue-700 rounded-xl flex items-center justify-center font-black mb-3">
+                  3
+                </div>
+                <h3 className="font-bold text-sm text-slate-900 mb-1">조선소 용접 &middot; 제조업</h3>
+                <p className="text-xs text-slate-500 leading-relaxed">TIG 용접, 기계가공, 생산직 숙련공 기술 매칭</p>
+              </div>
+
+              <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm hover:border-emerald-500 transition">
+                <div className="w-10 h-10 bg-amber-100 text-amber-700 rounded-xl flex items-center justify-center font-black mb-3">
+                  4
+                </div>
+                <h3 className="font-bold text-sm text-slate-900 mb-1">유학생 알바 (D-2)</h3>
+                <p className="text-xs text-slate-500 leading-relaxed">시간제 취업허가 기반 합법적 파트타임 알선</p>
+              </div>
+            </div>
+
+          </main>
+        </div>
+      </section>
+
     </div>
   );
 }
