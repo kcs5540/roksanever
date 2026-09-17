@@ -346,24 +346,6 @@ export default function CommunityPage() {
               </div>
             </div>
 
-            {/* 2) 실시간 인기 토픽 & 키워드 */}
-            <div className="bg-white rounded-2xl border border-slate-200 p-5 shadow-xs">
-              <div className="flex items-center gap-2 font-bold text-slate-800 text-sm mb-3">
-                <TrendingUp className="w-4 h-4 text-emerald-600" />
-                <span>주목받는 인기 태그</span>
-              </div>
-              <div className="flex flex-wrap gap-1.5">
-                {['#D-2시간제취업', '#E-7비자전환', '#제주호텔룸메이드', '#숙식제공', '#외국인등록증', '#TOPIK합격', '#출입국신고', '#합법근로'].map((tag) => (
-                  <button
-                    key={tag}
-                    onClick={() => setSearchQuery(tag.replace('#', ''))}
-                    className="text-[11px] font-semibold bg-slate-100 hover:bg-emerald-100 hover:text-emerald-800 text-slate-600 px-2.5 py-1 rounded-lg transition"
-                  >
-                    {tag}
-                  </button>
-                ))}
-              </div>
-            </div>
 
             {/* 3) 긴급 상담 안내 배너 (지정된 규격 010-5731-8578 & roksan22@daum.net 완벽 적용) */}
             <div className="bg-[#f7fafc] rounded-2xl border border-slate-200/80 p-6 text-center shadow-xs">
