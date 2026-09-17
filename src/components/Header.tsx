@@ -161,9 +161,19 @@ export default function Header() {
           <Link href="/visa-inquiry" onClick={() => setMobileMenuOpen(false)} className="block py-2 font-bold text-slate-800 border-b border-slate-100">
             비자 및 채용 문의
           </Link>
-          <Link href="/community" onClick={() => setMobileMenuOpen(false)} className="block py-2 font-bold text-slate-800">
+          <Link href="/community" onClick={() => setMobileMenuOpen(false)} className="block py-2 font-bold text-slate-800 border-b border-slate-100">
             커뮤니티
           </Link>
+          <div className="pt-2">
+            <Link
+              href="/jobs/new"
+              onClick={() => setMobileMenuOpen(false)}
+              className="w-full bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold py-2.5 rounded-xl shadow text-center flex items-center justify-center gap-1.5 transition"
+            >
+              <PlusCircle className="w-4 h-4" />
+              <span>구인공고 무료 등록 신청</span>
+            </Link>
+          </div>
         </div>
       )}
     </header>
