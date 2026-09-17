@@ -111,7 +111,7 @@ export default function Header() {
               <span className="bg-white/20 text-[10px] px-1.5 py-0.5 rounded font-bold">D-2</span>
             </Link>
             <Link
-              href="/student-jobs"
+              href="/part-time"
               className="px-3 py-3 hover:bg-emerald-700/70 rounded-lg transition whitespace-nowrap"
             >
               아르바이트
@@ -151,8 +151,12 @@ export default function Header() {
           <Link href="/resumes" onClick={() => setMobileMenuOpen(false)} className="block py-2 font-bold text-slate-800 border-b border-slate-100">
             구직 정보
           </Link>
-          <Link href="/student-jobs" onClick={() => setMobileMenuOpen(false)} className="block py-2 font-bold text-slate-800 border-b border-slate-100">
-            유학생 취업 & 아르바이트
+          <Link href="/student-jobs" onClick={() => setMobileMenuOpen(false)} className="block py-2 font-bold text-slate-800 border-b border-slate-100 flex items-center justify-between">
+            <span>유학생 취업</span>
+            <span className="bg-emerald-100 text-emerald-800 text-[10px] px-1.5 py-0.5 rounded font-bold">D-2</span>
+          </Link>
+          <Link href="/part-time" onClick={() => setMobileMenuOpen(false)} className="block py-2 font-bold text-slate-800 border-b border-slate-100">
+            아르바이트 (단기&middot;주말&middot;시간제)
           </Link>
           <Link href="/visa-inquiry" onClick={() => setMobileMenuOpen(false)} className="block py-2 font-bold text-slate-800 border-b border-slate-100">
             비자 및 채용 문의
