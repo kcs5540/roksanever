@@ -127,103 +127,39 @@ export default function VisaInquiryPage() {
   };
 
   return (
-    <div className="bg-[#f8fafc] text-slate-900 min-h-screen pb-16">
+    <div className="bg-[#f4f7f6] text-slate-900 min-h-screen pb-20">
       
-      {/* 1. 상단 비주얼 큐레이션 배너 (전체 사이트 통일 규격) */}
-      <section className="bg-slate-900 text-white py-8 px-4 sm:px-6 lg:px-8 border-b border-slate-800">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-            
-            {/* 배너 1: 비자 행정 원스톱 지원 */}
-            <div className="relative overflow-hidden rounded-2xl p-6 shadow-xl flex flex-col justify-between group hover:shadow-emerald-500/40 hover:-translate-y-1 transition-all border border-emerald-400/40 min-h-[230px]">
-              <div 
-                className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105 opacity-90"
-                style={{ backgroundImage: `url('/images/banners/banner1.jpg')` }}
-              ></div>
-              <div className="absolute inset-0 bg-gradient-to-t from-emerald-950/90 via-emerald-950/50 to-emerald-900/30"></div>
-
-              <div className="relative z-10">
-                <div className="inline-block bg-emerald-600/90 backdrop-blur-md text-white text-[11px] font-extrabold px-3 py-1 rounded-full mb-3 uppercase tracking-wider shadow-md border border-white/30">
-                  Visa Administration
-                </div>
-                <h3 className="text-xl sm:text-2xl font-black text-white tracking-tight mb-2 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
-                  합법 비자 발급 &middot; 연장<br />출입국 행정 원스톱
-                </h3>
-                <p className="text-xs text-white font-medium leading-relaxed mb-3 drop-shadow-[0_1px_3px_rgba(0,0,0,0.9)] max-w-xs">
-                  E-7 전문취업, E-9 고용허가, D-2 유학생 시간제 취업, F-4 재외동포 비자 변경
-                </p>
+      {/* 1. 상단 페이지 히어로 헤더 (커뮤니티 페이지와 동일한 에메랄드 그라디언트 + 빠른 버튼) */}
+      <div className="bg-gradient-to-r from-emerald-800 via-teal-800 to-slate-900 text-white py-12 px-4 shadow-md relative overflow-hidden">
+        <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:16px_16px]"></div>
+        <div className="max-w-7xl mx-auto relative z-10">
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
+            <div>
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 text-xs font-semibold mb-3 border border-emerald-400/30">
+                <Sparkles className="w-3.5 h-3.5" />
+                <span>록산에버그린 비자 &middot; 구인구직 1:1 전문 상담</span>
               </div>
-
-              <div className="relative z-10 mt-4 pt-3 border-t border-white/30 flex items-center justify-between text-xs font-bold text-white bg-slate-900/40 backdrop-blur-sm -mx-6 -mb-6 px-6 py-3">
-                <span className="flex items-center gap-1">
-                  <ShieldCheck className="w-4 h-4 text-emerald-300" />
-                  신원 보증 & 출입국 자격 사전심사
-                </span>
-                <ChevronRight className="w-3.5 h-3.5 text-emerald-300" />
-              </div>
+              <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight">
+                문의하기 &middot; 상담센터
+              </h1>
+              <p className="text-emerald-100/90 text-sm sm:text-base mt-2 max-w-2xl leading-relaxed">
+                출입국 비자 발급&middot;연장 행정 대행, 기업 맞춤형 인력 수급, 유학생 합법 시간제 취업 등 궁금하신 사항을 남겨주시면 신속히 답변해 드립니다.
+              </p>
             </div>
 
-            {/* 배너 2: 기업 맞춤형 인력 공급 상담 */}
-            <div className="relative overflow-hidden rounded-2xl p-6 shadow-xl flex flex-col justify-between group hover:shadow-orange-500/40 hover:-translate-y-1 transition-all border border-orange-400/40 min-h-[230px]">
-              <div 
-                className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105 opacity-90"
-                style={{ backgroundImage: `url('/images/banners/banner2.jpg')` }}
-              ></div>
-              <div className="absolute inset-0 bg-gradient-to-t from-orange-950/90 via-orange-950/50 to-orange-900/30"></div>
-
-              <div className="relative z-10">
-                <div className="inline-block bg-orange-600/90 backdrop-blur-md text-white text-[11px] font-extrabold px-3 py-1 rounded-full mb-3 uppercase tracking-wider shadow-md border border-white/30">
-                  Manpower Supply
-                </div>
-                <h3 className="text-xl sm:text-2xl font-black text-white tracking-tight mb-2 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
-                  기업 대량 인력 수급<br />도급&middot;파견&middot;채용대행
-                </h3>
-                <p className="text-xs text-white font-medium leading-relaxed mb-3 drop-shadow-[0_1px_3px_rgba(0,0,0,0.9)] max-w-xs">
-                  특급호텔 룸메이드, 하우스키핑, 조선소 배관 용접사, 제조업 생산직 맞춤 배치
-                </p>
-              </div>
-
-              <div className="relative z-10 mt-4 pt-3 border-t border-white/30 flex items-center justify-between text-xs font-bold text-white bg-slate-900/40 backdrop-blur-sm -mx-6 -mb-6 px-6 py-3">
-                <a href="tel:010-5731-8578" className="hover:underline flex items-center gap-1">
-                  <span>기업 직통 인력 요청</span>
-                  <ChevronRight className="w-3.5 h-3.5 text-amber-300" />
-                </a>
-                <Building2 className="w-5 h-5 text-amber-200" />
-              </div>
+            {/* 빠른 상담/글쓰기 버튼 */}
+            <div className="flex items-center gap-3">
+              <button
+                onClick={() => setActiveTab('form')}
+                className="inline-flex items-center gap-2 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold px-5 py-3 rounded-xl shadow-lg transition-all hover:scale-105 text-sm"
+              >
+                <Send className="w-4 h-4" />
+                <span>온라인 상담 신청하기</span>
+              </button>
             </div>
-
-            {/* 배너 3: 24시간 실시간 무료 전화 상담 */}
-            <div className="relative overflow-hidden rounded-2xl p-6 shadow-xl flex flex-col justify-between group hover:shadow-blue-500/40 hover:-translate-y-1 transition-all border border-blue-400/40 min-h-[230px]">
-              <div 
-                className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105 opacity-90"
-                style={{ backgroundImage: `url('/images/banners/banner3.jpg')` }}
-              ></div>
-              <div className="absolute inset-0 bg-gradient-to-t from-blue-950/90 via-blue-950/50 to-blue-900/30"></div>
-
-              <div className="relative z-10">
-                <div className="inline-block bg-blue-600/90 backdrop-blur-md text-white text-[11px] font-extrabold px-3 py-1 rounded-full mb-3 uppercase tracking-wider shadow-md border border-white/30">
-                  Quick Consultation
-                </div>
-                <h3 className="text-xl sm:text-2xl font-black text-white tracking-tight mb-2 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
-                  긴급 상담 직통 전화<br />010-5731-8578
-                </h3>
-                <p className="text-xs text-white font-medium leading-relaxed mb-3 drop-shadow-[0_1px_3px_rgba(0,0,0,0.9)] max-w-xs">
-                  본사: 064-711-8578 (평일 09~18시) / 이메일: roksan22@daum.net
-                </p>
-              </div>
-
-              <div className="relative z-10 mt-4 pt-3 border-t border-white/30 flex items-center justify-between text-xs font-bold text-white bg-slate-900/40 backdrop-blur-sm -mx-6 -mb-6 px-6 py-3">
-                <a href="tel:010-5731-8578" className="hover:underline flex items-center gap-1 font-black text-amber-300">
-                  <span>지금 바로 전화걸기</span>
-                  <ChevronRight className="w-3.5 h-3.5" />
-                </a>
-                <Phone className="w-5 h-5 text-blue-200 animate-bounce" />
-              </div>
-            </div>
-
           </div>
         </div>
-      </section>
+      </div>
 
       {/* 2. 상단 탭 전환 바 (온라인 상담 신청서 / 1:1 상담 게시판 / 자주 묻는 질문 FAQ) */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8">
@@ -231,10 +167,14 @@ export default function VisaInquiryPage() {
           <div>
             <div className="flex items-center gap-3">
               <span className="w-2.5 h-6 bg-emerald-600 rounded-sm"></span>
-              <h1 className="text-2xl font-black text-slate-900 tracking-tight">문의하기 (비자 &middot; 행정 &middot; 채용)</h1>
+              <h2 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">
+                {activeTab === 'form' && '1:1 온라인 상담 신청서'}
+                {activeTab === 'board' && '상담 문의 게시판'}
+                {activeTab === 'faq' && '자주 묻는 질문 (FAQ)'}
+              </h2>
             </div>
             <p className="text-xs text-slate-500 mt-1 pl-4">
-              외국인 인력 수급, 비자 발급 자격, 유학생 취업 등 궁금하신 내용을 문의하시면 전문 행정 상담원이 상세히 답변해 드립니다.
+              전문 행정 상담팀이 기재해주신 내용을 사전 검토 후 가장 적합한 법적 솔루션과 인재를 안내해 드립니다.
             </p>
           </div>
 
@@ -244,7 +184,7 @@ export default function VisaInquiryPage() {
               onClick={() => setActiveTab('form')}
               className={`px-4 py-2 rounded-lg text-xs font-bold transition flex items-center gap-1.5 ${
                 activeTab === 'form' 
-                  ? 'bg-white text-emerald-700 shadow-sm' 
+                  ? 'bg-emerald-600 text-white shadow-sm' 
                   : 'text-slate-600 hover:text-slate-900'
               }`}
             >
@@ -266,7 +206,7 @@ export default function VisaInquiryPage() {
               onClick={() => setActiveTab('faq')}
               className={`px-4 py-2 rounded-lg text-xs font-bold transition flex items-center gap-1.5 ${
                 activeTab === 'faq' 
-                  ? 'bg-slate-800 text-white shadow-sm' 
+                  ? 'bg-emerald-600 text-white shadow-sm' 
                   : 'text-slate-600 hover:text-slate-900'
               }`}
             >
