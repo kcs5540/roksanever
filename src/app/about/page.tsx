@@ -261,44 +261,50 @@ export default function AboutPage() {
                 </div>
               </div>
 
-              {/* 네이버 지도 & 카카오맵 연동 버튼 */}
-              <div className="mt-4 pt-4 border-t border-slate-200/80 space-y-2.5">
-                <div className="text-[11px] font-bold text-slate-500">지도 앱 바로 연결 및 길찾기:</div>
-                <div className="flex items-center gap-2">
+              {/* 안내 및 바로가기 4대 버튼 (2x2 동일 크기 그리드) */}
+              <div className="mt-5 pt-4 border-t border-slate-200/80 space-y-2.5">
+                <div className="text-[11px] font-bold text-slate-500">빠른 길찾기 및 상담 연결:</div>
+                <div className="grid grid-cols-2 gap-2.5">
+                  {/* 1. 네이버 지도 */}
                   <a
                     href="https://naver.me/xPYiat3x"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex-1 py-2.5 px-3 bg-[#03C75A] hover:bg-[#02b350] text-white font-bold rounded-xl text-xs flex items-center justify-center gap-1.5 shadow-sm transition active:scale-95"
+                    className="h-11 px-3 bg-[#03C75A] hover:bg-[#02b350] text-white font-bold rounded-xl text-xs flex items-center justify-center gap-1.5 shadow-sm transition active:scale-95 text-center"
                   >
-                    <span className="bg-white text-[#03C75A] font-black text-[10px] w-4 h-4 rounded-full flex items-center justify-center">N</span>
-                    <span>네이버 지도 (록산에버그린)</span>
+                    <span className="bg-white text-[#03C75A] font-black text-[11px] w-4 h-4 rounded-full flex items-center justify-center shrink-0">N</span>
+                    <span className="truncate">네이버 지도</span>
                   </a>
+
+                  {/* 2. 카카오맵 */}
                   <a
                     href="https://map.kakao.com/link/search/제주특별자치도 제주시 서광로 107-6"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex-1 py-2.5 px-3 bg-[#FEE500] hover:bg-[#FADA0A] text-[#191919] font-bold rounded-xl text-xs flex items-center justify-center gap-1.5 shadow-sm transition active:scale-95"
+                    className="h-11 px-3 bg-[#FEE500] hover:bg-[#FADA0A] text-[#191919] font-bold rounded-xl text-xs flex items-center justify-center gap-1.5 shadow-sm transition active:scale-95 text-center"
                   >
-                    <span className="bg-[#191919] text-[#FEE500] font-black text-[10px] w-4 h-4 rounded-full flex items-center justify-center">K</span>
-                    <span>카카오맵 길찾기</span>
+                    <span className="bg-[#191919] text-[#FEE500] font-black text-[11px] w-4 h-4 rounded-full flex items-center justify-center shrink-0">K</span>
+                    <span className="truncate">카카오맵</span>
                   </a>
-                </div>
-              </div>
 
-              <div className="mt-4 flex items-center gap-3">
-                <a
-                  href="tel:064-711-8578"
-                  className="flex-1 py-3 text-center bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-xl text-xs transition shadow"
-                >
-                  본사 전화 문의하기
-                </a>
-                <Link
-                  href="/visa-inquiry"
-                  className="flex-1 py-3 text-center bg-slate-900 hover:bg-slate-800 text-white font-bold rounded-xl text-xs transition"
-                >
-                  온라인 상담 접수
-                </Link>
+                  {/* 3. 전화 문의 */}
+                  <a
+                    href="tel:064-711-8578"
+                    className="h-11 px-3 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-xl text-xs flex items-center justify-center gap-1.5 shadow-sm transition active:scale-95 text-center"
+                  >
+                    <Phone className="w-3.5 h-3.5 shrink-0" />
+                    <span className="truncate">본사 전화문의</span>
+                  </a>
+
+                  {/* 4. 온라인 상담 접수 */}
+                  <Link
+                    href="/visa-inquiry"
+                    className="h-11 px-3 bg-slate-900 hover:bg-slate-800 text-white font-bold rounded-xl text-xs flex items-center justify-center gap-1.5 shadow-sm transition active:scale-95 text-center"
+                  >
+                    <FileCheck className="w-3.5 h-3.5 shrink-0 text-emerald-400" />
+                    <span className="truncate">온라인 상담접수</span>
+                  </Link>
+                </div>
               </div>
             </div>
 
