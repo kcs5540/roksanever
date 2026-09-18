@@ -29,7 +29,7 @@ export default function Footer() {
             <span className="text-slate-600">|</span>
             <Link href="/terms" className="hover:text-white">이용약관</Link>
             <span className="text-slate-600">|</span>
-            <Link href="/login" className="hover:text-white">관리자</Link>
+            <Link href="/admin" className="hover:text-white">관리자</Link>
             <span className="text-slate-600">|</span>
             <Link href="/about" className="hover:text-white">회사소개</Link>
           </div>
