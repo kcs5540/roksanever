@@ -150,9 +150,26 @@ export default function VisaInquiryPage() {
     }
   ];
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // 새 문의글 리스트에 추가 (카드 규격에 맞게 보강)
+    
+    // 1. Supabase roksan_visas 테이블에 실제 저장
+    try {
+      const { supabase } = await import('@/lib/supabase');
+      if (supabase) {
+        await supabase.from('roksan_visas').insert([{
+          name: formData.name,
+          phone: formData.phone,
+          email: formData.email,
+          visa_type: formData.inquiry_type,
+          message: `[${formData.title}] ${formData.content}`
+        }]);
+      }
+    } catch (err) {
+      console.warn('Supabase 상담 저장 실패 (로컬 상태만 반영):', err);
+    }
+
+    // 2. 화면 게시판 리스트에 즉시 반영
     const newEntry = {
       id: inquiryBoard.length + 1,
       category: formData.inquiry_type.split(' ')[0],

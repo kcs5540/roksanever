@@ -122,8 +122,8 @@ export default function HomePage() {
     '용접공', '유학생 알바', '제조업', '간병인', '기타'
   ];
 
-  // 실제 구인 데이터 (기존 사이트 실제 데이터 반영)
-  const jobOffers = [
+  // 실제 구인 데이터 기본값
+  const initialJobOffers = [
     { id: '1', category: '룸메이드', title: '룸메이드 구합니다. 태국여성 환영 / 기숙사 완비', region: '경기', target: '외국인', date: '08-14', urgent: true, salary: '월 270만' },
     { id: '2', category: '기타', title: 'S.N 및 리조트 시설 관리 인력 모십니다.', region: '제주', target: '무관', date: '08-08', urgent: false, salary: '월 260만' },
     { id: '3', category: '제조업', title: '화장품 포장 및 생산직 급구 (초보자 가능)', region: '전국', target: '무관', date: '08-07', urgent: true, salary: '월 290만' },
@@ -132,8 +132,8 @@ export default function HomePage() {
     { id: '6', category: '용접공', title: '선박 TIG 배관 용접사 (E-7 비자 지원 가능)', region: '울산', target: '외국인', date: '08-04', urgent: true, salary: '월 420만' },
   ];
 
-  // 실제 구직 데이터 (기존 사이트 실제 데이터 반영)
-  const jobSeekers = [
+  // 실제 구직 데이터 기본값
+  const initialJobSeekers = [
     { id: '1', category: '영어 도우미', title: '영어 관련 일자리 찾고 있습니다 (외국인 학교/학원 등)', region: '서울', type: '외국인', info: '23세 / 여자', visa: 'D-2(유학)', date: '08-14' },
     { id: '2', category: '제조업', title: '일자리를 구하는 성실한 외국인 여성입니다.', region: '전국', type: '외국인', info: '34세 / 여자', visa: 'F-4', date: '08-14' },
     { id: '3', category: '기타', title: 'F2 비자 남자 일자리 구합니다. 제조업, 물류 가능', region: '부산', type: '외국인', info: '36세 / 남자', visa: 'F-2', date: '08-07' },
@@ -141,6 +141,65 @@ export default function HomePage() {
     { id: '5', category: '기타', title: 'F4남(30세), H2남(34세) 함께 일할 공장 구합니다.', region: '서울', type: '외국인', info: '30대 / 남2', visa: 'F-4/H-2', date: '08-06' },
     { id: '6', category: '룸메이드', title: '호텔 객실 청소 경력 2년 유학생 주말/평일 알바', region: '제주', type: '외국인', info: '25세 / 여자', visa: 'D-2', date: '08-05' },
   ];
+
+  // Supabase 실시간 연동 상태
+  const [jobOffers, setJobOffers] = useState(initialJobOffers);
+  const [jobSeekers, setJobSeekers] = useState(initialJobSeekers);
+  const [dbConnected, setDbConnected] = useState(false);
+
+  useEffect(() => {
+    async function loadDataFromSupabase() {
+      try {
+        const { supabase } = await import('@/lib/supabase');
+        if (!supabase) return;
+
+        // 1. roksan_jobs 테이블에서 구인공고 불러오기
+        const { data: dbJobs, error: jobsError } = await supabase
+          .from('roksan_jobs')
+          .select('*')
+          .order('created_at', { ascending: false });
+
+        if (!jobsError && dbJobs && dbJobs.length > 0) {
+          const mappedJobs = dbJobs.map((item: any) => ({
+            id: item.id,
+            category: item.category,
+            title: item.title,
+            region: item.region,
+            target: item.target || '외국인',
+            date: item.created_at ? item.created_at.slice(5, 10) : '방금',
+            urgent: item.urgent ?? false,
+            salary: item.salary || '협의'
+          }));
+          setJobOffers(mappedJobs);
+          setDbConnected(true);
+        }
+
+        // 2. roksan_resumes 테이블에서 구직자 불러오기
+        const { data: dbSeekers, error: seekersError } = await supabase
+          .from('roksan_resumes')
+          .select('*')
+          .order('created_at', { ascending: false });
+
+        if (!seekersError && dbSeekers && dbSeekers.length > 0) {
+          const mappedSeekers = dbSeekers.map((item: any) => ({
+            id: item.id,
+            category: item.category,
+            title: item.title,
+            region: item.region,
+            type: item.target || '외국인',
+            info: item.info || '정보 미기재',
+            visa: item.visa || '무관',
+            date: item.created_at ? item.created_at.slice(5, 10) : '방금'
+          }));
+          setJobSeekers(mappedSeekers);
+        }
+      } catch (err) {
+        console.warn('Supabase 실시간 로드 대기:', err);
+      }
+    }
+
+    loadDataFromSupabase();
+  }, []);
 
   // 필터링
   const filteredOffers = jobOffers.filter(job => {

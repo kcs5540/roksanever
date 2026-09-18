@@ -1,0 +1,59 @@
+generator client {
+  provider = prisma-client-js
+}
+
+datasource db {
+  provider  = postgresql
+  url       = env(DATABASE_URL)
+  directUrl = env(DIRECT_URL)
+}
+
+// 록산에버그린 구인공고 테이블
+model RoksanJobOffer {
+  id          String   @id @default(cuid())
+  category    String   // 직종 (룸메이드, 청소, 용접공 등)
+  title       String   // 제목
+  region      String   // 지역 (경기, 제주, 전국 등)
+  target      String   @default(외국인) // 채용대상 (외국인, 무관)
+  salary      String   // 급여 (월 270만 등)
+  urgent      Boolean  @default(false)     // 급구 여부
+  description String?  // 상세 모집요강
+  contact     String?  // 연락처
+  company     String?  // 업체명
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map(roksan_job_offers)
+}
+
+// 록산에버그린 구직/인재 등록 테이블
+model RoksanJobSeeker {
+  id          String   @id @default(cuid())
+  category    String   // 희망직종
+  title       String   // 제목
+  region      String   // 희망지역
+  target      String   @default(외국인)
+  info        String   // 연령/성별 등 정보 (예: 25세 / 여자)
+  visa        String   // 비자 정보 (D-2, F-4 등)
+  description String?  // 자기소개 및 경력
+  contact     String?  // 연락처
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map(roksan_job_seekers)
+}
+
+// 록산에버그린 비자 및 행정 문의 테이블
+model RoksanVisaInquiry {
+  id          String   @id @default(cuid())
+  name        String   // 신청인 이름
+  phone       String   // 연락처
+  email       String?  // 이메일
+  nationality String?  // 국적
+  visaType    String?  // 현재 비자 또는 희망 비자
+  message     String   // 상담 내용
+  status      String   @default(접수완료) // 접수완료, 상담중, 완료
+  createdAt   DateTime @default(now())
+
+  @@map(roksan_visa_inquiries)
+}
