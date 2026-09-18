@@ -73,20 +73,45 @@ export default function Header() {
         {/* 우측 유틸리티 메뉴 */}
         <div className="flex items-center justify-end gap-3 text-xs text-slate-600">
           <Link href="/" className="hover:text-emerald-600 font-medium transition">
-            홈으로
+            {t('home')}
           </Link>
           <span className="text-slate-300">|</span>
           <Link href="/login" className="hover:text-emerald-600 font-medium transition">
-            로그인
+            {t('login')}
           </Link>
           <span className="text-slate-300">|</span>
-          <div className="flex items-center gap-1">
-            <Globe className="w-3.5 h-3.5 text-emerald-600" />
+          {/* 다국어 언어선택 (원본 인트로의 국기 버튼 스타일 계승: 🇰🇷 🇺🇸 🇨🇳) */}
+          <div className="flex items-center gap-1.5 bg-slate-100/90 rounded-full px-2 py-1 border border-slate-200">
+            <Globe className="w-3.5 h-3.5 text-emerald-600 mr-0.5" />
             <button
-              onClick={() => setLang(lang === 'ko' ? 'en' : 'ko')}
-              className="hover:text-emerald-600 font-bold uppercase"
+              onClick={() => setLang('ko')}
+              className={`flex items-center gap-1 px-1.5 py-0.5 rounded-full transition text-[11px] font-bold ${
+                lang === 'ko' ? 'bg-white text-emerald-700 shadow-xs ring-1 ring-emerald-400 font-extrabold' : 'text-slate-500 hover:text-slate-900'
+              }`}
+              title="한국어 (KOR)"
             >
-              {lang === 'ko' ? 'Language (ENG)' : '한국어 (KOR)'}
+              <span>🇰🇷</span>
+              <span className="hidden sm:inline">KO</span>
+            </button>
+            <button
+              onClick={() => setLang('en')}
+              className={`flex items-center gap-1 px-1.5 py-0.5 rounded-full transition text-[11px] font-bold ${
+                lang === 'en' ? 'bg-white text-emerald-700 shadow-xs ring-1 ring-emerald-400 font-extrabold' : 'text-slate-500 hover:text-slate-900'
+              }`}
+              title="English (ENG)"
+            >
+              <span>🇺🇸</span>
+              <span className="hidden sm:inline">EN</span>
+            </button>
+            <button
+              onClick={() => setLang('zh')}
+              className={`flex items-center gap-1 px-1.5 py-0.5 rounded-full transition text-[11px] font-bold ${
+                lang === 'zh' ? 'bg-white text-emerald-700 shadow-xs ring-1 ring-emerald-400 font-extrabold' : 'text-slate-500 hover:text-slate-900'
+              }`}
+              title="中文 (CHN)"
+            >
+              <span>🇨🇳</span>
+              <span className="hidden sm:inline">CN</span>
             </button>
           </div>
           
@@ -103,7 +128,15 @@ export default function Header() {
       <nav className="bg-emerald-600 text-white font-bold shadow-md">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
           <div className="flex items-center space-x-1 sm:space-x-2 md:space-x-3 text-sm sm:text-base overflow-x-auto scrollbar-none py-1.5">
-            {navItems.map((item) => {
+            {[
+              { href: '/about', label: t('about') },
+              { href: '/jobs', label: t('jobs') },
+              { href: '/resumes', label: t('resumes') },
+              { href: '/student-jobs', label: t('studentJobs'), badge: 'D-2' },
+              { href: '/part-time', label: t('partTime') },
+              { href: '/visa-inquiry', label: t('visaInquiry') },
+              { href: '/community', label: t('community') },
+            ].map((item) => {
               const active = isActive(item.href);
               return (
                 <Link
@@ -138,7 +171,7 @@ export default function Header() {
               }`}
             >
               <PlusCircle className="w-3.5 h-3.5" />
-              <span>공고 등록</span>
+              <span>{t('postJob')}</span>
             </Link>
           </div>
         </div>

@@ -177,31 +177,66 @@ export default function HomePage() {
                 
                 {/* 좌측 7컬럼: 텍스트 & 비자 슬로건 & CTA 버튼 */}
                 <div className="md:col-span-7 text-left space-y-4">
-                  <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-100 text-emerald-800 text-xs font-bold border border-emerald-200 shadow-2xs">
-                    <Sparkles className="w-3.5 h-3.5 text-emerald-600" />
-                    <span>외국인 맞춤 인력공급 &middot; 합법 비자 행정 대행 기관</span>
+                  {/* 정식 정부 인가 번호 및 배지 (기존 인트로 원본 f1630120240001 완벽 반영) */}
+                  <div className="flex flex-wrap items-center gap-2">
+                    <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-900 text-white text-[11px] font-bold shadow-xs">
+                      <Award className="w-3.5 h-3.5 text-amber-400" />
+                      <span className="font-mono text-amber-300">f1630120240001</span>
+                      <span className="text-slate-300 text-[10px] sm:text-[11px] hidden sm:inline">| Registered overseas job placement agency</span>
+                    </div>
+                    <div className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-800 text-[11px] font-extrabold border border-emerald-300">
+                      <span>JOB IN JEJU</span>
+                    </div>
                   </div>
 
                   <h1 className="text-2xl sm:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight leading-snug sm:leading-tight break-keep-all">
-                    신뢰와 책임을 다하는<br />
-                    <span className="text-emerald-600">외국인 종합 일자리 &middot; 인력 매칭 파트너</span>
+                    JOB IN JEJU ISLAND<br />
+                    <span className="text-emerald-600">외국인 인력공급 &middot; 합법 비자대행</span>
                   </h1>
 
-                  {/* 비자 핵심 슬로건 화이트 라운드 박스 */}
+                  {/* 인트로 핵심 5대 원형 비즈니스 완벽 반영 라운드 박스 */}
                   <div className="bg-white rounded-2xl p-4 shadow-md border border-slate-200/90 space-y-2.5">
-                    <div className="text-xs sm:text-sm font-extrabold text-slate-800 flex flex-wrap items-center gap-x-2.5 gap-y-1">
-                      <span>외국인 인력공급</span>
-                      <span className="text-emerald-500 font-bold">&bull;</span>
-                      <span>취업알선</span>
-                      <span className="text-emerald-500 font-bold">&bull;</span>
-                      <span>비자발급&middot;대행</span>
-                      <span className="text-emerald-500 font-bold">&bull;</span>
-                      <span>한국유학 취업지원</span>
+                    <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 text-xs font-extrabold text-slate-800">
+                      <div className="flex items-center gap-1.5 bg-emerald-50/70 p-2 rounded-xl border border-emerald-100">
+                        <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
+                        <div>
+                          <div>외국인 인력공급</div>
+                          <div className="text-[10px] text-slate-400 font-normal">外国人力供应</div>
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-1.5 bg-teal-50/70 p-2 rounded-xl border border-teal-100">
+                        <span className="w-2 h-2 rounded-full bg-teal-500"></span>
+                        <div>
+                          <div>취업알선 (Placement)</div>
+                          <div className="text-[10px] text-slate-400 font-normal">就业中介</div>
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-1.5 bg-slate-100 p-2 rounded-xl border border-slate-200">
+                        <span className="w-2 h-2 rounded-full bg-slate-700"></span>
+                        <div>
+                          <div>비자발급 &middot; 대행</div>
+                          <div className="text-[10px] text-slate-400 font-normal">签证发放,代理</div>
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-1.5 bg-green-50/70 p-2 rounded-xl border border-green-100">
+                        <span className="w-2 h-2 rounded-full bg-green-600"></span>
+                        <div>
+                          <div>한국유학 &middot; 어학연수</div>
+                          <div className="text-[10px] text-slate-400 font-normal">韩国留学&语言研修</div>
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-1.5 bg-lime-50/70 p-2 rounded-xl border border-lime-200 col-span-2 sm:col-span-1">
+                        <span className="w-2 h-2 rounded-full bg-lime-600"></span>
+                        <div>
+                          <div>하우스키퍼 (Room-maid)</div>
+                          <div className="text-[10px] text-slate-400 font-normal">管家 / 客房清扫</div>
+                        </div>
+                      </div>
                     </div>
-                    <div className="pt-1 border-t border-slate-100 flex items-center justify-between">
-                      <span className="text-xs font-bold text-slate-500">지원 대상 비자:</span>
+                    <div className="pt-2 border-t border-slate-100 flex items-center justify-between">
+                      <span className="text-xs font-bold text-slate-500">지원 대상 비자 자격:</span>
                       <span className="bg-emerald-600 text-white px-2.5 py-1 rounded-lg text-xs font-black shadow-xs">
-                        E7 &middot; E9 &middot; D2 &middot; H2 &middot; F1~F6 취업
+                        E-7 &middot; E-9 &middot; D-2 &middot; H-2 &middot; F계열 합법 취업
                       </span>
                     </div>
                   </div>
@@ -806,38 +841,72 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* 3. 특화 솔루션 4대 카드 섹션 */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-              <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm hover:border-emerald-500 transition">
-                <div className="w-10 h-10 bg-emerald-100 text-emerald-700 rounded-xl flex items-center justify-center font-black mb-3">
-                  1
+            {/* 3. 특화 솔루션: 기존 인트로 5대 핵심 사업 영역 완벽 승계 카드 */}
+            <div>
+              <div className="flex items-center justify-between mb-4">
+                <div>
+                  <h3 className="text-base sm:text-lg font-black text-slate-900">
+                    록산에버그린 5대 핵심 전문 분야
+                  </h3>
+                  <p className="text-xs text-slate-500">
+                    기존 인트로 핵심 정체성을 계승한 5대 외국인 종합 고용 및 비자 지원 서비스
+                  </p>
                 </div>
-                <h3 className="font-bold text-sm text-slate-900 mb-1">호텔 &middot; 룸메이드</h3>
-                <p className="text-xs text-slate-500 leading-relaxed">제주 및 전국 특급 리조트 객실정비 맞춤 인력</p>
+                <span className="text-[11px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-200">
+                  Core Business
+                </span>
               </div>
 
-              <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm hover:border-emerald-500 transition">
-                <div className="w-10 h-10 bg-teal-100 text-teal-700 rounded-xl flex items-center justify-center font-black mb-3">
-                  2
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3.5">
+                {/* 1. 외국인 인력공급 */}
+                <div className="bg-white p-4 sm:p-5 rounded-2xl border border-slate-200/90 shadow-sm hover:border-emerald-500 transition group hover:shadow-md">
+                  <div className="w-9 h-9 bg-emerald-100 text-emerald-700 rounded-xl flex items-center justify-center font-black mb-3 text-sm group-hover:scale-110 transition">
+                    1
+                  </div>
+                  <h4 className="font-bold text-sm text-slate-900 mb-0.5">외국인 인력공급</h4>
+                  <div className="text-[10px] font-bold text-emerald-600 mb-2">Foreign Labor Supply / 外国人力供应</div>
+                  <p className="text-xs text-slate-500 leading-relaxed">제조, 농축산, 어업, 관광/서비스 등 국내 산업군 맞춤 숙련 인력 상시 공급</p>
                 </div>
-                <h3 className="font-bold text-sm text-slate-900 mb-1">비자 발급 &middot; 행정대행</h3>
-                <p className="text-xs text-slate-500 leading-relaxed">E-7, E-9, D-2, F-4 합법 체류 자격 전문 상담</p>
-              </div>
 
-              <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm hover:border-emerald-500 transition">
-                <div className="w-10 h-10 bg-blue-100 text-blue-700 rounded-xl flex items-center justify-center font-black mb-3">
-                  3
+                {/* 2. 취업알선 */}
+                <div className="bg-white p-4 sm:p-5 rounded-2xl border border-slate-200/90 shadow-sm hover:border-emerald-500 transition group hover:shadow-md">
+                  <div className="w-9 h-9 bg-teal-100 text-teal-700 rounded-xl flex items-center justify-center font-black mb-3 text-sm group-hover:scale-110 transition">
+                    2
+                  </div>
+                  <h4 className="font-bold text-sm text-slate-900 mb-0.5">취업알선</h4>
+                  <div className="text-[10px] font-bold text-teal-600 mb-2">Job Placement / 就业中介</div>
+                  <p className="text-xs text-slate-500 leading-relaxed">외국인 전문 구직자 ↔ 제주 및 전국 고용 기업 간 1:1 정밀 매칭 및 사후관리</p>
                 </div>
-                <h3 className="font-bold text-sm text-slate-900 mb-1">조선소 용접 &middot; 제조업</h3>
-                <p className="text-xs text-slate-500 leading-relaxed">TIG 용접, 기계가공, 생산직 숙련공 기술 매칭</p>
-              </div>
 
-              <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm hover:border-emerald-500 transition">
-                <div className="w-10 h-10 bg-amber-100 text-amber-700 rounded-xl flex items-center justify-center font-black mb-3">
-                  4
+                {/* 3. 비자발급·대행 */}
+                <div className="bg-white p-4 sm:p-5 rounded-2xl border border-slate-200/90 shadow-sm hover:border-emerald-500 transition group hover:shadow-md">
+                  <div className="w-9 h-9 bg-slate-800 text-white rounded-xl flex items-center justify-center font-black mb-3 text-sm group-hover:scale-110 transition">
+                    3
+                  </div>
+                  <h4 className="font-bold text-sm text-slate-900 mb-0.5">비자발급 &middot; 대행</h4>
+                  <div className="text-[10px] font-bold text-slate-600 mb-2">Visa Issuance Agency / 签证发放,代理</div>
+                  <p className="text-xs text-slate-500 leading-relaxed">E-7, E-9, D-2, F-4 등 출입국 비자 행정 서류 발급, 자격변경 및 체류 연장 대행</p>
                 </div>
-                <h3 className="font-bold text-sm text-slate-900 mb-1">유학생 알바 (D-2)</h3>
-                <p className="text-xs text-slate-500 leading-relaxed">시간제 취업허가 기반 합법적 파트타임 알선</p>
+
+                {/* 4. 한국유학 & 어학연수 */}
+                <div className="bg-white p-4 sm:p-5 rounded-2xl border border-slate-200/90 shadow-sm hover:border-emerald-500 transition group hover:shadow-md">
+                  <div className="w-9 h-9 bg-blue-100 text-blue-700 rounded-xl flex items-center justify-center font-black mb-3 text-sm group-hover:scale-110 transition">
+                    4
+                  </div>
+                  <h4 className="font-bold text-sm text-slate-900 mb-0.5">한국유학&어학연수</h4>
+                  <div className="text-[10px] font-bold text-blue-600 mb-2">Study Abroad / 韩国留学&语言研修</div>
+                  <p className="text-xs text-slate-500 leading-relaxed">외국인 유학생 유치 연계, 국내 대학 입학/연수 및 합법적 D-2 아르바이트 지원</p>
+                </div>
+
+                {/* 5. 전문 하우스키퍼 (관가) */}
+                <div className="bg-white p-4 sm:p-5 rounded-2xl border border-slate-200/90 shadow-sm hover:border-emerald-500 transition group hover:shadow-md">
+                  <div className="w-9 h-9 bg-lime-100 text-lime-700 rounded-xl flex items-center justify-center font-black mb-3 text-sm group-hover:scale-110 transition">
+                    5
+                  </div>
+                  <h4 className="font-bold text-sm text-slate-900 mb-0.5">하우스키퍼 (룸메이드)</h4>
+                  <div className="text-[10px] font-bold text-lime-600 mb-2">Housekeeper / 管家</div>
+                  <p className="text-xs text-slate-500 leading-relaxed">제주 특급호텔, 리조트, 펜션 등 객실 정비 및 시설관리 특화 전문 인력 파견</p>
+                </div>
               </div>
             </div>
 

@@ -79,6 +79,7 @@ export default function Footer() {
           <div className="text-slate-400 flex flex-wrap gap-x-4 gap-y-1">
             <span>대표자 : 김찬식</span>
             <span>사업자등록번호 : 616-81-02802</span>
+            <span>국외유료직업소개사업 등록 : <strong className="text-amber-400 font-mono">f1630120240001</strong></span>
             <span>전화 : <strong className="text-emerald-400 font-bold">064-711-8578</strong>, 010-5731-8578</span>
             <span>팩스 : 064-712-5512</span>
             <span>이메일 : roksan22@daum.net</span>
@@ -88,10 +89,10 @@ export default function Footer() {
         {/* 하단: 카피라이트 */}
         <div className="pt-4 border-t border-slate-700/60 flex flex-col sm:flex-row items-center justify-between gap-2 text-slate-500 text-[11px]">
           <div>
-            COPYRIGHT &copy; {new Date().getFullYear()}. <span className="text-slate-400 font-bold">ROKSANEVERGREEN</span>. ALL RIGHTS RESERVED.
+            COPYRIGHT &copy; {new Date().getFullYear()}. <span className="text-slate-400 font-bold">ROKSANEVERGREEN</span> (roksanmanpower.com). ALL RIGHTS RESERVED.
           </div>
           <div>
-            직업정보제공사업 신고완료 &middot; 유료직업소개사업 정식 등록
+            국외유료직업소개사업 정식 등록기관 (제 f1630120240001 호) &middot; 직업정보제공사업 신고완료
           </div>
         </div>
 
