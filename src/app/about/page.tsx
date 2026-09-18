@@ -255,12 +255,38 @@ export default function AboutPage() {
                   제주국제공항 및 제주종합경기장 인근에 위치하고 있어 접근이 용이합니다. 방문 전 전화 예약해 주시면 원활한 1:1 상담이 가능합니다.
                 </p>
                 <div className="bg-white p-4 rounded-xl border border-slate-200 space-y-1.5 text-xs text-slate-700">
-                  <div><strong>지번 주소:</strong> 제주시 용담이동 636-2 (서광로 107-6)</div>
+                  <div><strong>도로명:</strong> 제주특별자치도 제주시 서광로 107-6</div>
+                  <div><strong>지번 주소:</strong> 제주시 용담이동 636-2</div>
                   <div><strong>대중교통:</strong> 용담이동 주민센터 또는 서광로 정류장 하차 도보 3분</div>
                 </div>
               </div>
 
-              <div className="mt-6 flex items-center gap-3">
+              {/* 네이버 지도 & 카카오맵 연동 버튼 */}
+              <div className="mt-4 pt-4 border-t border-slate-200/80 space-y-2.5">
+                <div className="text-[11px] font-bold text-slate-500">지도 앱 바로 연결 및 길찾기:</div>
+                <div className="flex items-center gap-2">
+                  <a
+                    href="https://map.naver.com/p/search/%EC%A0%9C%EC%A3%BC%ED%8A%B9%EB%B3%84%EC%9E%90%EC%B9%98%EB%8F%84%20%EC%A0%9C%EC%A3%BC%EC%8B%9C%20%EC%84%9C%EA%B4%91%EB%A1%9C%20107-6"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 py-2.5 px-3 bg-[#03C75A] hover:bg-[#02b350] text-white font-bold rounded-xl text-xs flex items-center justify-center gap-1.5 shadow-sm transition active:scale-95"
+                  >
+                    <span className="bg-white text-[#03C75A] font-black text-[10px] w-4 h-4 rounded-full flex items-center justify-center">N</span>
+                    <span>네이버 지도 길찾기</span>
+                  </a>
+                  <a
+                    href="https://map.kakao.com/link/search/제주특별자치도 제주시 서광로 107-6"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 py-2.5 px-3 bg-[#FEE500] hover:bg-[#FADA0A] text-[#191919] font-bold rounded-xl text-xs flex items-center justify-center gap-1.5 shadow-sm transition active:scale-95"
+                  >
+                    <span className="bg-[#191919] text-[#FEE500] font-black text-[10px] w-4 h-4 rounded-full flex items-center justify-center">K</span>
+                    <span>카카오맵 길찾기</span>
+                  </a>
+                </div>
+              </div>
+
+              <div className="mt-4 flex items-center gap-3">
                 <a
                   href="tel:064-711-8578"
                   className="flex-1 py-3 text-center bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-xl text-xs transition shadow"

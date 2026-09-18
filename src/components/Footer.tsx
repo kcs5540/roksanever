@@ -71,9 +71,18 @@ export default function Footer() {
             #part-time job for international student E7·E9·D2·D4·D10·H2·F1·F2·F3·F4·F5·F6 &nbsp;&nbsp;&nbsp; #roksanmanpower &nbsp;&nbsp;&nbsp; #Housekeeper &nbsp;&nbsp;&nbsp; #caregiver
           </p>
 
-          <div className="text-slate-300 font-bold text-sm">
-            록산에버그린 주식회사
-            <span className="text-slate-400 font-normal ml-3">주소 : 제주특별자치도 제주시 서광로 107-6 (용담이동)</span>
+          <div className="text-slate-300 font-bold text-sm flex flex-wrap items-center gap-x-3 gap-y-1">
+            <span>록산에버그린 주식회사</span>
+            <span className="text-slate-400 font-normal">주소 : 제주특별자치도 제주시 서광로 107-6 (용담이동)</span>
+            <a
+              href="https://map.naver.com/p/search/%EC%A0%9C%EC%A3%BC%ED%8A%B9%EB%B3%84%EC%9E%90%EC%B9%98%EB%8F%84%20%EC%A0%9C%EC%A3%BC%EC%8B%9C%20%EC%84%9C%EA%B4%91%EB%A1%9C%20107-6"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1 text-[11px] bg-[#03C75A]/20 hover:bg-[#03C75A]/30 text-[#2ecc71] px-2 py-0.5 rounded-md border border-[#03C75A]/40 transition"
+            >
+              <MapPin className="w-3 h-3" />
+              <span>네이버 지도</span>
+            </a>
           </div>
 
           <div className="text-slate-400 flex flex-wrap gap-x-4 gap-y-1">
