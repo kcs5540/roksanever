@@ -207,29 +207,61 @@ export default function Header() {
 
       {/* 모바일 팝다운 메뉴 */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-white border-b border-slate-200 px-6 py-4 space-y-2">
-          {navItems.map((item) => {
-            const active = isActive(item.href);
-            return (
+        <div className="md:hidden bg-white border-b border-slate-200 px-5 py-4 space-y-3">
+          
+          {/* 모바일 유저 상단 바: 로그인 & 회원가입 / 홈 */}
+          <div className="flex items-center justify-between pb-3 border-b border-slate-100 gap-2">
+            <Link
+              href="/"
+              onClick={() => setMobileMenuOpen(false)}
+              className="flex items-center gap-1 text-xs font-bold text-slate-700 hover:text-emerald-600 px-2.5 py-1.5 rounded-lg bg-slate-50 border border-slate-200/80"
+            >
+              <span>{t('home')}</span>
+            </Link>
+            
+            <div className="flex items-center gap-2">
               <Link
-                key={item.href}
-                href={item.href}
+                href="/login"
                 onClick={() => setMobileMenuOpen(false)}
-                className={`block py-2.5 px-3 rounded-xl font-bold transition flex items-center justify-between ${
-                  active
-                    ? 'bg-emerald-50 text-emerald-700 border-l-4 border-emerald-600'
-                    : 'text-slate-800 hover:bg-slate-50'
-                }`}
+                className="text-xs font-bold text-emerald-700 hover:text-emerald-800 px-3 py-1.5 rounded-lg bg-emerald-50 border border-emerald-200"
               >
-                <span>{item.label}</span>
-                {item.badge && (
-                  <span className="bg-emerald-100 text-emerald-800 text-[10px] px-1.5 py-0.5 rounded font-bold">
-                    {item.badge}
-                  </span>
-                )}
+                {t('login')}
               </Link>
-            );
-          })}
+              <Link
+                href="/login?tab=register"
+                onClick={() => setMobileMenuOpen(false)}
+                className="text-xs font-bold text-white px-3 py-1.5 rounded-lg bg-slate-900 hover:bg-slate-800 shadow-2xs"
+              >
+                회원가입
+              </Link>
+            </div>
+          </div>
+
+          {/* 메뉴 리스트 */}
+          <div className="space-y-1">
+            {navItems.map((item) => {
+              const active = isActive(item.href);
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className={`block py-2 px-3 rounded-xl font-bold transition flex items-center justify-between text-sm ${
+                    active
+                      ? 'bg-emerald-50 text-emerald-700 border-l-4 border-emerald-600'
+                      : 'text-slate-800 hover:bg-slate-50'
+                  }`}
+                >
+                  <span>{item.label}</span>
+                  {item.badge && (
+                    <span className="bg-emerald-100 text-emerald-800 text-[10px] px-1.5 py-0.5 rounded font-bold">
+                      {item.badge}
+                    </span>
+                  )}
+                </Link>
+              );
+            })}
+          </div>
           {/* 모바일 언어 선택기 (국기 버튼) */}
           <div className="pt-2 pb-1 border-t border-slate-100 flex items-center justify-between">
             <span className="text-xs font-bold text-slate-500">언어 선택 (Language)</span>
