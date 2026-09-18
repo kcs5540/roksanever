@@ -3,12 +3,13 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useLanguage } from '@/context/LanguageContext';
-import { Globe, Menu, X, PhoneCall, PlusCircle, Search } from 'lucide-react';
+import { useLanguage, SUPPORTED_LANGUAGES, Language } from '@/context/LanguageContext';
+import { Globe, Menu, X, PlusCircle, Search, ChevronDown, Check } from 'lucide-react';
 
 export default function Header() {
   const { lang, setLang, t } = useLanguage();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [langDropdownOpen, setLangDropdownOpen] = useState(false);
   const pathname = usePathname();
 
   // 현재 경로와 메뉴 링크의 일치 여부 판별 함수
@@ -82,66 +83,74 @@ export default function Header() {
               <span className="text-slate-300">|</span>
             </div>
 
-            {/* 다국어 언어선택 (국기 크기를 시원하고 터치하기 쉽게 확대) */}
-            <div className="flex items-center gap-1 sm:gap-1.5 bg-slate-100/95 rounded-full p-1 sm:p-1.5 border border-slate-200/90 shadow-xs">
-              {/* 1. 한국어 */}
+            {/* 다국어 언어선택 (7개 주요 외국인 송출국가 완벽 지원 드롭다운) */}
+            <div className="relative">
               <button
-                onClick={() => setLang('ko')}
-                className={`flex items-center gap-1 px-1.5 py-1 rounded-full transition ${
-                  lang === 'ko'
-                    ? 'bg-white shadow-sm ring-2 ring-emerald-500 scale-105'
-                    : 'opacity-65 hover:opacity-100 hover:bg-white/50'
-                }`}
-                title="한국어 (Korean)"
+                onClick={() => setLangDropdownOpen(!langDropdownOpen)}
+                className="flex items-center gap-1.5 bg-slate-100/95 hover:bg-white text-slate-800 font-bold p-1 sm:px-2.5 sm:py-1.5 rounded-full border border-slate-200 shadow-xs transition active:scale-95"
+                title="언어 선택 (Choose Language)"
               >
+                {/* 현재 선택된 언어의 국기 */}
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src="https://flagcdn.com/w80/kr.png"
-                  alt="한국어"
-                  className="w-5 h-5 sm:w-6 sm:h-6 rounded-full object-cover shadow-2xs border border-slate-200/80"
+                  src={SUPPORTED_LANGUAGES.find(l => l.code === lang)?.flag || 'https://flagcdn.com/w80/kr.png'}
+                  alt={lang}
+                  className="w-5 h-5 sm:w-6 sm:h-6 rounded-full object-cover shadow-2xs border border-slate-200"
                 />
-                <span className="text-[11px] sm:text-xs font-black text-slate-800 hidden md:inline ml-0.5">KOR</span>
+                <span className="text-xs font-black hidden sm:inline text-slate-800">
+                  {SUPPORTED_LANGUAGES.find(l => l.code === lang)?.nativeName || '한국어'}
+                </span>
+                <ChevronDown className={`w-3.5 h-3.5 text-slate-500 transition-transform ${langDropdownOpen ? 'rotate-180 text-emerald-600' : ''}`} />
               </button>
 
-              {/* 2. 영어 */}
-              <button
-                onClick={() => setLang('en')}
-                className={`flex items-center gap-1 px-1.5 py-1 rounded-full transition ${
-                  lang === 'en'
-                    ? 'bg-white shadow-sm ring-2 ring-emerald-500 scale-105'
-                    : 'opacity-65 hover:opacity-100 hover:bg-white/50'
-                }`}
-                title="English"
-              >
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src="https://flagcdn.com/w80/us.png"
-                  alt="English"
-                  className="w-5 h-5 sm:w-6 sm:h-6 rounded-full object-cover shadow-2xs border border-slate-200/80"
-                />
-                <span className="text-[11px] sm:text-xs font-black text-slate-800 hidden md:inline ml-0.5">ENG</span>
-              </button>
-
-              {/* 3. 중국어 */}
-              <button
-                onClick={() => setLang('zh')}
-                className={`flex items-center gap-1 px-1.5 py-1 rounded-full transition ${
-                  lang === 'zh'
-                    ? 'bg-white shadow-sm ring-2 ring-emerald-500 scale-105'
-                    : 'opacity-65 hover:opacity-100 hover:bg-white/50'
-                }`}
-                title="中文 (Chinese)"
-              >
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <div className="w-5 h-5 sm:w-6 sm:h-6 rounded-full overflow-hidden shadow-2xs border border-slate-200/80 flex items-center justify-center">
-                  <img
-                    src="https://flagcdn.com/cn.svg"
-                    alt="中文"
-                    className="w-full h-full object-cover scale-125 object-left-top"
+              {/* 7개국 언어 선택 드롭다운 팝업 */}
+              {langDropdownOpen && (
+                <>
+                  <div 
+                    className="fixed inset-0 z-40" 
+                    onClick={() => setLangDropdownOpen(false)} 
                   />
-                </div>
-                <span className="text-[11px] sm:text-xs font-black text-slate-800 hidden md:inline ml-0.5">CHN</span>
-              </button>
+                  <div className="absolute right-0 top-11 w-52 bg-white rounded-2xl shadow-2xl border border-slate-200/90 py-2 z-50 animate-in fade-in zoom-in-95">
+                    <div className="px-3.5 py-1.5 text-[11px] font-extrabold text-slate-400 border-b border-slate-100 flex items-center justify-between">
+                      <span>언어 선택 / Language</span>
+                      <span className="text-emerald-600 font-bold">7개국</span>
+                    </div>
+                    <div className="py-1 max-h-72 overflow-y-auto">
+                      {SUPPORTED_LANGUAGES.map((item) => {
+                        const isSelected = lang === item.code;
+                        return (
+                          <button
+                            key={item.code}
+                            onClick={() => {
+                              setLang(item.code);
+                              setLangDropdownOpen(false);
+                            }}
+                            className={`w-full flex items-center justify-between px-3.5 py-2 text-xs transition ${
+                              isSelected
+                                ? 'bg-emerald-50 text-emerald-800 font-black'
+                                : 'text-slate-700 hover:bg-slate-50 font-medium'
+                            }`}
+                          >
+                            <div className="flex items-center gap-2.5">
+                              {/* eslint-disable-next-line @next/next/no-img-element */}
+                              <img
+                                src={item.flag}
+                                alt={item.name}
+                                className="w-5 h-5 rounded-full object-cover shadow-2xs border border-slate-200 shrink-0"
+                              />
+                              <div className="text-left leading-tight">
+                                <div className="font-bold">{item.nativeName}</div>
+                                <div className="text-[10px] text-slate-400">{item.name}</div>
+                              </div>
+                            </div>
+                            {isSelected && <Check className="w-4 h-4 text-emerald-600 shrink-0" />}
+                          </button>
+                        );
+                      })}
+                    </div>
+                  </div>
+                </>
+              )}
             </div>
             
             {/* 모바일 햄버거 메뉴 버튼 */}
@@ -265,42 +274,38 @@ export default function Header() {
               );
             })}
           </div>
-          {/* 모바일 언어 선택기 (국기 버튼) */}
-          <div className="pt-2 pb-1 border-t border-slate-100 flex items-center justify-between">
-            <span className="text-xs font-bold text-slate-500">언어 선택 (Language)</span>
-            <div className="flex items-center gap-1.5 bg-slate-100 rounded-full p-1 border border-slate-200">
-              <button
-                onClick={() => setLang('ko')}
-                className={`flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-bold ${
-                  lang === 'ko' ? 'bg-white text-emerald-800 shadow-xs' : 'text-slate-600'
-                }`}
-              >
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="https://flagcdn.com/w40/kr.png" alt="KO" className="w-3.5 h-3.5 rounded-full object-cover" />
-                <span>KO</span>
-              </button>
-              <button
-                onClick={() => setLang('en')}
-                className={`flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-bold ${
-                  lang === 'en' ? 'bg-white text-emerald-800 shadow-xs' : 'text-slate-600'
-                }`}
-              >
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="https://flagcdn.com/w40/us.png" alt="EN" className="w-3.5 h-3.5 rounded-full object-cover" />
-                <span>EN</span>
-              </button>
-              <button
-                onClick={() => setLang('zh')}
-                className={`flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-bold ${
-                  lang === 'zh' ? 'bg-white text-emerald-800 shadow-xs' : 'text-slate-600'
-                }`}
-              >
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <div className="w-3.5 h-3.5 rounded-full overflow-hidden flex items-center justify-center">
-                  <img src="https://flagcdn.com/cn.svg" alt="CN" className="w-full h-full object-cover scale-125 object-left-top" />
-                </div>
-                <span>CN</span>
-              </button>
+          {/* 모바일 언어 선택기 (7개 언어 원터치 그리드) */}
+          <div className="pt-3 pb-2 border-t border-slate-100">
+            <div className="flex items-center justify-between mb-2">
+              <span className="text-xs font-bold text-slate-500">언어 선택 / Choose Language</span>
+              <span className="text-[10px] bg-emerald-100 text-emerald-800 font-bold px-1.5 py-0.5 rounded">7개국 지원</span>
+            </div>
+            <div className="grid grid-cols-2 xs:grid-cols-3 gap-1.5">
+              {SUPPORTED_LANGUAGES.map((item) => {
+                const isSelected = lang === item.code;
+                return (
+                  <button
+                    key={item.code}
+                    onClick={() => {
+                      setLang(item.code);
+                      setMobileMenuOpen(false);
+                    }}
+                    className={`flex items-center gap-2 p-1.5 rounded-xl border text-xs font-bold transition ${
+                      isSelected
+                        ? 'bg-emerald-50 border-emerald-500 text-emerald-800 shadow-2xs'
+                        : 'bg-slate-50 border-slate-200 text-slate-700 hover:bg-slate-100'
+                    }`}
+                  >
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={item.flag}
+                      alt={item.name}
+                      className="w-4 h-4 rounded-full object-cover shadow-2xs border border-slate-200 shrink-0"
+                    />
+                    <span className="truncate">{item.nativeName}</span>
+                  </button>
+                );
+              })}
             </div>
           </div>
 
