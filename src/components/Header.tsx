@@ -82,62 +82,65 @@ export default function Header() {
               <span className="text-slate-300">|</span>
             </div>
 
-            {/* 다국어 언어선택 (모바일에서는 간결한 원형 국기 버튼, PC에서는 라벨 포함) */}
-            <div className="flex items-center gap-0.5 sm:gap-1 bg-slate-100/90 rounded-full p-0.5 sm:p-1 border border-slate-200 shadow-2xs">
+            {/* 다국어 언어선택 (국기 크기를 시원하고 터치하기 쉽게 확대) */}
+            <div className="flex items-center gap-1 sm:gap-1.5 bg-slate-100/95 rounded-full p-1 sm:p-1.5 border border-slate-200/90 shadow-xs">
+              {/* 1. 한국어 */}
               <button
                 onClick={() => setLang('ko')}
-                className={`flex items-center gap-1 px-1.5 sm:px-2 py-0.5 rounded-full transition text-xs font-bold ${
+                className={`flex items-center gap-1 px-1.5 py-1 rounded-full transition ${
                   lang === 'ko'
-                    ? 'bg-white text-emerald-800 shadow-xs ring-1 ring-emerald-500 font-black'
-                    : 'text-slate-600 hover:text-slate-900 opacity-60 hover:opacity-100'
+                    ? 'bg-white shadow-sm ring-2 ring-emerald-500 scale-105'
+                    : 'opacity-65 hover:opacity-100 hover:bg-white/50'
                 }`}
                 title="한국어 (Korean)"
               >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src="https://flagcdn.com/w40/kr.png"
+                  src="https://flagcdn.com/w80/kr.png"
                   alt="한국어"
-                  className="w-3.5 h-3.5 sm:w-4 sm:h-4 rounded-full object-cover border border-slate-200"
+                  className="w-5 h-5 sm:w-6 sm:h-6 rounded-full object-cover shadow-2xs border border-slate-200/80"
                 />
-                <span className="text-[10px] sm:text-[11px] hidden xs:inline">KOR</span>
+                <span className="text-[11px] sm:text-xs font-black text-slate-800 hidden md:inline ml-0.5">KOR</span>
               </button>
 
+              {/* 2. 영어 */}
               <button
                 onClick={() => setLang('en')}
-                className={`flex items-center gap-1 px-1.5 sm:px-2 py-0.5 rounded-full transition text-xs font-bold ${
+                className={`flex items-center gap-1 px-1.5 py-1 rounded-full transition ${
                   lang === 'en'
-                    ? 'bg-white text-emerald-800 shadow-xs ring-1 ring-emerald-500 font-black'
-                    : 'text-slate-600 hover:text-slate-900 opacity-60 hover:opacity-100'
+                    ? 'bg-white shadow-sm ring-2 ring-emerald-500 scale-105'
+                    : 'opacity-65 hover:opacity-100 hover:bg-white/50'
                 }`}
                 title="English"
               >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src="https://flagcdn.com/w40/us.png"
+                  src="https://flagcdn.com/w80/us.png"
                   alt="English"
-                  className="w-3.5 h-3.5 sm:w-4 sm:h-4 rounded-full object-cover border border-slate-200"
+                  className="w-5 h-5 sm:w-6 sm:h-6 rounded-full object-cover shadow-2xs border border-slate-200/80"
                 />
-                <span className="text-[10px] sm:text-[11px] hidden xs:inline">ENG</span>
+                <span className="text-[11px] sm:text-xs font-black text-slate-800 hidden md:inline ml-0.5">ENG</span>
               </button>
 
+              {/* 3. 중국어 */}
               <button
                 onClick={() => setLang('zh')}
-                className={`flex items-center gap-1 px-1.5 sm:px-2 py-0.5 rounded-full transition text-xs font-bold ${
+                className={`flex items-center gap-1 px-1.5 py-1 rounded-full transition ${
                   lang === 'zh'
-                    ? 'bg-white text-emerald-800 shadow-xs ring-1 ring-emerald-500 font-black'
-                    : 'text-slate-600 hover:text-slate-900 opacity-60 hover:opacity-100'
+                    ? 'bg-white shadow-sm ring-2 ring-emerald-500 scale-105'
+                    : 'opacity-65 hover:opacity-100 hover:bg-white/50'
                 }`}
                 title="中文 (Chinese)"
               >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <div className="w-3.5 h-3.5 sm:w-4 sm:h-4 rounded-full overflow-hidden border border-slate-200 flex items-center justify-center">
+                <div className="w-5 h-5 sm:w-6 sm:h-6 rounded-full overflow-hidden shadow-2xs border border-slate-200/80 flex items-center justify-center">
                   <img
                     src="https://flagcdn.com/cn.svg"
                     alt="中文"
                     className="w-full h-full object-cover scale-125 object-left-top"
                   />
                 </div>
-                <span className="text-[10px] sm:text-[11px] hidden xs:inline">CHN</span>
+                <span className="text-[11px] sm:text-xs font-black text-slate-800 hidden md:inline ml-0.5">CHN</span>
               </button>
             </div>
             
