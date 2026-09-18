@@ -154,58 +154,15 @@ export default function Header() {
               )}
             </div>
 
-            {/* 회원가입 & 로그인 사람 아이콘 (모바일 & PC 공통 간편 접근) */}
-            <div className="relative">
-              <button
-                onClick={() => setUserDropdownOpen(!userDropdownOpen)}
-                className="flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-slate-100/90 hover:bg-emerald-50 text-slate-700 hover:text-emerald-700 border border-slate-200 transition active:scale-95 shadow-2xs"
-                title="로그인 및 회원가입 / My Account"
-                aria-label="User Account"
-              >
-                <User className="w-4 h-4 sm:w-4.5 sm:h-4.5" />
-              </button>
-
-              {/* 사람 아이콘 클릭 시 드롭다운 팝업 */}
-              {userDropdownOpen && (
-                <>
-                  <div 
-                    className="fixed inset-0 z-40" 
-                    onClick={() => setUserDropdownOpen(false)} 
-                  />
-                  <div className="absolute right-0 top-11 w-48 bg-white rounded-2xl shadow-2xl border border-slate-200/90 py-2 z-50 animate-in fade-in zoom-in-95">
-                    <div className="px-3.5 py-1.5 text-[11px] font-extrabold text-slate-400 border-b border-slate-100">
-                      회원 서비스 (Member)
-                    </div>
-                    <div className="p-1 space-y-1">
-                      <Link
-                        href="/login"
-                        onClick={() => setUserDropdownOpen(false)}
-                        className="w-full flex items-center gap-2.5 px-3 py-2 text-xs font-bold text-slate-700 hover:text-emerald-700 hover:bg-emerald-50 rounded-xl transition"
-                      >
-                        <LogIn className="w-4 h-4 text-emerald-600" />
-                        <span>로그인</span>
-                      </Link>
-                      <Link
-                        href="/login?tab=register"
-                        onClick={() => setUserDropdownOpen(false)}
-                        className="w-full flex items-center gap-2.5 px-3 py-2 text-xs font-bold text-white bg-slate-900 hover:bg-slate-800 rounded-xl shadow-xs transition"
-                      >
-                        <UserPlus className="w-4 h-4 text-emerald-400" />
-                        <span>회원가입</span>
-                      </Link>
-                      <div className="border-t border-slate-100 my-1"></div>
-                      <Link
-                        href="/login"
-                        onClick={() => setUserDropdownOpen(false)}
-                        className="w-full flex items-center gap-2.5 px-3 py-1.5 text-[11px] text-slate-500 hover:text-slate-800 hover:bg-slate-50 rounded-lg transition"
-                      >
-                        <span>관리자 모드</span>
-                      </Link>
-                    </div>
-                  </div>
-                </>
-              )}
-            </div>
+            {/* 로그인/회원가입 직통 사람 아이콘 버튼 (원클릭 바로 이동) */}
+            <Link
+              href="/login"
+              className="flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-slate-100/90 hover:bg-emerald-50 text-slate-700 hover:text-emerald-700 border border-slate-200 transition active:scale-95 shadow-2xs"
+              title="로그인 / 회원가입"
+              aria-label="Login / Register"
+            >
+              <User className="w-4 h-4 sm:w-4.5 sm:h-4.5" />
+            </Link>
             
             {/* 모바일 햄버거 메뉴 버튼 */}
             <button
