@@ -169,16 +169,16 @@ export default function HomePage() {
       >
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           
-          {/* 슬라이드 컨테이너: 고정 높이(h)를 적용하여 슬라이드 내용과 무관하게 항상 일정한 박스 크기와 검색창 위치 유지 */}
-          <div className="relative h-[480px] sm:h-[430px] md:h-[420px] flex items-center bg-white/80 backdrop-blur-sm rounded-3xl border border-slate-200/80 shadow-md p-4 sm:p-6 md:p-8 overflow-hidden">
+          {/* 슬라이드 컨테이너: 모바일 및 PC에서 모든 슬라이드가 그림/국기 카드와 함께 균일하게 표시되도록 고정 높이 지정 */}
+          <div className="relative min-h-[580px] sm:min-h-[540px] md:h-[440px] flex items-center bg-white/80 backdrop-blur-sm rounded-3xl border border-slate-200/80 shadow-md p-4 sm:p-6 md:p-8 overflow-hidden">
             
             {/* SLIDE 1: 글로벌 인력공급 & 비자 행정 */}
             <div className={`w-full h-full flex flex-col justify-center transition-opacity duration-500 ${currentSlide === 0 ? 'opacity-100' : 'opacity-0 hidden'}`}>
-              <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8 items-center h-full">
+              <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8 items-center">
                 
-                {/* 좌측 7컬럼 */}
-                <div className="md:col-span-7 text-left space-y-2.5 sm:space-y-3.5">
-                  <div className="flex flex-wrap items-center gap-2">
+                {/* 좌측 컬럼 */}
+                <div className="md:col-span-7 text-left space-y-2.5 sm:space-y-3">
+                  <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
                     <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 sm:py-1 rounded-full bg-slate-900 text-white text-[10px] sm:text-[11px] font-bold shadow-xs">
                       <Award className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-amber-400" />
                       <span className="font-mono text-amber-300">f1630120240001</span>
@@ -189,53 +189,53 @@ export default function HomePage() {
                     </div>
                   </div>
 
-                  <h1 className="text-xl sm:text-3xl lg:text-4xl font-black text-slate-900 tracking-tight leading-snug sm:leading-tight break-keep-all">
+                  <h1 className="text-xl sm:text-2xl lg:text-4xl font-black text-slate-900 tracking-tight leading-snug sm:leading-tight break-keep-all">
                     {t('heroTitle1')}<br />
                     <span className="text-emerald-600">{t('heroTitle2')}</span>
                   </h1>
 
                   {/* 5대 원형 사업 박스 */}
-                  <div className="bg-slate-50/90 rounded-2xl p-2.5 sm:p-3.5 shadow-inner border border-slate-200/80 space-y-2">
-                    <div className="grid grid-cols-2 sm:grid-cols-3 gap-1 sm:gap-2 text-[11px] sm:text-xs font-extrabold text-slate-800">
-                      <div className="flex items-center gap-1.5 bg-white p-1.5 sm:p-2 rounded-xl border border-slate-200/80 shadow-2xs">
-                        <span className="w-2 h-2 rounded-full bg-emerald-500 shrink-0"></span>
+                  <div className="bg-slate-50/90 rounded-2xl p-2.5 sm:p-3 shadow-inner border border-slate-200/80 space-y-1.5">
+                    <div className="grid grid-cols-2 sm:grid-cols-3 gap-1 sm:gap-1.5 text-[10px] sm:text-xs font-extrabold text-slate-800">
+                      <div className="flex items-center gap-1.5 bg-white p-1.5 rounded-xl border border-slate-200/80 shadow-2xs">
+                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0"></span>
                         <div className="truncate">
                           <div className="truncate">{t('pillar1Title')}</div>
                           <div className="text-[8px] sm:text-[9px] text-slate-400 font-normal truncate">Labor Supply</div>
                         </div>
                       </div>
-                      <div className="flex items-center gap-1.5 bg-white p-1.5 sm:p-2 rounded-xl border border-slate-200/80 shadow-2xs">
-                        <span className="w-2 h-2 rounded-full bg-teal-500 shrink-0"></span>
+                      <div className="flex items-center gap-1.5 bg-white p-1.5 rounded-xl border border-slate-200/80 shadow-2xs">
+                        <span className="w-1.5 h-1.5 rounded-full bg-teal-500 shrink-0"></span>
                         <div className="truncate">
                           <div className="truncate">{t('pillar2Title')}</div>
                           <div className="text-[8px] sm:text-[9px] text-slate-400 font-normal truncate">Job Placement</div>
                         </div>
                       </div>
-                      <div className="flex items-center gap-1.5 bg-white p-1.5 sm:p-2 rounded-xl border border-slate-200/80 shadow-2xs">
-                        <span className="w-2 h-2 rounded-full bg-slate-700 shrink-0"></span>
+                      <div className="flex items-center gap-1.5 bg-white p-1.5 rounded-xl border border-slate-200/80 shadow-2xs">
+                        <span className="w-1.5 h-1.5 rounded-full bg-slate-700 shrink-0"></span>
                         <div className="truncate">
                           <div className="truncate">{t('pillar3Title')}</div>
                           <div className="text-[8px] sm:text-[9px] text-slate-400 font-normal truncate">Visa Agency</div>
                         </div>
                       </div>
-                      <div className="flex items-center gap-1.5 bg-white p-1.5 sm:p-2 rounded-xl border border-slate-200/80 shadow-2xs">
-                        <span className="w-2 h-2 rounded-full bg-green-600 shrink-0"></span>
+                      <div className="flex items-center gap-1.5 bg-white p-1.5 rounded-xl border border-slate-200/80 shadow-2xs">
+                        <span className="w-1.5 h-1.5 rounded-full bg-green-600 shrink-0"></span>
                         <div className="truncate">
                           <div className="truncate">{t('pillar4Title')}</div>
                           <div className="text-[8px] sm:text-[9px] text-slate-400 font-normal truncate">Study Abroad</div>
                         </div>
                       </div>
-                      <div className="flex items-center gap-1.5 bg-white p-1.5 sm:p-2 rounded-xl border border-slate-200/80 shadow-2xs col-span-2 sm:col-span-1">
-                        <span className="w-2 h-2 rounded-full bg-lime-600 shrink-0"></span>
+                      <div className="flex items-center gap-1.5 bg-white p-1.5 rounded-xl border border-slate-200/80 shadow-2xs col-span-2 sm:col-span-1">
+                        <span className="w-1.5 h-1.5 rounded-full bg-lime-600 shrink-0"></span>
                         <div className="truncate">
                           <div className="truncate">{t('pillar5Title')}</div>
                           <div className="text-[8px] sm:text-[9px] text-slate-400 font-normal truncate">Housekeeper</div>
                         </div>
                       </div>
                     </div>
-                    <div className="pt-1.5 border-t border-slate-200/60 flex items-center justify-between text-[11px] sm:text-xs">
+                    <div className="pt-1 border-t border-slate-200/60 flex items-center justify-between text-[10px] sm:text-xs">
                       <span className="font-bold text-slate-500 text-[10px] sm:text-xs">{t('targetVisaLabel')}</span>
-                      <span className="bg-emerald-600 text-white px-2 py-0.5 rounded-lg text-[9px] sm:text-[11px] font-black shadow-2xs">
+                      <span className="bg-emerald-600 text-white px-2 py-0.5 rounded-lg text-[9px] sm:text-[10px] font-black shadow-2xs">
                         {t('targetVisaList')}
                       </span>
                     </div>
@@ -244,40 +244,40 @@ export default function HomePage() {
                   <div className="pt-0.5 flex flex-wrap items-center gap-2 sm:gap-3">
                     <Link
                       href="/jobs"
-                      className="bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs sm:text-sm px-4 sm:px-6 py-2 sm:py-2.5 rounded-xl shadow-md transition flex items-center gap-1.5"
+                      className="bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs sm:text-sm px-4 sm:px-5 py-2 rounded-xl shadow-md transition flex items-center gap-1.5"
                     >
                       <span>{t('findJobBtn')}</span>
                       <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                     </Link>
                     <Link
                       href="/visa-inquiry"
-                      className="border border-slate-300 hover:bg-slate-50 text-slate-800 font-bold text-xs sm:text-sm px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-xl transition"
+                      className="border border-slate-300 hover:bg-slate-50 text-slate-800 font-bold text-xs sm:text-sm px-3.5 sm:px-4 py-2 rounded-xl transition"
                     >
                       {t('freeVisaBtn')}
                     </Link>
                   </div>
                 </div>
 
-                {/* 우측 5컬럼: 16개국 공식 국기 카드 (모바일에서는 간결한 가로 스크롤/그리드, PC에서는 풀 그리드) */}
-                <div className="md:col-span-5 hidden md:block">
-                  <div className="bg-slate-50/90 rounded-2xl p-4 shadow-sm border border-slate-200/80 relative overflow-hidden">
-                    <div className="flex items-center justify-between pb-2 mb-2 border-b border-slate-200/60">
-                      <div className="flex items-center gap-2">
-                        <Globe2 className="w-4 h-4 text-emerald-600" />
-                        <span className="text-xs font-extrabold text-slate-800">{t('networkTitle')}</span>
+                {/* 우측 컬럼: 16개국 국기 카드 (모바일에서도 표시) */}
+                <div className="md:col-span-5 block">
+                  <div className="bg-slate-50/90 rounded-2xl p-3 sm:p-4 shadow-sm border border-slate-200/80 relative overflow-hidden">
+                    <div className="flex items-center justify-between pb-1.5 sm:pb-2 mb-1.5 sm:mb-2 border-b border-slate-200/60">
+                      <div className="flex items-center gap-1.5">
+                        <Globe2 className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-emerald-600" />
+                        <span className="text-[11px] sm:text-xs font-extrabold text-slate-800">{t('networkTitle')}</span>
                       </div>
-                      <span className="text-[10px] font-bold bg-emerald-100/80 text-emerald-800 px-2 py-0.5 rounded-full border border-emerald-200">
+                      <span className="text-[9px] sm:text-[10px] font-bold bg-emerald-100/80 text-emerald-800 px-2 py-0.5 rounded-full border border-emerald-200">
                         {t('networkBadge')}
                       </span>
                     </div>
 
-                    <div className="grid grid-cols-4 gap-2 py-1">
+                    <div className="grid grid-cols-4 gap-1.5 sm:gap-2 py-0.5 sm:py-1">
                       {countries.map((c, idx) => (
                         <div 
                           key={idx} 
-                          className="flex flex-col items-center justify-center p-1.5 rounded-xl bg-white hover:bg-emerald-50 hover:border-emerald-300 border border-slate-200/60 transition-all hover:scale-105 cursor-pointer group shadow-2xs"
+                          className="flex flex-col items-center justify-center p-1 sm:p-1.5 rounded-lg sm:rounded-xl bg-white hover:bg-emerald-50 hover:border-emerald-300 border border-slate-200/60 transition-all hover:scale-105 cursor-pointer group shadow-2xs"
                         >
-                          <div className="w-6 h-6 rounded-full overflow-hidden border border-slate-200 bg-white p-0.5 mb-1 flex items-center justify-center">
+                          <div className="w-5 h-5 sm:w-6 sm:h-6 rounded-full overflow-hidden border border-slate-200 bg-white p-0.5 mb-0.5 sm:mb-1 flex items-center justify-center">
                             {/* eslint-disable-next-line @next/next/no-img-element */}
                             <img 
                               src={`https://flagcdn.com/w80/${c.iso}.png`}
@@ -286,19 +286,19 @@ export default function HomePage() {
                               loading="lazy"
                             />
                           </div>
-                          <span className="text-[9px] font-bold text-slate-700 group-hover:text-emerald-700 text-center truncate w-full">
+                          <span className="text-[8px] sm:text-[9px] font-bold text-slate-700 group-hover:text-emerald-700 text-center truncate w-full">
                             {c.name}
                           </span>
                         </div>
                       ))}
                     </div>
 
-                    <div className="mt-2 pt-2 border-t border-slate-200/60 flex items-center justify-between text-[11px] text-slate-500">
-                      <span className="flex items-center gap-1 font-medium text-[10px] sm:text-[11px]">
-                        <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
+                    <div className="mt-1.5 sm:mt-2 pt-1.5 sm:pt-2 border-t border-slate-200/60 flex items-center justify-between text-[10px] sm:text-[11px] text-slate-500">
+                      <span className="flex items-center gap-1 font-medium text-[9px] sm:text-[11px]">
+                        <CheckCircle2 className="w-3 h-3 text-emerald-600" />
                         {t('networkFooter')}
                       </span>
-                      <span className="font-bold text-emerald-700 text-[10px] sm:text-[11px]">{t('verifiedTalent')}</span>
+                      <span className="font-bold text-emerald-700 text-[9px] sm:text-[11px]">{t('verifiedTalent')}</span>
                     </div>
                   </div>
                 </div>
@@ -308,23 +308,23 @@ export default function HomePage() {
 
             {/* SLIDE 2: We supply Manpower */}
             <div className={`w-full h-full flex flex-col justify-center transition-opacity duration-500 ${currentSlide === 1 ? 'opacity-100' : 'opacity-0 hidden'}`}>
-              <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8 items-center h-full">
-                <div className="md:col-span-7 text-left space-y-2.5 sm:space-y-3.5">
+              <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8 items-center">
+                <div className="md:col-span-7 text-left space-y-2.5 sm:space-y-3">
                   <div className="inline-flex items-center gap-2 px-2.5 py-0.5 sm:py-1 rounded-full bg-orange-100 text-orange-800 text-[10px] sm:text-xs font-bold border border-orange-200">
                     <Briefcase className="w-3.5 h-3.5 text-orange-600" />
                     <span>{t('slide2Badge')}</span>
                   </div>
-                  <h2 className="text-xl sm:text-3xl lg:text-4xl font-black text-slate-900 tracking-tight leading-snug sm:leading-tight">
+                  <h2 className="text-xl sm:text-2xl lg:text-4xl font-black text-slate-900 tracking-tight leading-snug sm:leading-tight">
                     {t('slide2Title1')}<br />
                     <span className="text-orange-600">{t('slide2Title2')}</span>
                   </h2>
-                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed max-w-xl line-clamp-2 sm:line-clamp-none">
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed max-w-xl">
                     {t('slide2Desc')}
                   </p>
                   
-                  <div className="flex flex-wrap gap-1.5 sm:gap-2 pt-0.5">
+                  <div className="flex flex-wrap gap-1 sm:gap-1.5 pt-0.5">
                     {['룸메이드 (Room-maid)', '하우스키퍼', '실내외 클리닝', '선박/플랜트 TIG 용접', '제조업 생산직', '간병인/가사도우미'].map((job, idx) => (
-                      <span key={idx} className="bg-slate-50 border border-slate-200 px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-xl text-[10px] sm:text-xs font-bold text-slate-800 shadow-2xs">
+                      <span key={idx} className="bg-slate-50 border border-slate-200 px-2 py-0.5 rounded-xl text-[10px] sm:text-xs font-bold text-slate-800 shadow-2xs">
                         &bull; {job}
                       </span>
                     ))}
@@ -333,32 +333,33 @@ export default function HomePage() {
                   <div className="pt-1 flex flex-wrap items-center gap-2 sm:gap-3">
                     <Link
                       href="/jobs"
-                      className="bg-orange-600 hover:bg-orange-700 text-white font-bold text-xs sm:text-sm px-4 sm:px-6 py-2 sm:py-2.5 rounded-xl shadow-md transition flex items-center gap-1.5"
+                      className="bg-orange-600 hover:bg-orange-700 text-white font-bold text-xs sm:text-sm px-4 sm:px-5 py-2 rounded-xl shadow-md transition flex items-center gap-1.5"
                     >
                       <span>{t('slide2Btn1')}</span>
                       <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                     </Link>
                     <a
                       href="tel:064-711-8578"
-                      className="border border-slate-300 hover:bg-slate-50 text-slate-800 font-bold text-xs sm:text-sm px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-xl transition"
+                      className="border border-slate-300 hover:bg-slate-50 text-slate-800 font-bold text-xs sm:text-sm px-3.5 sm:px-4 py-2 rounded-xl transition"
                     >
                       {t('slide2Btn2')}
                     </a>
                   </div>
                 </div>
 
-                <div className="md:col-span-5 hidden md:block">
-                  <div className="relative rounded-2xl overflow-hidden shadow-md border border-slate-200 bg-slate-900 aspect-video md:aspect-[4/3] flex items-center justify-center">
+                {/* 우측 컬럼: 전문 직종 인력 일러스트 (모바일에서도 표시) */}
+                <div className="md:col-span-5 block">
+                  <div className="relative rounded-2xl overflow-hidden shadow-md border border-slate-200 bg-slate-900 h-44 sm:h-52 md:aspect-[4/3] md:h-auto flex items-center justify-center">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img 
                       src="/images/banners/banner2.jpg" 
                       alt="전문 직종 인력 공급" 
                       className="w-full h-full object-cover" 
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent flex items-end p-4 sm:p-5">
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent flex items-end p-3 sm:p-4">
                       <div className="text-white">
-                        <div className="text-[10px] sm:text-xs font-bold text-amber-300 uppercase">Verified Talent Pool</div>
-                        <div className="text-sm sm:text-base font-bold">{t('slide2ImgBadge')}</div>
+                        <div className="text-[9px] sm:text-xs font-bold text-amber-300 uppercase">Verified Talent Pool</div>
+                        <div className="text-xs sm:text-sm md:text-base font-bold">{t('slide2ImgBadge')}</div>
                       </div>
                     </div>
                   </div>
@@ -368,26 +369,26 @@ export default function HomePage() {
 
             {/* SLIDE 3: Language Training & 유학생 취업 */}
             <div className={`w-full h-full flex flex-col justify-center transition-opacity duration-500 ${currentSlide === 2 ? 'opacity-100' : 'opacity-0 hidden'}`}>
-              <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8 items-center h-full">
-                <div className="md:col-span-7 text-left space-y-2.5 sm:space-y-3.5">
+              <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8 items-center">
+                <div className="md:col-span-7 text-left space-y-2.5 sm:space-y-3">
                   <div className="inline-flex items-center gap-2 px-2.5 py-0.5 sm:py-1 rounded-full bg-blue-100 text-blue-800 text-[10px] sm:text-xs font-bold border border-blue-200">
                     <Sparkles className="w-3.5 h-3.5 text-blue-600" />
                     <span>{t('slide3Badge')}</span>
                   </div>
-                  <h2 className="text-xl sm:text-3xl lg:text-4xl font-black text-slate-900 tracking-tight leading-snug sm:leading-tight">
+                  <h2 className="text-xl sm:text-2xl lg:text-4xl font-black text-slate-900 tracking-tight leading-snug sm:leading-tight">
                     {t('slide3Title1')}<br />
                     <span className="text-blue-600">{t('slide3Title2')}</span>
                   </h2>
-                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed max-w-xl line-clamp-2 sm:line-clamp-none">
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed max-w-xl">
                     {t('slide3Desc')}
                   </p>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-2.5 max-w-lg pt-0.5">
-                    <div className="bg-slate-50/90 p-2.5 sm:p-3 rounded-xl border border-slate-200/80 shadow-2xs">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 max-w-lg pt-0.5">
+                    <div className="bg-slate-50/90 p-2 sm:p-2.5 rounded-xl border border-slate-200/80 shadow-2xs">
                       <div className="font-bold text-slate-900 text-xs sm:text-sm mb-0.5">{t('slide3Card1Title')}</div>
                       <div className="text-[10px] sm:text-[11px] text-slate-500">{t('slide3Card1Desc')}</div>
                     </div>
-                    <div className="bg-slate-50/90 p-2.5 sm:p-3 rounded-xl border border-slate-200/80 shadow-2xs hidden sm:block">
+                    <div className="bg-slate-50/90 p-2 sm:p-2.5 rounded-xl border border-slate-200/80 shadow-2xs hidden sm:block">
                       <div className="font-bold text-slate-900 text-xs sm:text-sm mb-0.5">{t('slide3Card2Title')}</div>
                       <div className="text-[10px] sm:text-[11px] text-slate-500">{t('slide3Card2Desc')}</div>
                     </div>
@@ -396,7 +397,7 @@ export default function HomePage() {
                   <div className="pt-1">
                     <Link
                       href="/visa-inquiry"
-                      className="bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs sm:text-sm px-4 sm:px-6 py-2 sm:py-2.5 rounded-xl shadow-md transition inline-flex items-center gap-1.5"
+                      className="bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs sm:text-sm px-4 sm:px-5 py-2 rounded-xl shadow-md transition inline-flex items-center gap-1.5"
                     >
                       <span>{t('slide3Btn')}</span>
                       <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
@@ -404,18 +405,19 @@ export default function HomePage() {
                   </div>
                 </div>
 
-                <div className="md:col-span-5 hidden md:block">
-                  <div className="relative rounded-2xl overflow-hidden shadow-md border border-slate-200 bg-slate-900 aspect-video md:aspect-[4/3] flex items-center justify-center">
+                {/* 우측 컬럼: 캠퍼스 유학/비자 일러스트 (모바일에서도 표시) */}
+                <div className="md:col-span-5 block">
+                  <div className="relative rounded-2xl overflow-hidden shadow-md border border-slate-200 bg-slate-900 h-44 sm:h-52 md:aspect-[4/3] md:h-auto flex items-center justify-center">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img 
                       src="/images/banners/banner3.jpg" 
                       alt="유학생 비자 및 어학연수 매칭" 
                       className="w-full h-full object-cover" 
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent flex items-end p-4 sm:p-5">
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent flex items-end p-3 sm:p-4">
                       <div className="text-white">
-                        <div className="text-[10px] sm:text-xs font-bold text-emerald-300 uppercase">Global Campus & Visa</div>
-                        <div className="text-sm sm:text-base font-bold">100% 합법적 유학생 시간제 취업 지원</div>
+                        <div className="text-[9px] sm:text-xs font-bold text-emerald-300 uppercase">Global Campus & Visa</div>
+                        <div className="text-xs sm:text-sm md:text-base font-bold">100% 합법적 유학생 시간제 취업 지원</div>
                       </div>
                     </div>
                   </div>
