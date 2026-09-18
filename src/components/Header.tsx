@@ -80,38 +80,60 @@ export default function Header() {
             {t('login')}
           </Link>
           <span className="text-slate-300">|</span>
-          {/* 다국어 언어선택 (원본 인트로의 국기 버튼 스타일 계승: 🇰🇷 🇺🇸 🇨🇳) */}
-          <div className="flex items-center gap-1.5 bg-slate-100/90 rounded-full px-2 py-1 border border-slate-200">
-            <Globe className="w-3.5 h-3.5 text-emerald-600 mr-0.5" />
+          {/* 다국어 언어선택 (원본 인트로의 선명한 원형 국기 버튼 스타일 완벽 구현) */}
+          <div className="flex items-center gap-1 bg-slate-100/90 rounded-full p-1 border border-slate-200 shadow-2xs">
             <button
               onClick={() => setLang('ko')}
-              className={`flex items-center gap-1 px-1.5 py-0.5 rounded-full transition text-[11px] font-bold ${
-                lang === 'ko' ? 'bg-white text-emerald-700 shadow-xs ring-1 ring-emerald-400 font-extrabold' : 'text-slate-500 hover:text-slate-900'
+              className={`flex items-center gap-1.5 px-2 py-1 rounded-full transition text-xs font-bold ${
+                lang === 'ko'
+                  ? 'bg-white text-emerald-800 shadow-sm ring-1.5 ring-emerald-500 font-black'
+                  : 'text-slate-600 hover:text-slate-900 opacity-70 hover:opacity-100'
               }`}
-              title="한국어 (KOR)"
+              title="한국어 (Korean)"
             >
-              <span>🇰🇷</span>
-              <span className="hidden sm:inline">KO</span>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="https://flagcdn.com/w40/kr.png"
+                alt="한국어"
+                className="w-4 h-4 rounded-full object-cover border border-slate-200"
+              />
+              <span className="text-[11px]">KOR</span>
             </button>
+
             <button
               onClick={() => setLang('en')}
-              className={`flex items-center gap-1 px-1.5 py-0.5 rounded-full transition text-[11px] font-bold ${
-                lang === 'en' ? 'bg-white text-emerald-700 shadow-xs ring-1 ring-emerald-400 font-extrabold' : 'text-slate-500 hover:text-slate-900'
+              className={`flex items-center gap-1.5 px-2 py-1 rounded-full transition text-xs font-bold ${
+                lang === 'en'
+                  ? 'bg-white text-emerald-800 shadow-sm ring-1.5 ring-emerald-500 font-black'
+                  : 'text-slate-600 hover:text-slate-900 opacity-70 hover:opacity-100'
               }`}
-              title="English (ENG)"
+              title="English"
             >
-              <span>🇺🇸</span>
-              <span className="hidden sm:inline">EN</span>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="https://flagcdn.com/w40/us.png"
+                alt="English"
+                className="w-4 h-4 rounded-full object-cover border border-slate-200"
+              />
+              <span className="text-[11px]">ENG</span>
             </button>
+
             <button
               onClick={() => setLang('zh')}
-              className={`flex items-center gap-1 px-1.5 py-0.5 rounded-full transition text-[11px] font-bold ${
-                lang === 'zh' ? 'bg-white text-emerald-700 shadow-xs ring-1 ring-emerald-400 font-extrabold' : 'text-slate-500 hover:text-slate-900'
+              className={`flex items-center gap-1.5 px-2 py-1 rounded-full transition text-xs font-bold ${
+                lang === 'zh'
+                  ? 'bg-white text-emerald-800 shadow-sm ring-1.5 ring-emerald-500 font-black'
+                  : 'text-slate-600 hover:text-slate-900 opacity-70 hover:opacity-100'
               }`}
-              title="中文 (CHN)"
+              title="中文 (Chinese)"
             >
-              <span>🇨🇳</span>
-              <span className="hidden sm:inline">CN</span>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="https://flagcdn.com/w40/cn.png"
+                alt="中文"
+                className="w-4 h-4 rounded-full object-cover border border-slate-200"
+              />
+              <span className="text-[11px]">CHN</span>
             </button>
           </div>
           
@@ -202,6 +224,43 @@ export default function Header() {
               </Link>
             );
           })}
+          {/* 모바일 언어 선택기 (국기 버튼) */}
+          <div className="pt-2 pb-1 border-t border-slate-100 flex items-center justify-between">
+            <span className="text-xs font-bold text-slate-500">언어 선택 (Language)</span>
+            <div className="flex items-center gap-1.5 bg-slate-100 rounded-full p-1 border border-slate-200">
+              <button
+                onClick={() => setLang('ko')}
+                className={`flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-bold ${
+                  lang === 'ko' ? 'bg-white text-emerald-800 shadow-xs' : 'text-slate-600'
+                }`}
+              >
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="https://flagcdn.com/w40/kr.png" alt="KO" className="w-3.5 h-3.5 rounded-full object-cover" />
+                <span>KO</span>
+              </button>
+              <button
+                onClick={() => setLang('en')}
+                className={`flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-bold ${
+                  lang === 'en' ? 'bg-white text-emerald-800 shadow-xs' : 'text-slate-600'
+                }`}
+              >
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="https://flagcdn.com/w40/us.png" alt="EN" className="w-3.5 h-3.5 rounded-full object-cover" />
+                <span>EN</span>
+              </button>
+              <button
+                onClick={() => setLang('zh')}
+                className={`flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-bold ${
+                  lang === 'zh' ? 'bg-white text-emerald-800 shadow-xs' : 'text-slate-600'
+                }`}
+              >
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="https://flagcdn.com/w40/cn.png" alt="CN" className="w-3.5 h-3.5 rounded-full object-cover" />
+                <span>CN</span>
+              </button>
+            </div>
+          </div>
+
           <div className="pt-2 border-t border-slate-100">
             <Link
               href="/jobs/new"
@@ -209,7 +268,7 @@ export default function Header() {
               className="w-full bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold py-2.5 rounded-xl shadow text-center flex items-center justify-center gap-1.5 transition"
             >
               <PlusCircle className="w-4 h-4" />
-              <span>구인공고 무료 등록 신청</span>
+              <span>{t('postJob')}</span>
             </Link>
           </div>
         </div>
