@@ -899,7 +899,7 @@ export default function HomePage() {
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3.5">
                 {/* 1. 외국인 인력공급 */}
                 <div className="bg-white p-4 sm:p-5 rounded-2xl border border-slate-200/90 shadow-sm hover:border-emerald-500 transition group hover:shadow-md">
-                  <div className="w-9 h-9 bg-emerald-100 text-emerald-700 rounded-xl flex items-center justify-center font-black mb-3 text-sm group-hover:scale-110 transition">
+                  <div className="w-8 h-8 bg-emerald-50 text-emerald-700 border border-emerald-200 rounded-xl flex items-center justify-center font-black mb-3 text-sm group-hover:scale-110 transition shadow-2xs">
                     1
                   </div>
                   <h4 className="font-bold text-sm text-slate-900 mb-0.5">{t('pillar1Title')}</h4>
@@ -909,41 +909,41 @@ export default function HomePage() {
 
                 {/* 2. 취업알선 */}
                 <div className="bg-white p-4 sm:p-5 rounded-2xl border border-slate-200/90 shadow-sm hover:border-emerald-500 transition group hover:shadow-md">
-                  <div className="w-9 h-9 bg-teal-100 text-teal-700 rounded-xl flex items-center justify-center font-black mb-3 text-sm group-hover:scale-110 transition">
+                  <div className="w-8 h-8 bg-emerald-50 text-emerald-700 border border-emerald-200 rounded-xl flex items-center justify-center font-black mb-3 text-sm group-hover:scale-110 transition shadow-2xs">
                     2
                   </div>
                   <h4 className="font-bold text-sm text-slate-900 mb-0.5">{t('pillar2Title')}</h4>
-                  <div className="text-[10px] font-bold text-teal-600 mb-2">{t('pillar2Sub')}</div>
+                  <div className="text-[10px] font-bold text-emerald-600 mb-2">{t('pillar2Sub')}</div>
                   <p className="text-xs text-slate-500 leading-relaxed">{t('pillar2Desc')}</p>
                 </div>
 
                 {/* 3. 비자발급·대행 */}
                 <div className="bg-white p-4 sm:p-5 rounded-2xl border border-slate-200/90 shadow-sm hover:border-emerald-500 transition group hover:shadow-md">
-                  <div className="w-9 h-9 bg-slate-800 text-white rounded-xl flex items-center justify-center font-black mb-3 text-sm group-hover:scale-110 transition">
+                  <div className="w-8 h-8 bg-emerald-50 text-emerald-700 border border-emerald-200 rounded-xl flex items-center justify-center font-black mb-3 text-sm group-hover:scale-110 transition shadow-2xs">
                     3
                   </div>
                   <h4 className="font-bold text-sm text-slate-900 mb-0.5">{t('pillar3Title')}</h4>
-                  <div className="text-[10px] font-bold text-slate-600 mb-2">{t('pillar3Sub')}</div>
+                  <div className="text-[10px] font-bold text-emerald-600 mb-2">{t('pillar3Sub')}</div>
                   <p className="text-xs text-slate-500 leading-relaxed">{t('pillar3Desc')}</p>
                 </div>
 
                 {/* 4. 한국유학 & 어학연수 */}
                 <div className="bg-white p-4 sm:p-5 rounded-2xl border border-slate-200/90 shadow-sm hover:border-emerald-500 transition group hover:shadow-md">
-                  <div className="w-9 h-9 bg-blue-100 text-blue-700 rounded-xl flex items-center justify-center font-black mb-3 text-sm group-hover:scale-110 transition">
+                  <div className="w-8 h-8 bg-emerald-50 text-emerald-700 border border-emerald-200 rounded-xl flex items-center justify-center font-black mb-3 text-sm group-hover:scale-110 transition shadow-2xs">
                     4
                   </div>
                   <h4 className="font-bold text-sm text-slate-900 mb-0.5">{t('pillar4Title')}</h4>
-                  <div className="text-[10px] font-bold text-blue-600 mb-2">{t('pillar4Sub')}</div>
+                  <div className="text-[10px] font-bold text-emerald-600 mb-2">{t('pillar4Sub')}</div>
                   <p className="text-xs text-slate-500 leading-relaxed">{t('pillar4Desc')}</p>
                 </div>
 
-                {/* 5. 전문 하우스키퍼 (관가) */}
+                {/* 5. 전문 하우스키퍼 (룸메이드) */}
                 <div className="bg-white p-4 sm:p-5 rounded-2xl border border-slate-200/90 shadow-sm hover:border-emerald-500 transition group hover:shadow-md">
-                  <div className="w-9 h-9 bg-lime-100 text-lime-700 rounded-xl flex items-center justify-center font-black mb-3 text-sm group-hover:scale-110 transition">
+                  <div className="w-8 h-8 bg-emerald-50 text-emerald-700 border border-emerald-200 rounded-xl flex items-center justify-center font-black mb-3 text-sm group-hover:scale-110 transition shadow-2xs">
                     5
                   </div>
                   <h4 className="font-bold text-sm text-slate-900 mb-0.5">{t('pillar5Title')}</h4>
-                  <div className="text-[10px] font-bold text-lime-600 mb-2">{t('pillar5Sub')}</div>
+                  <div className="text-[10px] font-bold text-emerald-600 mb-2">{t('pillar5Sub')}</div>
                   <p className="text-xs text-slate-500 leading-relaxed">{t('pillar5Desc')}</p>
                 </div>
               </div>
