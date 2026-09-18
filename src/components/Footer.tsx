@@ -75,7 +75,7 @@ export default function Footer() {
             <span>록산에버그린 주식회사</span>
             <span className="text-slate-400 font-normal">주소 : 제주특별자치도 제주시 서광로 107-6 (용담이동)</span>
             <a
-              href="https://map.naver.com/p/search/%EC%A0%9C%EC%A3%BC%ED%8A%B9%EB%B3%84%EC%9E%90%EC%B9%98%EB%8F%84%20%EC%A0%9C%EC%A3%BC%EC%8B%9C%20%EC%84%9C%EA%B4%91%EB%A1%9C%20107-6"
+              href="https://naver.me/xPYiat3x"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1 text-[11px] bg-[#03C75A]/20 hover:bg-[#03C75A]/30 text-[#2ecc71] px-2 py-0.5 rounded-md border border-[#03C75A]/40 transition"

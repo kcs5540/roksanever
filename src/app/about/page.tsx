@@ -266,13 +266,13 @@ export default function AboutPage() {
                 <div className="text-[11px] font-bold text-slate-500">지도 앱 바로 연결 및 길찾기:</div>
                 <div className="flex items-center gap-2">
                   <a
-                    href="https://map.naver.com/p/search/%EC%A0%9C%EC%A3%BC%ED%8A%B9%EB%B3%84%EC%9E%90%EC%B9%98%EB%8F%84%20%EC%A0%9C%EC%A3%BC%EC%8B%9C%20%EC%84%9C%EA%B4%91%EB%A1%9C%20107-6"
+                    href="https://naver.me/xPYiat3x"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex-1 py-2.5 px-3 bg-[#03C75A] hover:bg-[#02b350] text-white font-bold rounded-xl text-xs flex items-center justify-center gap-1.5 shadow-sm transition active:scale-95"
                   >
                     <span className="bg-white text-[#03C75A] font-black text-[10px] w-4 h-4 rounded-full flex items-center justify-center">N</span>
-                    <span>네이버 지도 길찾기</span>
+                    <span>네이버 지도 (록산에버그린)</span>
                   </a>
                   <a
                     href="https://map.kakao.com/link/search/제주특별자치도 제주시 서광로 107-6"
