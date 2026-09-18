@@ -277,16 +277,16 @@ export default function HomePage() {
                           key={idx} 
                           className="flex flex-col items-center justify-center p-1 rounded-lg bg-white hover:bg-emerald-50 hover:border-emerald-300 border border-slate-200/60 transition-all cursor-pointer group shadow-2xs"
                         >
-                          <div className="w-4 h-4 sm:w-5 sm:h-5 rounded-full overflow-hidden border border-slate-200 bg-white p-0.5 mb-0.5 flex items-center justify-center">
+                          <div className={`w-4 h-4 sm:w-5 sm:h-5 rounded-full overflow-hidden border border-slate-200 bg-white p-0.5 mb-0.5 flex items-center justify-center ${c.iso === 'cn' ? 'ring-1 ring-red-400' : ''}`}>
                             {/* eslint-disable-next-line @next/next/no-img-element */}
                             <img 
-                              src={`https://flagcdn.com/w80/${c.iso}.png`}
+                              src={c.iso === 'cn' ? 'https://flagcdn.com/cn.svg' : `https://flagcdn.com/w80/${c.iso}.png`}
                               alt={`${c.name} 국기`} 
-                              className="w-full h-full object-cover rounded-full"
+                              className={`w-full h-full rounded-full ${c.iso === 'cn' ? 'object-cover scale-125 object-left-top' : 'object-cover'}`}
                               loading="lazy"
                             />
                           </div>
-                          <span className="text-[8px] font-bold text-slate-700 group-hover:text-emerald-700 text-center truncate w-full">
+                          <span className={`text-[8px] font-bold text-center truncate w-full ${c.iso === 'cn' ? 'text-red-700 font-black' : 'text-slate-700 group-hover:text-emerald-700'}`}>
                             {c.name}
                           </span>
                         </div>

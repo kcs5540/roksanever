@@ -128,11 +128,13 @@ export default function Header() {
               title="中文 (Chinese)"
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="https://flagcdn.com/w40/cn.png"
-                alt="中文"
-                className="w-4 h-4 rounded-full object-cover border border-slate-200"
-              />
+              <div className="w-4 h-4 rounded-full overflow-hidden border border-slate-200 flex items-center justify-center">
+                <img
+                  src="https://flagcdn.com/cn.svg"
+                  alt="中文"
+                  className="w-full h-full object-cover scale-125 object-left-top"
+                />
+              </div>
               <span className="text-[11px]">CHN</span>
             </button>
           </div>
@@ -164,17 +166,15 @@ export default function Header() {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`px-3.5 py-2 rounded-xl transition-all whitespace-nowrap flex items-center gap-1.5 text-sm sm:text-base ${
+                  className={`px-3 py-1.5 rounded-lg whitespace-nowrap transition flex items-center gap-1.5 ${
                     active
-                      ? 'bg-emerald-800/90 text-white shadow-inner ring-2 ring-white/70 font-extrabold'
-                      : 'text-emerald-50 hover:bg-emerald-700/60 hover:text-white font-bold'
+                      ? 'bg-white text-emerald-800 shadow-sm font-black'
+                      : 'hover:bg-emerald-700 text-white font-medium'
                   }`}
                 >
                   <span>{item.label}</span>
                   {item.badge && (
-                    <span className={`text-[10px] px-1.5 py-0.5 rounded font-bold ${
-                      active ? 'bg-white text-emerald-800' : 'bg-white/20 text-white'
-                    }`}>
+                    <span className="bg-amber-400 text-slate-950 text-[10px] font-black px-1.5 py-0.2 rounded-full shadow-2xs">
                       {item.badge}
                     </span>
                   )}
@@ -255,7 +255,9 @@ export default function Header() {
                 }`}
               >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="https://flagcdn.com/w40/cn.png" alt="CN" className="w-3.5 h-3.5 rounded-full object-cover" />
+                <div className="w-3.5 h-3.5 rounded-full overflow-hidden flex items-center justify-center">
+                  <img src="https://flagcdn.com/cn.svg" alt="CN" className="w-full h-full object-cover scale-125 object-left-top" />
+                </div>
                 <span>CN</span>
               </button>
             </div>
