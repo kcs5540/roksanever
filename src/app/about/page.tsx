@@ -14,8 +14,8 @@ import {
   CheckCircle2, 
   FileCheck,
   ChevronRight,
-  TrendingUp,
-  Briefcase
+  Briefcase,
+  Sparkles
 } from 'lucide-react';
 
 export default function AboutPage() {
@@ -77,53 +77,110 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* 2. 대표 인사말 & 비전 */}
+      {/* 2. 대표 인사말 & 40년 전통의 비전 (1983년 출범 역사 계승) */}
       <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 -mt-8 relative z-20">
         <div className="bg-white rounded-3xl p-6 sm:p-10 shadow-xl border border-slate-200/80">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-            
-            {/* 좌측 심볼 & 핵심 슬로건 */}
-            <div className="lg:col-span-5 bg-gradient-to-br from-emerald-50 to-teal-50 rounded-2xl p-8 border border-emerald-100 text-center flex flex-col items-center justify-center">
-              <div className="w-24 h-16 rounded-xl bg-[#8ab9ff] p-2 shadow-md mb-4 border border-sky-300 flex items-center justify-center">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img 
-                  src="/images/roksan_original_symbol.png" 
-                  alt="록산에버그린 로고" 
-                  className="w-full h-full object-contain" 
-                />
+          
+          {/* 상단 핵심 슬로건 배너 (구 홈페이지 정통 문구 복원) */}
+          <div className="bg-gradient-to-r from-emerald-900 via-slate-900 to-teal-950 text-white rounded-2xl p-6 sm:p-8 mb-8 relative overflow-hidden shadow-md">
+            <div className="relative z-10 max-w-3xl">
+              <div className="inline-flex items-center gap-2 px-3 py-1 bg-emerald-500/20 text-emerald-300 font-black text-xs rounded-full mb-3 border border-emerald-500/30">
+                <Sparkles className="w-3.5 h-3.5" />
+                <span>SINCE 1983 &middot; 40여 년의 신뢰와 역사</span>
               </div>
-              <div className="text-xl font-black text-slate-900 mb-1">록산에버그린 주식회사</div>
-              <div className="text-xs text-emerald-700 font-bold mb-4">ROKSAN EVERGREEN CO., LTD.</div>
-              <div className="w-12 h-1 bg-emerald-500 rounded-full mb-4"></div>
-              <p className="text-xs text-slate-600 leading-relaxed max-w-xs">
-                “신뢰와 성실을 원칙으로 기업에는 최고의 생산성을, 근로자에게는 보람찬 일터와 안전한 정착을 선물합니다.”
+              <h2 className="text-xl sm:text-2xl lg:text-3xl font-black leading-snug">
+                <span className="text-emerald-400">록산에버그린(주)은 1983년 출범</span>한 이래,<br />
+                국내 정상급의 자산관리 및 인재 아웃소싱 전문기업으로 성장하였습니다.
+              </h2>
+              <p className="text-xs sm:text-sm text-slate-300 mt-3 leading-relaxed">
+                지속적인 기술개발과 서비스 업무의 시스템화를 통해 고객사에는 최고의 생산성을, 근로자에게는 안정된 고용 환경을 보장하며 사회적 책임을 다하고 있습니다.
               </p>
             </div>
+            <div className="absolute right-0 top-0 bottom-0 w-1/3 opacity-10 pointer-events-none bg-[radial-gradient(#10b981_1px,transparent_1px)] [background-size:16px_16px]"></div>
+          </div>
 
-            {/* 우측 대표 메시지 */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            
+            {/* 좌측 심볼 & 기업 신뢰 카드 */}
+            <div className="lg:col-span-5 space-y-4">
+              <div className="bg-gradient-to-br from-emerald-50 to-teal-50 rounded-2xl p-6 border border-emerald-100 text-center flex flex-col items-center justify-center">
+                <div className="w-24 h-16 rounded-xl bg-[#8ab9ff] p-2 shadow-md mb-3 border border-sky-300 flex items-center justify-center">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img 
+                    src="/images/roksan_original_symbol.png" 
+                    alt="록산에버그린 로고" 
+                    className="w-full h-full object-contain" 
+                  />
+                </div>
+                <div className="text-xl font-black text-slate-900 mb-0.5">록산에버그린 주식회사</div>
+                <div className="text-xs text-emerald-700 font-bold mb-3">ROKSAN EVERGREEN CO., LTD.</div>
+                <div className="w-12 h-1 bg-emerald-500 rounded-full mb-3"></div>
+                <p className="text-xs text-slate-600 leading-relaxed">
+                  “신뢰와 성실을 원칙으로 고객사의 파트너가 되어 높은 브랜드 가치를 유지하는 데 기여하겠습니다.”
+                </p>
+              </div>
+
+              {/* 4대 핵심 인증 마크 요약 뱃지 카드 */}
+              <div className="grid grid-cols-2 gap-2.5">
+                <div className="bg-slate-50 border border-slate-200 rounded-xl p-3 text-center">
+                  <div className="text-[10px] text-slate-400 font-bold">경영혁신형 인증</div>
+                  <div className="text-xs font-black text-emerald-700 mt-0.5">Main-Biz 인증기업</div>
+                </div>
+                <div className="bg-slate-50 border border-slate-200 rounded-xl p-3 text-center">
+                  <div className="text-[10px] text-slate-400 font-bold">국제표준 품질경영</div>
+                  <div className="text-xs font-black text-emerald-700 mt-0.5">ISO 9001 / 14001</div>
+                </div>
+                <div className="bg-slate-50 border border-slate-200 rounded-xl p-3 text-center">
+                  <div className="text-[10px] text-slate-400 font-bold">식품안전경영</div>
+                  <div className="text-xs font-black text-emerald-700 mt-0.5">ISO 22000 인증</div>
+                </div>
+                <div className="bg-slate-50 border border-slate-200 rounded-xl p-3 text-center">
+                  <div className="text-[10px] text-slate-400 font-bold">인재 규모 (2023)</div>
+                  <div className="text-xs font-black text-slate-900 mt-0.5">임직원 610명 / 20억</div>
+                </div>
+              </div>
+            </div>
+
+            {/* 우측 대표 인사말 본문 (원본 철학 계승) */}
             <div className="lg:col-span-7 space-y-4">
-              <div className="text-xs font-bold text-emerald-600 uppercase tracking-wider">CEO Greeting</div>
-              <h2 className="text-2xl sm:text-3xl font-black text-slate-900 leading-snug">
+              <div className="text-xs font-bold text-emerald-600 uppercase tracking-wider flex items-center gap-1.5">
+                <ShieldCheck className="w-4 h-4" />
+                <span>CEO Greeting &middot; 대표 인사말</span>
+              </div>
+              <h3 className="text-2xl sm:text-3xl font-black text-slate-900 leading-snug">
                 고객사의 성공 파트너이자,<br />
-                외국인 근로자의 든든한 길잡이가 되겠습니다.
-              </h2>
-              <div className="text-xs sm:text-sm text-slate-600 leading-relaxed space-y-3 pt-2">
+                근로자의 든든한 평생 길잡이가 되겠습니다.
+              </h3>
+              <div className="text-xs sm:text-sm text-slate-600 leading-relaxed space-y-3 pt-1">
                 <p>
                   안녕하십니까? 록산에버그린(주) 대표 김찬식입니다.
                 </p>
                 <p>
-                  오늘날 대한민국 산업 현장은 만성적인 구인난에 직면해 있으며, 특히 호텔·리조트, 제조업, 건설, 농어촌 등 핵심 기반 산업에서 내·외국인 숙련 인력의 중요성은 나날이 커지고 있습니다.
+                  록산에버그린(주)은 <strong>1983년 10월 출범</strong>한 이래, 끊임없는 기술개발과 체계적인 서비스 시스템화를 바탕으로 국내 정상급의 자산관리 및 인재 아웃소싱 전문기업으로 쉼 없이 성장해 왔습니다.
                 </p>
                 <p>
-                  록산에버그린은 단순한 구인구직 중개를 넘어, <strong>철저한 비자 체류 자격 검증과 합법적 행정 절차</strong>를 완벽히 지원함으로써 기업에는 안심하고 고용할 수 있는 우수 인재를, 근로자에게는 권익이 보장되는 양질의 일자리를 연결해 드리고 있습니다.
+                  또한 모든 임직원의 능력개발과 보편적 복지제도의 시행을 통해 안정적이고 성숙한 노사관계를 구축함으로써 고객사의 생산성 향상과 만족에 기여하고 있습니다.
                 </p>
                 <p>
-                  언제나 정직과 신의로 고객 여러분의 든든한 비즈니스 동반자가 될 것을 약속드립니다. 감사합니다.
+                  특히 오늘날 심화되는 산업 현장의 구인난 속에서, <strong>합법 체류 비자 검증(E-7, E-9, F-4, D-2 등)과 전문 행정 지원</strong>을 아우르는 글로벌 인재 네트워크를 통해 기업에는 최고의 인재를, 근로자에게는 안전하고 보람찬 일터를 제공하고 있습니다.
+                </p>
+                <p>
+                  축적된 40여 년의 역량과 신뢰를 바탕으로 귀사의 가장 든든한 비즈니스 파트너가 되어 높은 브랜드 가치를 유지하는 데 기여하겠습니다. 감사합니다.
                 </p>
               </div>
-              <div className="pt-3 text-right">
-                <span className="text-xs text-slate-400">록산에버그린(주) 대표이사</span>
-                <span className="text-base font-black text-slate-900 ml-2">김 찬 식</span>
+
+              {/* 대표이사 서명 및 직인 영역 */}
+              <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
+                <div className="text-xs text-slate-400">
+                  국외유료직업소개사업 정식등록 &middot; 시설물종합관리업
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="text-xs text-slate-500">록산에버그린(주) 대표이사</span>
+                  <span className="text-lg font-black text-slate-900 tracking-wider">김 찬 식</span>
+                  <div className="w-8 h-8 rounded-full border-2 border-red-600 text-red-600 font-bold text-[10px] flex items-center justify-center font-serif rotate-[-12deg] shadow-2xs">
+                    印
+                  </div>
+                </div>
               </div>
             </div>
 
@@ -281,42 +338,75 @@ export default function AboutPage() {
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-xs sm:text-sm">
-            {/* 기본 정보 표 */}
-            <div className="space-y-3.5">
+            {/* 구 홈페이지 원본 완벽 복원: 기업 개요 10대 공식 팩트 표 */}
+            <div className="space-y-3">
               <div className="flex border-b border-slate-100 pb-2.5">
                 <span className="w-28 text-slate-400 font-bold shrink-0">회사명</span>
-                <span className="font-bold text-slate-800">록산에버그린 주식회사</span>
+                <span className="font-bold text-slate-900">록산에버그린 주식회사</span>
               </div>
               <div className="flex border-b border-slate-100 pb-2.5">
-                <span className="w-28 text-slate-400 font-bold shrink-0">대표자</span>
-                <span className="text-slate-800">김찬식</span>
+                <span className="w-28 text-slate-400 font-bold shrink-0">대표이사</span>
+                <span className="font-bold text-slate-900">김찬식</span>
+              </div>
+              <div className="flex border-b border-slate-100 pb-2.5">
+                <span className="w-28 text-slate-400 font-bold shrink-0">설립일</span>
+                <span className="font-bold text-emerald-800">
+                  1983년 10월 <span className="text-[11px] font-normal text-emerald-600">(40여 년 업력)</span>
+                </span>
               </div>
               <div className="flex border-b border-slate-100 pb-2.5">
                 <span className="w-28 text-slate-400 font-bold shrink-0">사업자등록번호</span>
-                <span className="text-slate-800 font-mono">616-81-02802</span>
+                <span className="text-slate-800 font-mono font-bold">616-81-02802</span>
+              </div>
+              <div className="flex border-b border-slate-100 pb-2.5">
+                <span className="w-28 text-slate-400 font-bold shrink-0">임직원수</span>
+                <span className="font-bold text-slate-900">
+                  610명 <span className="text-[11px] font-normal text-slate-400">(2023년 집계 기준)</span>
+                </span>
+              </div>
+              <div className="flex border-b border-slate-100 pb-2.5">
+                <span className="w-28 text-slate-400 font-bold shrink-0">자본금</span>
+                <span className="font-bold text-slate-900">20억 원</span>
+              </div>
+              <div className="flex border-b border-slate-100 pb-2.5">
+                <span className="w-28 text-slate-400 font-bold shrink-0">업태 / 업종</span>
+                <div className="text-slate-800 leading-snug">
+                  <div><strong>서비스</strong></div>
+                  <div className="text-xs text-slate-600 mt-0.5">시설물 종합관리업 및 인재파견, 유료직업소개업</div>
+                </div>
               </div>
               <div className="flex border-b border-slate-100 pb-2.5">
                 <span className="w-28 text-slate-400 font-bold shrink-0">인허가 등록</span>
-                <span className="text-slate-800">직업정보제공사업 신고 &middot; 유료직업소개사업 정식 등록</span>
+                <div className="text-slate-800 font-mono text-[11px] leading-relaxed">
+                  <div>&bull; 직업소개업 : <strong className="text-slate-900">제주시 제2020-6510216-14-5-0001호</strong></div>
+                  <div>&bull; 국외유료직업소개 : <strong className="text-emerald-700">f1630120240001</strong></div>
+                </div>
               </div>
               <div className="flex border-b border-slate-100 pb-2.5">
-                <span className="w-28 text-slate-400 font-bold shrink-0">대표전화</span>
-                <span className="font-bold text-emerald-600">064-711-8578</span>
+                <span className="w-28 text-slate-400 font-bold shrink-0">품질경영 인증</span>
+                <div className="flex flex-wrap gap-1.5 pt-0.5">
+                  <span className="px-2 py-0.5 bg-blue-50 text-blue-800 border border-blue-200 rounded font-bold text-[10px]">
+                    Main-Biz 인증
+                  </span>
+                  <span className="px-2 py-0.5 bg-emerald-50 text-emerald-800 border border-emerald-200 rounded font-bold text-[10px]">
+                    ISO 9001
+                  </span>
+                  <span className="px-2 py-0.5 bg-emerald-50 text-emerald-800 border border-emerald-200 rounded font-bold text-[10px]">
+                    ISO 14001
+                  </span>
+                  <span className="px-2 py-0.5 bg-teal-50 text-teal-800 border border-teal-200 rounded font-bold text-[10px]">
+                    ISO 22000
+                  </span>
+                </div>
               </div>
               <div className="flex border-b border-slate-100 pb-2.5">
-                <span className="w-28 text-slate-400 font-bold shrink-0">직통 휴대폰</span>
-                <span className="font-bold text-emerald-700">010-5731-8578</span>
+                <span className="w-28 text-slate-400 font-bold shrink-0">전화 / 팩스</span>
+                <span className="text-slate-800">
+                  <strong className="text-emerald-700 font-bold">064-711-8578</strong> / 064-712-5512
+                </span>
               </div>
-              <div className="flex border-b border-slate-100 pb-2.5">
-                <span className="w-28 text-slate-400 font-bold shrink-0">팩스</span>
-                <span className="text-slate-800">064-712-5512</span>
-              </div>
-              <div className="flex border-b border-slate-100 pb-2.5">
-                <span className="w-28 text-slate-400 font-bold shrink-0">이메일</span>
-                <span className="text-slate-800 font-mono">roksan22@daum.net</span>
-              </div>
-              <div className="flex pb-2">
-                <span className="w-28 text-slate-400 font-bold shrink-0">본사 주소</span>
+              <div className="flex pb-1">
+                <span className="w-28 text-slate-400 font-bold shrink-0">본사 소재지</span>
                 <span className="text-slate-800">제주특별자치도 제주시 서광로 107-6 (용담이동)</span>
               </div>
             </div>
