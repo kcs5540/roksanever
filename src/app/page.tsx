@@ -423,31 +423,6 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* 화면 좌/우 플로팅 화살표 */}
-            <button
-              onClick={(e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                prevSlide();
-              }}
-              className="absolute -left-3 sm:left-2 top-1/2 -translate-y-1/2 z-30 w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-white shadow-lg border border-slate-200 text-slate-800 hover:text-emerald-600 flex items-center justify-center transition active:scale-90 text-base sm:text-lg font-black cursor-pointer"
-              aria-label="Previous slide"
-            >
-              &#10094;
-            </button>
-
-            <button
-              onClick={(e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                nextSlide();
-              }}
-              className="absolute -right-3 sm:right-2 top-1/2 -translate-y-1/2 z-30 w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-white shadow-lg border border-slate-200 text-slate-800 hover:text-emerald-600 flex items-center justify-center transition active:scale-90 text-base sm:text-lg font-black cursor-pointer"
-              aria-label="Next slide"
-            >
-              &#10095;
-            </button>
-
           </div>
 
           {/* 슬라이더 하단 컨트롤러: 슬라이드 전환과 무관하게 상하 마진 및 높이 고정 */}
