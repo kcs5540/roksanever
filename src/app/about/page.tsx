@@ -157,39 +157,116 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* 4. 사업 영역 요약 */}
+      {/* 4. 사업 영역 요약 (고화질 산업별 포토 카드 적용) */}
       <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-16">
-        <div className="bg-gradient-to-r from-emerald-600 to-teal-700 rounded-3xl p-8 sm:p-10 text-white shadow-xl">
-          <div className="max-w-3xl mb-8">
-            <h2 className="text-2xl sm:text-3xl font-black mb-2">록산에버그린 주요 사업 분야</h2>
-            <p className="text-xs sm:text-sm text-emerald-100">
-              다양한 산업군의 요구에 맞춘 전문 인력 솔루션을 제공합니다.
-            </p>
+        <div className="text-center max-w-2xl mx-auto mb-10">
+          <div className="text-xs font-bold text-emerald-600 mb-1">Our Core Business</div>
+          <h2 className="text-2xl sm:text-3xl font-black text-slate-900">록산에버그린 주요 사업 분야</h2>
+          <p className="text-xs sm:text-sm text-slate-500 mt-2">
+            호텔·제조·비자 행정 등 산업 현장과 고객사의 니즈에 최적화된 맞춤 인력 솔루션을 제공합니다.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {/* Business 01: 호텔·리조트 객실정비 */}
+          <div className="group bg-white rounded-3xl overflow-hidden border border-slate-200/90 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col">
+            <div className="relative h-48 sm:h-52 overflow-hidden">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img 
+                src="/images/business_hotel.jpg" 
+                alt="특급호텔 및 리조트 객실정비 인력" 
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-slate-950/20 to-transparent"></div>
+              <div className="absolute top-3.5 left-3.5">
+                <span className="px-3 py-1 bg-emerald-600/90 text-white font-black text-[11px] rounded-full backdrop-blur-xs shadow-xs">
+                  Business 01
+                </span>
+              </div>
+              <div className="absolute bottom-3 left-4 right-4">
+                <h3 className="text-lg font-black text-white leading-snug drop-shadow-sm">
+                  호텔 &middot; 리조트 객실정비
+                </h3>
+              </div>
+            </div>
+            <div className="p-5 flex-1 flex flex-col justify-between">
+              <p className="text-xs text-slate-600 leading-relaxed">
+                제주 및 전국 특급호텔 룸메이드, 하우스키핑, 린넨실 정비, 세탁 및 공공구역 클리닝 상시 위탁 및 숙련 인력을 공급합니다.
+              </p>
+              <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-[11px]">
+                <span className="text-emerald-700 font-bold">#룸메이드 #하우스키핑 #제주호텔</span>
+                <Link href="/jobs" className="text-slate-400 group-hover:text-emerald-600 font-bold transition flex items-center gap-0.5">
+                  구인보기 &rarr;
+                </Link>
+              </div>
+            </div>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
-            <div className="bg-white/10 backdrop-blur-md rounded-2xl p-5 border border-white/20">
-              <div className="text-xs font-bold text-emerald-300 mb-1">Business 01</div>
-              <h3 className="text-base font-bold mb-2">호텔 &middot; 리조트 객실정비</h3>
-              <p className="text-xs text-emerald-50 leading-relaxed">
-                특급호텔 룸메이드, 하우스키핑, 린넨실 정비, 세탁 및 공공구역 클리닝 상시 위탁 및 인력 파견
-              </p>
+          {/* Business 02: 조선소 용접·제조업 생산 */}
+          <div className="group bg-white rounded-3xl overflow-hidden border border-slate-200/90 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col">
+            <div className="relative h-48 sm:h-52 overflow-hidden">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img 
+                src="/images/business_manufacturing.jpg" 
+                alt="조선소 용접 및 제조공장 생산 인력" 
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-slate-950/20 to-transparent"></div>
+              <div className="absolute top-3.5 left-3.5">
+                <span className="px-3 py-1 bg-emerald-600/90 text-white font-black text-[11px] rounded-full backdrop-blur-xs shadow-xs">
+                  Business 02
+                </span>
+              </div>
+              <div className="absolute bottom-3 left-4 right-4">
+                <h3 className="text-lg font-black text-white leading-snug drop-shadow-sm">
+                  조선소 용접 &middot; 제조업 생산
+                </h3>
+              </div>
             </div>
-
-            <div className="bg-white/10 backdrop-blur-md rounded-2xl p-5 border border-white/20">
-              <div className="text-xs font-bold text-emerald-300 mb-1">Business 02</div>
-              <h3 className="text-base font-bold mb-2">조선소 용접 &middot; 제조업 생산</h3>
-              <p className="text-xs text-emerald-50 leading-relaxed">
-                E-7 선박 배관 용접사, 자동차 부품가공, CNC 머시닝 센터 오퍼레이터, 물류패킹 숙련 인력
+            <div className="p-5 flex-1 flex flex-col justify-between">
+              <p className="text-xs text-slate-600 leading-relaxed">
+                E-7 선박 배관 용접사(TIG), 자동차 부품가공, CNC 머시닝 센터 오퍼레이터, 물류패킹 및 제조 현장 숙련 인력을 공급합니다.
               </p>
+              <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-[11px]">
+                <span className="text-emerald-700 font-bold">#E-7용접 #제조업생산 #스마트팩토리</span>
+                <Link href="/jobs" className="text-slate-400 group-hover:text-emerald-600 font-bold transition flex items-center gap-0.5">
+                  구인보기 &rarr;
+                </Link>
+              </div>
             </div>
+          </div>
 
-            <div className="bg-white/10 backdrop-blur-md rounded-2xl p-5 border border-white/20">
-              <div className="text-xs font-bold text-emerald-300 mb-1">Business 03</div>
-              <h3 className="text-base font-bold mb-2">비자 행정 &middot; 유학생 취업</h3>
-              <p className="text-xs text-emerald-50 leading-relaxed">
-                D-2 시간제 취업허가 대행, E-7/E-9/F-4 비자 발급 및 체류기간 연장, 외국인 유학·어학연수 알선
+          {/* Business 03: 비자 행정·유학생 취업 */}
+          <div className="group bg-white rounded-3xl overflow-hidden border border-slate-200/90 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col">
+            <div className="relative h-48 sm:h-52 overflow-hidden">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img 
+                src="/images/business_visa.jpg" 
+                alt="외국인 비자 행정 및 유학생 취업 컨설팅" 
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-slate-950/20 to-transparent"></div>
+              <div className="absolute top-3.5 left-3.5">
+                <span className="px-3 py-1 bg-emerald-600/90 text-white font-black text-[11px] rounded-full backdrop-blur-xs shadow-xs">
+                  Business 03
+                </span>
+              </div>
+              <div className="absolute bottom-3 left-4 right-4">
+                <h3 className="text-lg font-black text-white leading-snug drop-shadow-sm">
+                  비자 행정 &middot; 유학생 취업
+                </h3>
+              </div>
+            </div>
+            <div className="p-5 flex-1 flex flex-col justify-between">
+              <p className="text-xs text-slate-600 leading-relaxed">
+                D-2 시간제 취업허가 대행, E-7 / E-9 / F-4 비자 발급 및 체류자격 변경 연장, 외국인 유학·어학연수 과정을 전문 대행합니다.
               </p>
+              <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-[11px]">
+                <span className="text-emerald-700 font-bold">#비자발급대행 #D-2유학생알바 #합법체류</span>
+                <Link href="/visa-inquiry" className="text-slate-400 group-hover:text-emerald-600 font-bold transition flex items-center gap-0.5">
+                  상담신청 &rarr;
+                </Link>
+              </div>
             </div>
           </div>
         </div>
