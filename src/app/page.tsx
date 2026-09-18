@@ -87,8 +87,9 @@ export default function HomePage() {
   const [activeTab, setActiveTab] = useState<'offer' | 'seek'>('offer'); // 구인정보 vs 구직정보 모바일/탭 전환용
   const [searchKeyword, setSearchKeyword] = useState('');
 
-  // 16개 송출/협력국 국기 데이터 (ISO 코드 포함)
+  // 16개 송출/협력국 국기 데이터 (ISO 코드 포함, 중국 1순위 배치)
   const countries = [
+    { name: 'China', iso: 'cn' },
     { name: 'Philippines', iso: 'ph' },
     { name: 'Vietnam', iso: 'vn' },
     { name: 'Thailand', iso: 'th' },
@@ -98,7 +99,6 @@ export default function HomePage() {
     { name: 'Uzbekistan', iso: 'uz' },
     { name: 'Pakistan', iso: 'pk' },
     { name: 'Cambodia', iso: 'kh' },
-    { name: 'China', iso: 'cn' },
     { name: 'Bangladesh', iso: 'bd' },
     { name: 'Kyrgyzstan', iso: 'kg' },
     { name: 'Nepal', iso: 'np' },
