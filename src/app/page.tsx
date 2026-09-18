@@ -190,8 +190,8 @@ export default function HomePage() {
                   </div>
 
                   <h1 className="text-2xl sm:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight leading-snug sm:leading-tight break-keep-all">
-                    JOB IN JEJU ISLAND<br />
-                    <span className="text-emerald-600">외국인 인력공급 &middot; 합법 비자대행</span>
+                    {t('heroTitle1')}<br />
+                    <span className="text-emerald-600">{t('heroTitle2')}</span>
                   </h1>
 
                   {/* 인트로 핵심 5대 원형 비즈니스 완벽 반영 라운드 박스 */}
@@ -200,43 +200,43 @@ export default function HomePage() {
                       <div className="flex items-center gap-1.5 bg-emerald-50/70 p-2 rounded-xl border border-emerald-100">
                         <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
                         <div>
-                          <div>외국인 인력공급</div>
-                          <div className="text-[10px] text-slate-400 font-normal">外国人力供应</div>
+                          <div>{t('pillar1Title')}</div>
+                          <div className="text-[10px] text-slate-400 font-normal">Foreign Labor Supply</div>
                         </div>
                       </div>
                       <div className="flex items-center gap-1.5 bg-teal-50/70 p-2 rounded-xl border border-teal-100">
                         <span className="w-2 h-2 rounded-full bg-teal-500"></span>
                         <div>
-                          <div>취업알선 (Placement)</div>
-                          <div className="text-[10px] text-slate-400 font-normal">就业中介</div>
+                          <div>{t('pillar2Title')}</div>
+                          <div className="text-[10px] text-slate-400 font-normal">Job Placement</div>
                         </div>
                       </div>
                       <div className="flex items-center gap-1.5 bg-slate-100 p-2 rounded-xl border border-slate-200">
                         <span className="w-2 h-2 rounded-full bg-slate-700"></span>
                         <div>
-                          <div>비자발급 &middot; 대행</div>
-                          <div className="text-[10px] text-slate-400 font-normal">签证发放,代理</div>
+                          <div>{t('pillar3Title')}</div>
+                          <div className="text-[10px] text-slate-400 font-normal">Visa Agency</div>
                         </div>
                       </div>
                       <div className="flex items-center gap-1.5 bg-green-50/70 p-2 rounded-xl border border-green-100">
                         <span className="w-2 h-2 rounded-full bg-green-600"></span>
                         <div>
-                          <div>한국유학 &middot; 어학연수</div>
-                          <div className="text-[10px] text-slate-400 font-normal">韩国留学&语言研修</div>
+                          <div>{t('pillar4Title')}</div>
+                          <div className="text-[10px] text-slate-400 font-normal">Study Abroad</div>
                         </div>
                       </div>
                       <div className="flex items-center gap-1.5 bg-lime-50/70 p-2 rounded-xl border border-lime-200 col-span-2 sm:col-span-1">
                         <span className="w-2 h-2 rounded-full bg-lime-600"></span>
                         <div>
-                          <div>하우스키퍼 (Room-maid)</div>
-                          <div className="text-[10px] text-slate-400 font-normal">管家 / 客房清扫</div>
+                          <div>{t('pillar5Title')}</div>
+                          <div className="text-[10px] text-slate-400 font-normal">Housekeeper</div>
                         </div>
                       </div>
                     </div>
                     <div className="pt-2 border-t border-slate-100 flex items-center justify-between">
-                      <span className="text-xs font-bold text-slate-500">지원 대상 비자 자격:</span>
+                      <span className="text-xs font-bold text-slate-500">{t('targetVisaLabel')}</span>
                       <span className="bg-emerald-600 text-white px-2.5 py-1 rounded-lg text-xs font-black shadow-xs">
-                        E-7 &middot; E-9 &middot; D-2 &middot; H-2 &middot; F계열 합법 취업
+                        {t('targetVisaList')}
                       </span>
                     </div>
                   </div>
@@ -246,14 +246,14 @@ export default function HomePage() {
                       href="/jobs"
                       className="bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs sm:text-sm px-6 py-3 rounded-xl shadow-md transition flex items-center gap-1.5"
                     >
-                      <span>외국인 일자리 찾기</span>
+                      <span>{t('findJobBtn')}</span>
                       <ArrowRight className="w-4 h-4" />
                     </Link>
                     <Link
                       href="/visa-inquiry"
                       className="border border-slate-300 hover:bg-slate-100 text-slate-800 font-bold text-xs sm:text-sm px-5 py-3 rounded-xl transition"
                     >
-                      비자 발급 무료 상담
+                      {t('freeVisaBtn')}
                     </Link>
                   </div>
                 </div>
@@ -265,10 +265,10 @@ export default function HomePage() {
                     <div className="flex items-center justify-between pb-3 mb-3 border-b border-slate-100">
                       <div className="flex items-center gap-2">
                         <Globe2 className="w-4 h-4 text-emerald-600" />
-                        <span className="text-xs font-extrabold text-slate-800">16개국 공식 송출 &middot; 취업 네트워크</span>
+                        <span className="text-xs font-extrabold text-slate-800">{t('networkTitle')}</span>
                       </div>
                       <span className="text-[10px] font-bold bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded-full border border-emerald-200">
-                        16 Countries
+                        {t('networkBadge')}
                       </span>
                     </div>
 
@@ -299,9 +299,9 @@ export default function HomePage() {
                     <div className="mt-3 pt-2.5 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-500">
                       <span className="flex items-center gap-1 font-medium">
                         <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
-                        합법 비자 취업 지원 협약국
+                        {t('networkFooter')}
                       </span>
-                      <span className="font-bold text-emerald-700">신원 보증</span>
+                      <span className="font-bold text-emerald-700">{t('verifiedTalent')}</span>
                     </div>
                   </div>
                 </div>
@@ -317,14 +317,14 @@ export default function HomePage() {
                 <div className="md:col-span-7 text-left space-y-4">
                   <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-orange-100 text-orange-800 text-xs font-bold border border-orange-200">
                     <Briefcase className="w-3.5 h-3.5 text-orange-600" />
-                    <span>기업 맞춤형 상시 인력 파견 &middot; 도급 &middot; 채용 대행</span>
+                    <span>{t('slide2Badge')}</span>
                   </div>
                   <h2 className="text-3xl sm:text-5xl font-black text-slate-900 tracking-tight leading-tight">
-                    필요한 현장에 검증된 인재를,<br />
-                    <span className="text-orange-600">We supply Manpower</span>
+                    {t('slide2Title1')}<br />
+                    <span className="text-orange-600">{t('slide2Title2')}</span>
                   </h2>
                   <p className="text-sm sm:text-base text-slate-600 leading-relaxed max-w-xl">
-                    특급 호텔&middot;리조트 룸메이드, 하우스키퍼, 조선소 선박 배관 용접사, 자동차 부품 및 식품 가공 제조업 숙련 인력을 신속하고 정확하게 공급합니다.
+                    {t('slide2Desc')}
                   </p>
                   
                   {/* 주요 직종 태그 칩 */}
@@ -341,14 +341,14 @@ export default function HomePage() {
                       href="/jobs"
                       className="bg-orange-600 hover:bg-orange-700 text-white font-bold text-xs sm:text-sm px-6 py-3 rounded-xl shadow-md transition flex items-center gap-1.5"
                     >
-                      <span>전문 인력 공고 보러가기</span>
+                      <span>{t('slide2Btn1')}</span>
                       <ArrowRight className="w-4 h-4" />
                     </Link>
                     <a
                       href="tel:064-711-8578"
                       className="border border-slate-300 hover:bg-slate-100 text-slate-800 font-bold text-xs sm:text-sm px-5 py-3 rounded-xl transition"
                     >
-                      기업 인력 요청 상담 (064-711-8578)
+                      {t('slide2Btn2')}
                     </a>
                   </div>
                 </div>
@@ -364,7 +364,7 @@ export default function HomePage() {
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent flex items-end p-6">
                       <div className="text-white">
                         <div className="text-xs font-bold text-amber-300 uppercase">Verified Talent Pool</div>
-                        <div className="text-lg font-bold">철저한 신원 보증 & 합법 비자 체류 확인</div>
+                        <div className="text-lg font-bold">{t('slide2ImgBadge')}</div>
                       </div>
                     </div>
                   </div>
@@ -380,24 +380,24 @@ export default function HomePage() {
                 <div className="md:col-span-7 text-left space-y-4">
                   <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-blue-100 text-blue-800 text-xs font-bold border border-blue-200">
                     <Sparkles className="w-3.5 h-3.5 text-blue-600" />
-                    <span>글로벌 어학연수 &middot; 유학 &middot; 비자 행정 전문</span>
+                    <span>{t('slide3Badge')}</span>
                   </div>
                   <h2 className="text-3xl sm:text-5xl font-black text-slate-900 tracking-tight leading-tight">
-                    한국 유학부터 합법 취업까지,<br />
-                    <span className="text-blue-600">Language Training Arrangement</span>
+                    {t('slide3Title1')}<br />
+                    <span className="text-blue-600">{t('slide3Title2')}</span>
                   </h2>
                   <p className="text-sm sm:text-base text-slate-600 leading-relaxed max-w-xl">
-                    외국인 유학생(D-2, D-4) 비자 발급, 어학연수 매칭 및 출입국관리사무소 시간제 취업 허가증 발급 행정 절차를 완벽 지원합니다.
+                    {t('slide3Desc')}
                   </p>
 
                   <div className="grid grid-cols-2 gap-3 max-w-lg pt-1">
                     <div className="bg-white p-3.5 rounded-2xl border border-slate-200 shadow-2xs">
-                      <div className="font-bold text-slate-900 text-sm mb-0.5">D-2 유학생 시간제 취업</div>
-                      <div className="text-xs text-slate-500">주중 식음료/서비스 및 주말 파트타임 알선</div>
+                      <div className="font-bold text-slate-900 text-sm mb-0.5">{t('slide3Card1Title')}</div>
+                      <div className="text-xs text-slate-500">{t('slide3Card1Desc')}</div>
                     </div>
                     <div className="bg-white p-3.5 rounded-2xl border border-slate-200 shadow-2xs">
-                      <div className="font-bold text-slate-900 text-sm mb-0.5">E-7/F-4 체류자격 변경</div>
-                      <div className="text-xs text-slate-500">졸업 후 전문 취업비자 연계 및 체류 연장</div>
+                      <div className="font-bold text-slate-900 text-sm mb-0.5">{t('slide3Card2Title')}</div>
+                      <div className="text-xs text-slate-500">{t('slide3Card2Desc')}</div>
                     </div>
                   </div>
 
@@ -406,7 +406,7 @@ export default function HomePage() {
                       href="/visa-inquiry"
                       className="bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs sm:text-sm px-6 py-3 rounded-xl shadow-md transition inline-flex items-center gap-1.5"
                     >
-                      <span>유학&middot;비자 무료 행정상담 신청</span>
+                      <span>{t('slide3Btn')}</span>
                       <ArrowRight className="w-4 h-4" />
                     </Link>
                   </div>
@@ -511,7 +511,7 @@ export default function HomePage() {
                 type="text"
                 value={searchKeyword}
                 onChange={(e) => setSearchKeyword(e.target.value)}
-                placeholder="찾으시는 회사명, 직종(룸메이드, 용접 등), 지역을 입력해주세요."
+                placeholder={t('searchPlaceholder')}
                 className="w-full text-xs sm:text-sm font-medium outline-none bg-transparent placeholder:text-slate-400"
               />
             </div>
@@ -519,7 +519,7 @@ export default function HomePage() {
               onClick={() => {}}
               className="bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-7 py-3 rounded-xl transition text-xs sm:text-sm shrink-0 flex items-center gap-1.5 shadow-md shadow-emerald-600/30"
             >
-              <span>검색하기</span>
+              <span>{t('btnSearch')}</span>
               <ArrowRight className="w-4 h-4" />
             </button>
           </div>
@@ -557,9 +557,9 @@ export default function HomePage() {
               <div className="bg-gradient-to-r from-emerald-600 to-teal-600 text-white px-5 py-3.5 flex items-center justify-between">
                 <div className="flex items-center gap-2 font-bold text-sm">
                   <MapPin className="w-4 h-4 text-emerald-200" />
-                  <span>지역별 구인 / 구직</span>
+                  <span>{t('regionTitle')}</span>
                 </div>
-                <span className="text-[11px] bg-emerald-700/80 px-2 py-0.5 rounded text-emerald-100">전국</span>
+                <span className="text-[11px] bg-emerald-700/80 px-2 py-0.5 rounded text-emerald-100">{t('regionBadge')}</span>
               </div>
               <div className="p-4">
                 <div className="grid grid-cols-4 gap-1.5 text-center text-xs">
@@ -585,9 +585,9 @@ export default function HomePage() {
               <div className="bg-slate-900 text-white px-5 py-3.5 flex items-center justify-between">
                 <div className="flex items-center gap-2 font-bold text-sm">
                   <Briefcase className="w-4 h-4 text-emerald-400" />
-                  <span>직종별 구인 / 구직</span>
+                  <span>{t('jobTypeTitle')}</span>
                 </div>
-                <span className="text-[11px] text-slate-400">원클릭 이동</span>
+                <span className="text-[11px] text-slate-400">{t('jobTypeBadge')}</span>
               </div>
               
               <div className="divide-y divide-slate-100 text-xs">
@@ -611,13 +611,13 @@ export default function HomePage() {
                         onClick={() => { setSelectedJobType(cat); setActiveTab('offer'); }}
                         className="px-2 py-1 rounded bg-slate-100 hover:bg-emerald-600 hover:text-white text-slate-600 font-bold text-[11px] transition"
                       >
-                        구인
+                        {t('quickOffer')}
                       </button>
                       <button
                         onClick={() => { setSelectedJobType(cat); setActiveTab('seek'); }}
                         className="px-2 py-1 rounded bg-slate-100 hover:bg-teal-600 hover:text-white text-slate-600 font-bold text-[11px] transition"
                       >
-                        구직
+                        {t('quickSeek')}
                       </button>
                     </div>
                   </div>
@@ -630,14 +630,14 @@ export default function HomePage() {
               <div className="w-10 h-10 bg-emerald-500 text-white rounded-full flex items-center justify-center mx-auto mb-3">
                 <Phone className="w-5 h-5" />
               </div>
-              <div className="text-xs text-emerald-400 font-bold mb-1">인력 급구 & 비자 즉시 상담</div>
+              <div className="text-xs text-emerald-400 font-bold mb-1">{t('urgentCallTitle')}</div>
               <div className="text-lg font-black text-white">064-711-8578</div>
               <div className="text-xs text-slate-400 mt-0.5">직통 010-5731-8578</div>
               <a
                 href="tel:064-711-8578"
                 className="mt-3 block w-full py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold transition shadow"
               >
-                전화 바로 걸기
+                {t('urgentCallBtn')}
               </a>
             </div>
 
@@ -669,16 +669,16 @@ export default function HomePage() {
               <div className="flex items-center justify-between pb-4 border-b border-slate-100 mb-4">
                 <div className="flex items-center gap-2.5">
                   <div className="w-3 h-6 bg-emerald-600 rounded-full"></div>
-                  <h2 className="text-lg sm:text-xl font-black text-slate-900">구인정보</h2>
+                  <h2 className="text-lg sm:text-xl font-black text-slate-900">{t('jobOffersTitle')}</h2>
                   <span className="text-xs bg-emerald-50 text-emerald-700 font-bold px-2 py-0.5 rounded-md">
-                    총 {filteredOffers.length}건
+                    {t('totalCount').replace('{count}', String(filteredOffers.length))}
                   </span>
                 </div>
                 <Link
                   href="/jobs"
                   className="text-xs font-bold text-slate-500 hover:text-emerald-600 flex items-center gap-1 transition"
                 >
-                  <span>더보기</span>
+                  <span>{t('viewMore')}</span>
                   <ChevronRight className="w-4 h-4" />
                 </Link>
               </div>
@@ -688,11 +688,11 @@ export default function HomePage() {
                 <table className="w-full text-left border-collapse">
                   <thead>
                     <tr className="bg-slate-50 text-slate-500 text-xs font-bold border-y border-slate-100">
-                      <th className="py-3 px-4 w-24">분야</th>
-                      <th className="py-3 px-4">제목</th>
-                      <th className="py-3 px-4 w-28 text-center">급여</th>
-                      <th className="py-3 px-4 w-20 text-center">지역</th>
-                      <th className="py-3 px-4 w-20 text-center">등록일</th>
+                      <th className="py-3 px-4 w-24">{t('thCategory')}</th>
+                      <th className="py-3 px-4">{t('thTitle')}</th>
+                      <th className="py-3 px-4 w-28 text-center">{t('thSalary')}</th>
+                      <th className="py-3 px-4 w-20 text-center">{t('thRegion')}</th>
+                      <th className="py-3 px-4 w-20 text-center">{t('thDate')}</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-slate-100 text-sm">
@@ -759,16 +759,16 @@ export default function HomePage() {
               <div className="flex items-center justify-between pb-4 border-b border-slate-100 mb-4">
                 <div className="flex items-center gap-2.5">
                   <div className="w-3 h-6 bg-teal-600 rounded-full"></div>
-                  <h2 className="text-lg sm:text-xl font-black text-slate-900">구직정보</h2>
+                  <h2 className="text-lg sm:text-xl font-black text-slate-900">{t('jobSeekersTitle')}</h2>
                   <span className="text-xs bg-teal-50 text-teal-700 font-bold px-2 py-0.5 rounded-md">
-                    총 {filteredSeekers.length}명
+                    {t('totalPeople').replace('{count}', String(filteredSeekers.length))}
                   </span>
                 </div>
                 <Link
                   href="/resumes"
                   className="text-xs font-bold text-slate-500 hover:text-teal-600 flex items-center gap-1 transition"
                 >
-                  <span>더보기</span>
+                  <span>{t('viewMore')}</span>
                   <ChevronRight className="w-4 h-4" />
                 </Link>
               </div>
@@ -778,12 +778,12 @@ export default function HomePage() {
                 <table className="w-full text-left border-collapse">
                   <thead>
                     <tr className="bg-slate-50 text-slate-500 text-xs font-bold border-y border-slate-100">
-                      <th className="py-3 px-4 w-24">분야</th>
-                      <th className="py-3 px-4">제목</th>
-                      <th className="py-3 px-4 w-20 text-center">지역</th>
-                      <th className="py-3 px-4 w-20 text-center">구분</th>
-                      <th className="py-3 px-4 w-24 text-center">비자/연령</th>
-                      <th className="py-3 px-4 w-20 text-center">등록일</th>
+                      <th className="py-3 px-4 w-24">{t('thCategory')}</th>
+                      <th className="py-3 px-4">{t('thTitle')}</th>
+                      <th className="py-3 px-4 w-20 text-center">{t('thRegion')}</th>
+                      <th className="py-3 px-4 w-20 text-center">{t('thType')}</th>
+                      <th className="py-3 px-4 w-24 text-center">{t('thVisaInfo')}</th>
+                      <th className="py-3 px-4 w-20 text-center">{t('thDate')}</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-slate-100 text-sm">
@@ -846,10 +846,10 @@ export default function HomePage() {
               <div className="flex items-center justify-between mb-4">
                 <div>
                   <h3 className="text-base sm:text-lg font-black text-slate-900">
-                    록산에버그린 5대 핵심 전문 분야
+                    {t('pillarsTitle')}
                   </h3>
                   <p className="text-xs text-slate-500">
-                    기존 인트로 핵심 정체성을 계승한 5대 외국인 종합 고용 및 비자 지원 서비스
+                    {t('pillarsSubtitle')}
                   </p>
                 </div>
                 <span className="text-[11px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-200">
@@ -863,9 +863,9 @@ export default function HomePage() {
                   <div className="w-9 h-9 bg-emerald-100 text-emerald-700 rounded-xl flex items-center justify-center font-black mb-3 text-sm group-hover:scale-110 transition">
                     1
                   </div>
-                  <h4 className="font-bold text-sm text-slate-900 mb-0.5">외국인 인력공급</h4>
-                  <div className="text-[10px] font-bold text-emerald-600 mb-2">Foreign Labor Supply / 外国人力供应</div>
-                  <p className="text-xs text-slate-500 leading-relaxed">제조, 농축산, 어업, 관광/서비스 등 국내 산업군 맞춤 숙련 인력 상시 공급</p>
+                  <h4 className="font-bold text-sm text-slate-900 mb-0.5">{t('pillar1Title')}</h4>
+                  <div className="text-[10px] font-bold text-emerald-600 mb-2">{t('pillar1Sub')}</div>
+                  <p className="text-xs text-slate-500 leading-relaxed">{t('pillar1Desc')}</p>
                 </div>
 
                 {/* 2. 취업알선 */}
@@ -873,9 +873,9 @@ export default function HomePage() {
                   <div className="w-9 h-9 bg-teal-100 text-teal-700 rounded-xl flex items-center justify-center font-black mb-3 text-sm group-hover:scale-110 transition">
                     2
                   </div>
-                  <h4 className="font-bold text-sm text-slate-900 mb-0.5">취업알선</h4>
-                  <div className="text-[10px] font-bold text-teal-600 mb-2">Job Placement / 就业中介</div>
-                  <p className="text-xs text-slate-500 leading-relaxed">외국인 전문 구직자 ↔ 제주 및 전국 고용 기업 간 1:1 정밀 매칭 및 사후관리</p>
+                  <h4 className="font-bold text-sm text-slate-900 mb-0.5">{t('pillar2Title')}</h4>
+                  <div className="text-[10px] font-bold text-teal-600 mb-2">{t('pillar2Sub')}</div>
+                  <p className="text-xs text-slate-500 leading-relaxed">{t('pillar2Desc')}</p>
                 </div>
 
                 {/* 3. 비자발급·대행 */}
@@ -883,9 +883,9 @@ export default function HomePage() {
                   <div className="w-9 h-9 bg-slate-800 text-white rounded-xl flex items-center justify-center font-black mb-3 text-sm group-hover:scale-110 transition">
                     3
                   </div>
-                  <h4 className="font-bold text-sm text-slate-900 mb-0.5">비자발급 &middot; 대행</h4>
-                  <div className="text-[10px] font-bold text-slate-600 mb-2">Visa Issuance Agency / 签证发放,代理</div>
-                  <p className="text-xs text-slate-500 leading-relaxed">E-7, E-9, D-2, F-4 등 출입국 비자 행정 서류 발급, 자격변경 및 체류 연장 대행</p>
+                  <h4 className="font-bold text-sm text-slate-900 mb-0.5">{t('pillar3Title')}</h4>
+                  <div className="text-[10px] font-bold text-slate-600 mb-2">{t('pillar3Sub')}</div>
+                  <p className="text-xs text-slate-500 leading-relaxed">{t('pillar3Desc')}</p>
                 </div>
 
                 {/* 4. 한국유학 & 어학연수 */}
@@ -893,9 +893,9 @@ export default function HomePage() {
                   <div className="w-9 h-9 bg-blue-100 text-blue-700 rounded-xl flex items-center justify-center font-black mb-3 text-sm group-hover:scale-110 transition">
                     4
                   </div>
-                  <h4 className="font-bold text-sm text-slate-900 mb-0.5">한국유학&어학연수</h4>
-                  <div className="text-[10px] font-bold text-blue-600 mb-2">Study Abroad / 韩国留学&语言研修</div>
-                  <p className="text-xs text-slate-500 leading-relaxed">외국인 유학생 유치 연계, 국내 대학 입학/연수 및 합법적 D-2 아르바이트 지원</p>
+                  <h4 className="font-bold text-sm text-slate-900 mb-0.5">{t('pillar4Title')}</h4>
+                  <div className="text-[10px] font-bold text-blue-600 mb-2">{t('pillar4Sub')}</div>
+                  <p className="text-xs text-slate-500 leading-relaxed">{t('pillar4Desc')}</p>
                 </div>
 
                 {/* 5. 전문 하우스키퍼 (관가) */}
@@ -903,9 +903,9 @@ export default function HomePage() {
                   <div className="w-9 h-9 bg-lime-100 text-lime-700 rounded-xl flex items-center justify-center font-black mb-3 text-sm group-hover:scale-110 transition">
                     5
                   </div>
-                  <h4 className="font-bold text-sm text-slate-900 mb-0.5">하우스키퍼 (룸메이드)</h4>
-                  <div className="text-[10px] font-bold text-lime-600 mb-2">Housekeeper / 管家</div>
-                  <p className="text-xs text-slate-500 leading-relaxed">제주 특급호텔, 리조트, 펜션 등 객실 정비 및 시설관리 특화 전문 인력 파견</p>
+                  <h4 className="font-bold text-sm text-slate-900 mb-0.5">{t('pillar5Title')}</h4>
+                  <div className="text-[10px] font-bold text-lime-600 mb-2">{t('pillar5Sub')}</div>
+                  <p className="text-xs text-slate-500 leading-relaxed">{t('pillar5Desc')}</p>
                 </div>
               </div>
             </div>
