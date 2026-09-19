@@ -426,6 +426,31 @@ export default function AboutPage() {
                   <div><strong>지번 주소:</strong> 제주시 용담이동 636-2</div>
                   <div><strong>대중교통:</strong> 용담이동 주민센터 또는 서광로 정류장 하차 도보 3분</div>
                 </div>
+
+                {/* 본사 위치 지도 미리보기 썸네일 (클릭 시 네이버 지도로 바로 연결) */}
+                <div className="mt-3.5">
+                  <a
+                    href="https://naver.me/xPYiat3x"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group relative block rounded-xl overflow-hidden border border-slate-300/80 shadow-xs hover:shadow-md transition"
+                    title="클릭 시 네이버 지도 길찾기로 크게 보기"
+                  >
+                    <div className="h-36 w-full overflow-hidden bg-slate-100 relative">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src="/images/roksan_map_preview.png"
+                        alt="록산에버그린 본사 위치 지도 미리보기"
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      />
+                      <div className="absolute inset-0 bg-slate-900/10 group-hover:bg-transparent transition-colors"></div>
+                      <div className="absolute bottom-2 right-2 bg-white/90 backdrop-blur-xs px-2.5 py-1 rounded-lg border border-slate-200 text-[10px] font-bold text-slate-700 shadow-2xs flex items-center gap-1 group-hover:text-emerald-700">
+                        <span>지도 크게보기</span>
+                        <span>&rarr;</span>
+                      </div>
+                    </div>
+                  </a>
+                </div>
               </div>
 
               {/* 안내 및 바로가기 4대 버튼 (2x2 동일 크기 그리드) */}
