@@ -560,31 +560,34 @@ export default function HomePage() {
       <section className="bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 text-white py-4 sm:py-5 border-y border-slate-700 shadow-md">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           
-          {/* 섹션 헤더 (완벽한 1줄 스타일, '록산' 제거) */}
-          <div className="flex items-center justify-between gap-3 mb-3.5">
-            <div className="flex items-center gap-2 sm:gap-2.5 truncate">
-              <div className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-red-600/20 border border-red-500/40 text-red-400 text-[10px] sm:text-xs font-bold shrink-0">
-                <Film className="w-3 h-3 text-red-400" />
-                <span>SHORTS</span>
-              </div>
-              <h2 className="text-xs sm:text-sm md:text-base font-black tracking-tight text-white flex items-center gap-2 truncate">
+          {/* 섹션 헤더 (SHORTS MEDIA 뱃지는 위에 단독 배치, 아래 제목과 버튼은 한 줄로 수평 정렬) */}
+          <div className="mb-3.5">
+            {/* 상단 뱃지 */}
+            <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-red-600/20 border border-red-500/40 text-red-400 text-[10px] sm:text-xs font-bold mb-1.5">
+              <Film className="w-3 h-3 text-red-400" />
+              <span>SHORTS MEDIA</span>
+            </div>
+
+            {/* 아래 제목 라인 & 유튜브 버튼 (완벽한 한 줄 수평 정렬) */}
+            <div className="flex items-center justify-between gap-3">
+              <h2 className="text-sm sm:text-base md:text-lg font-black tracking-tight text-white flex items-center gap-2 truncate">
                 <span className="truncate">현장 브리핑 &amp; 글로벌 쇼츠 영상</span>
                 <span className="text-[10px] font-semibold px-1.5 py-0.2 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-400/30 shrink-0">Official</span>
-                <span className="text-[11px] font-normal text-slate-400 hidden lg:inline truncate">
+                <span className="text-[11px] font-normal text-slate-400 hidden sm:inline truncate">
                   &middot; 16개국 글로벌 인재 매칭 및 합법 비자 행정
                 </span>
               </h2>
-            </div>
 
-            <a
-              href="https://www.youtube.com/@roksanevergreen"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-red-600 hover:bg-red-700 text-white text-[10px] sm:text-xs font-bold shadow-xs transition shrink-0"
-            >
-              <Play className="w-2.5 h-2.5 fill-current" />
-              <span>유튜브 채널</span>
-            </a>
+              <a
+                href="https://www.youtube.com/@roksanevergreen"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-red-600 hover:bg-red-700 text-white text-[10px] sm:text-xs font-bold shadow-xs transition shrink-0"
+              >
+                <Play className="w-2.5 h-2.5 fill-current" />
+                <span>유튜브 채널</span>
+              </a>
+            </div>
           </div>
 
           {/* 쇼츠 카드 그리드 (카드 높이를 콤팩트하게 절반 수준으로 슬림화) */}
