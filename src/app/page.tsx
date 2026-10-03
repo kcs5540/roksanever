@@ -568,21 +568,22 @@ export default function HomePage() {
               <span>SHORTS MEDIA</span>
             </div>
 
-            {/* 아래 제목 라인 & 유튜브 버튼 (완벽한 한 줄 수평 정렬) */}
+            {/* 아래 제목 라인 & 유튜브 버튼 (글자 잘림 없이 시원하게 다 노출) */}
             <div className="flex items-center justify-between gap-3">
-              <h2 className="text-sm sm:text-base md:text-lg font-black tracking-tight text-white flex items-center gap-2 truncate">
-                <span className="truncate">현장 브리핑 &amp; 글로벌 쇼츠 영상</span>
-                <span className="text-[10px] font-semibold px-1.5 py-0.2 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-400/30 shrink-0">Official</span>
-                <span className="text-[11px] font-normal text-slate-400 hidden sm:inline truncate">
+              <div className="flex items-center gap-2 flex-wrap">
+                <h2 className="text-sm sm:text-base md:text-lg font-black tracking-tight text-white whitespace-nowrap">
+                  현장 브리핑 &amp; 글로벌 쇼츠 영상
+                </h2>
+                <span className="text-[11px] font-normal text-slate-400 hidden sm:inline whitespace-nowrap">
                   &middot; 16개국 글로벌 인재 매칭 및 합법 비자 행정
                 </span>
-              </h2>
+              </div>
 
               <a
                 href="https://www.youtube.com/@roksanevergreen"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-red-600 hover:bg-red-700 text-white text-[10px] sm:text-xs font-bold shadow-xs transition shrink-0"
+                className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-red-600 hover:bg-red-700 text-white text-[10px] sm:text-xs font-bold shadow-xs transition shrink-0 whitespace-nowrap"
               >
                 <Play className="w-2.5 h-2.5 fill-current" />
                 <span>유튜브 채널</span>
