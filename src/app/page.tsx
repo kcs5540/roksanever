@@ -560,20 +560,20 @@ export default function HomePage() {
       <section className="bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 text-white py-4 sm:py-5 border-y border-slate-700 shadow-md">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           
-          {/* 섹션 헤더 (콤팩트 1줄 스타일) */}
+          {/* 섹션 헤더 (완벽한 1줄 스타일, '록산' 제거) */}
           <div className="flex items-center justify-between gap-3 mb-3.5">
-            <div className="flex items-center gap-2 sm:gap-3 flex-wrap">
-              <div className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-red-600/20 border border-red-500/40 text-red-400 text-[10px] sm:text-xs font-bold">
+            <div className="flex items-center gap-2 sm:gap-2.5 truncate">
+              <div className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-red-600/20 border border-red-500/40 text-red-400 text-[10px] sm:text-xs font-bold shrink-0">
                 <Film className="w-3 h-3 text-red-400" />
-                <span>SHORTS MEDIA</span>
+                <span>SHORTS</span>
               </div>
-              <h2 className="text-sm sm:text-base font-black tracking-tight text-white flex items-center gap-1.5">
-                <span>록산 현장 브리핑 &amp; 글로벌 쇼츠</span>
-                <span className="text-[10px] font-semibold px-1.5 py-0.2 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-400/30">Official</span>
+              <h2 className="text-xs sm:text-sm md:text-base font-black tracking-tight text-white flex items-center gap-2 truncate">
+                <span className="truncate">현장 브리핑 &amp; 글로벌 쇼츠 영상</span>
+                <span className="text-[10px] font-semibold px-1.5 py-0.2 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-400/30 shrink-0">Official</span>
+                <span className="text-[11px] font-normal text-slate-400 hidden lg:inline truncate">
+                  &middot; 16개국 글로벌 인재 매칭 및 합법 비자 행정
+                </span>
               </h2>
-              <span className="text-[11px] text-slate-400 hidden md:inline">
-                | 16개국 글로벌 인재 매칭 및 합법 비자 행정 영상 브리핑
-              </span>
             </div>
 
             <a
