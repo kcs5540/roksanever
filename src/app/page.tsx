@@ -18,7 +18,10 @@ import {
   ArrowRight,
   TrendingUp,
   FileCheck2,
-  Award
+  Award,
+  Play,
+  X,
+  Film
 } from 'lucide-react';
 
 export default function HomePage() {
@@ -26,6 +29,7 @@ export default function HomePage() {
   
   // 히어로 슬라이더 상태 및 자동 재생
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [activeShortsVideo, setActiveShortsVideo] = useState<string | null>(null);
 
   const nextSlide = () => {
     setCurrentSlide((prev) => (prev >= 2 ? 0 : prev + 1));
@@ -551,6 +555,164 @@ export default function HomePage() {
         </div>
 
       </section>
+
+      {/* 🎬 록산 쇼츠 미디어 & 현장 브리핑 (Shorts Showcase) 섹션 */}
+      <section className="bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 text-white py-8 sm:py-10 border-b border-slate-700 shadow-lg">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+          {/* 섹션 헤더 */}
+          <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-3 mb-6">
+            <div>
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-red-600/20 border border-red-500/40 text-red-400 text-xs font-bold mb-2">
+                <Film className="w-3.5 h-3.5 text-red-400" />
+                <span>ROKSAN SHORTS MEDIA</span>
+              </div>
+              <h2 className="text-xl sm:text-2xl font-black tracking-tight text-white flex items-center gap-2">
+                <span>록산 현장 브리핑 &amp; 글로벌 쇼츠</span>
+                <span className="text-xs font-semibold px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-400/30">Official</span>
+              </h2>
+              <p className="text-xs sm:text-sm text-slate-300 mt-1">
+                16개국 글로벌 인재 매칭 및 100% 합법 비자 행정 현장을 영상으로 직접 확인하세요.
+              </p>
+            </div>
+
+            <a
+              href="https://www.youtube.com/@roksanevergreen"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-red-600 hover:bg-red-700 text-white text-xs sm:text-sm font-bold shadow-md transition shrink-0"
+            >
+              <Play className="w-3.5 h-3.5 fill-current" />
+              <span>유튜브 채널 바로가기</span>
+            </a>
+          </div>
+
+          {/* 쇼츠 카드 그리드 (시리즈 누적 관리용 구조) */}
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
+            
+            {/* 1차 쇼츠 카드: B2B 구인난 해결 & 합법 비자 */}
+            <div 
+              onClick={() => setActiveShortsVideo('P2dkdgMOo8Y')}
+              className="group relative bg-slate-800 rounded-2xl overflow-hidden border border-slate-700 shadow-xl cursor-pointer transition-all duration-300 hover:scale-[1.03] hover:border-emerald-400 hover:shadow-emerald-500/20 flex flex-col"
+            >
+              <div className="relative aspect-[9/16] w-full overflow-hidden bg-slate-950">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img 
+                  src="/images/shorts_thumb_01.jpg" 
+                  alt="호텔·공장 사장님들 주목! 외국인 합법 채용의 모든 것" 
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex items-center justify-center">
+                  <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-red-600/90 text-white flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:bg-red-600 transition-all">
+                    <Play className="w-6 h-6 fill-current ml-0.5" />
+                  </div>
+                </div>
+
+                {/* 뱃지 */}
+                <div className="absolute top-2.5 left-2.5 px-2 py-0.5 rounded-md bg-black/60 backdrop-blur-xs text-[10px] font-bold text-amber-300 border border-white/20">
+                  제1편 &middot; B2B 솔루션
+                </div>
+                <div className="absolute top-2.5 right-2.5 px-1.5 py-0.5 rounded-md bg-red-600 text-[10px] font-black text-white">
+                  SHORTS
+                </div>
+              </div>
+
+              {/* 카드 설명 */}
+              <div className="p-3 bg-slate-850 flex-1 flex flex-col justify-between">
+                <div>
+                  <h3 className="font-bold text-xs sm:text-sm text-white group-hover:text-emerald-300 transition-colors line-clamp-2 leading-snug">
+                    호텔·공장 사장님 주목! 불법 단속 걱정 없는 외국인 합법 채용의 모든 것
+                  </h3>
+                  <p className="text-[10px] sm:text-[11px] text-slate-400 mt-1 line-clamp-1">
+                    #E7비자 #호텔룸메이드 #제조업인력
+                  </p>
+                </div>
+                <div className="mt-2 pt-2 border-t border-slate-700/60 flex items-center justify-between text-[10px] text-slate-400">
+                  <span className="text-emerald-400 font-semibold">100% 합법 체류 보증</span>
+                  <span className="flex items-center gap-0.5 text-slate-300">
+                    <Play className="w-2.5 h-2.5 fill-current" /> 재생
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            {/* 2차 쇼츠 카드 (준비 중 안내 슬롯) */}
+            <div className="bg-slate-800/40 rounded-2xl border border-dashed border-slate-700 p-4 flex flex-col items-center justify-center text-center aspect-[9/16] relative overflow-hidden group">
+              <div className="w-10 h-10 rounded-full bg-slate-700/50 flex items-center justify-center mb-2 text-slate-400 group-hover:text-emerald-400 transition-colors">
+                <Sparkles className="w-5 h-5" />
+              </div>
+              <span className="text-xs font-bold text-slate-300">제2편 곧 공개</span>
+              <p className="text-[10px] text-slate-400 mt-1 px-2 leading-tight">
+                외국인 유학생(D-2) 시간제 취업 및 글로벌 다국어 가이드
+              </p>
+              <span className="mt-3 text-[9px] px-2 py-0.5 rounded-full bg-slate-700/60 text-slate-400">
+                Coming Soon
+              </span>
+            </div>
+
+            {/* 3차 쇼츠 카드 (준비 중 안내 슬롯) */}
+            <div className="hidden sm:flex bg-slate-800/40 rounded-2xl border border-dashed border-slate-700 p-4 flex-col items-center justify-center text-center aspect-[9/16] relative overflow-hidden group">
+              <div className="w-10 h-10 rounded-full bg-slate-700/50 flex items-center justify-center mb-2 text-slate-400 group-hover:text-emerald-400 transition-colors">
+                <Building2 className="w-5 h-5" />
+              </div>
+              <span className="text-xs font-bold text-slate-300">제3편 곧 공개</span>
+              <p className="text-[10px] text-slate-400 mt-1 px-2 leading-tight">
+                제주 특급 호텔 하우스키핑 및 룸메이드 파견 현장 스토리
+              </p>
+              <span className="mt-3 text-[9px] px-2 py-0.5 rounded-full bg-slate-700/60 text-slate-400">
+                Coming Soon
+              </span>
+            </div>
+
+            {/* 4차 쇼츠 카드 (준비 중 안내 슬롯) */}
+            <div className="hidden lg:flex bg-slate-800/40 rounded-2xl border border-dashed border-slate-700 p-4 flex-col items-center justify-center text-center aspect-[9/16] relative overflow-hidden group">
+              <div className="w-10 h-10 rounded-full bg-slate-700/50 flex items-center justify-center mb-2 text-slate-400 group-hover:text-emerald-400 transition-colors">
+                <Globe2 className="w-5 h-5" />
+              </div>
+              <span className="text-xs font-bold text-slate-300">제4편 곧 공개</span>
+              <p className="text-[10px] text-slate-400 mt-1 px-2 leading-tight">
+                16개국 현지 송출 네트워크 선발 및 검증 프로세스
+              </p>
+              <span className="mt-3 text-[9px] px-2 py-0.5 rounded-full bg-slate-700/60 text-slate-400">
+                Coming Soon
+              </span>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+      {/* 팝업 쇼츠 동영상 모달 (스마트폰 형태 프레임 재생) */}
+      {activeShortsVideo && (
+        <div 
+          className="fixed inset-0 z-50 bg-black/85 backdrop-blur-sm flex items-center justify-center p-4 animate-in fade-in duration-200"
+          onClick={() => setActiveShortsVideo(null)}
+        >
+          <div 
+            className="relative w-full max-w-[360px] aspect-[9/16] bg-black rounded-3xl overflow-hidden shadow-2xl border-2 border-slate-700 flex flex-col"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* 닫기 버튼 */}
+            <button
+              onClick={() => setActiveShortsVideo(null)}
+              className="absolute top-3 right-3 z-10 w-9 h-9 rounded-full bg-black/70 hover:bg-black text-white flex items-center justify-center transition"
+              aria-label="Close modal"
+            >
+              <X className="w-5 h-5" />
+            </button>
+
+            {/* 유튜브 임베드 플레이어 */}
+            <iframe
+              src={`https://www.youtube.com/embed/${activeShortsVideo}?autoplay=1&rel=0&modestbranding=1`}
+              title="Roksan Evergreen YouTube Shorts"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              className="w-full h-full border-0"
+            />
+          </div>
+        </div>
+      )}
 
       {/* 히어로 섹션과 본문 사이의 또렷하고 감각적인 시각적 분리선 / 전환 바 */}
       <div className="w-full bg-[#f1f5f9] border-b border-slate-200/90 py-3 shadow-inner">
