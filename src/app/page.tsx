@@ -556,124 +556,119 @@ export default function HomePage() {
 
       </section>
 
-      {/* 🎬 록산 쇼츠 미디어 & 현장 브리핑 (Shorts Showcase) 섹션 */}
-      <section className="bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 text-white py-8 sm:py-10 border-b border-slate-700 shadow-lg">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* 🎬 록산 쇼츠 미디어 & 현장 브리핑 (Shorts Showcase) 섹션 - 콤팩트 절반 크기 */}
+      <section className="bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 text-white py-4 sm:py-5 border-y border-slate-700 shadow-md">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           
-          {/* 섹션 헤더 */}
-          <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-3 mb-6">
-            <div>
-              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-red-600/20 border border-red-500/40 text-red-400 text-xs font-bold mb-2">
-                <Film className="w-3.5 h-3.5 text-red-400" />
-                <span>ROKSAN SHORTS MEDIA</span>
+          {/* 섹션 헤더 (콤팩트 1줄 스타일) */}
+          <div className="flex items-center justify-between gap-3 mb-3.5">
+            <div className="flex items-center gap-2 sm:gap-3 flex-wrap">
+              <div className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-red-600/20 border border-red-500/40 text-red-400 text-[10px] sm:text-xs font-bold">
+                <Film className="w-3 h-3 text-red-400" />
+                <span>SHORTS MEDIA</span>
               </div>
-              <h2 className="text-xl sm:text-2xl font-black tracking-tight text-white flex items-center gap-2">
+              <h2 className="text-sm sm:text-base font-black tracking-tight text-white flex items-center gap-1.5">
                 <span>록산 현장 브리핑 &amp; 글로벌 쇼츠</span>
-                <span className="text-xs font-semibold px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-400/30">Official</span>
+                <span className="text-[10px] font-semibold px-1.5 py-0.2 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-400/30">Official</span>
               </h2>
-              <p className="text-xs sm:text-sm text-slate-300 mt-1">
-                16개국 글로벌 인재 매칭 및 100% 합법 비자 행정 현장을 영상으로 직접 확인하세요.
-              </p>
+              <span className="text-[11px] text-slate-400 hidden md:inline">
+                | 16개국 글로벌 인재 매칭 및 합법 비자 행정 영상 브리핑
+              </span>
             </div>
 
             <a
               href="https://www.youtube.com/@roksanevergreen"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-red-600 hover:bg-red-700 text-white text-xs sm:text-sm font-bold shadow-md transition shrink-0"
+              className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-red-600 hover:bg-red-700 text-white text-[10px] sm:text-xs font-bold shadow-xs transition shrink-0"
             >
-              <Play className="w-3.5 h-3.5 fill-current" />
-              <span>유튜브 채널 바로가기</span>
+              <Play className="w-2.5 h-2.5 fill-current" />
+              <span>유튜브 채널</span>
             </a>
           </div>
 
-          {/* 쇼츠 카드 그리드 (시리즈 누적 관리용 구조) */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
+          {/* 쇼츠 카드 그리드 (카드 높이를 콤팩트하게 절반 수준으로 슬림화) */}
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 max-w-4xl mx-auto">
             
             {/* 1차 쇼츠 카드: B2B 구인난 해결 & 합법 비자 */}
             <div 
               onClick={() => setActiveShortsVideo('P2dkdgMOo8Y')}
-              className="group relative bg-slate-800 rounded-2xl overflow-hidden border border-slate-700 shadow-xl cursor-pointer transition-all duration-300 hover:scale-[1.03] hover:border-emerald-400 hover:shadow-emerald-500/20 flex flex-col"
+              className="group relative bg-slate-800 rounded-xl overflow-hidden border border-slate-700 shadow-md cursor-pointer transition-all duration-300 hover:scale-[1.02] hover:border-emerald-400 hover:shadow-emerald-500/20 flex flex-col"
             >
-              <div className="relative aspect-[9/16] w-full overflow-hidden bg-slate-950">
+              <div className="relative aspect-[9/13] w-full overflow-hidden bg-slate-950">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img 
                   src="/images/shorts_thumb_01.jpg" 
                   alt="호텔·공장 사장님들 주목! 외국인 합법 채용의 모든 것" 
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex items-center justify-center">
-                  <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-red-600/90 text-white flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:bg-red-600 transition-all">
-                    <Play className="w-6 h-6 fill-current ml-0.5" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent flex items-center justify-center">
+                  <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-red-600/90 text-white flex items-center justify-center shadow-md group-hover:scale-110 group-hover:bg-red-600 transition-all">
+                    <Play className="w-4 h-4 fill-current ml-0.5" />
                   </div>
                 </div>
 
                 {/* 뱃지 */}
-                <div className="absolute top-2.5 left-2.5 px-2 py-0.5 rounded-md bg-black/60 backdrop-blur-xs text-[10px] font-bold text-amber-300 border border-white/20">
-                  제1편 &middot; B2B 솔루션
+                <div className="absolute top-1.5 left-1.5 px-1.5 py-0.2 rounded bg-black/60 backdrop-blur-xs text-[9px] font-bold text-amber-300 border border-white/20">
+                  제1편
                 </div>
-                <div className="absolute top-2.5 right-2.5 px-1.5 py-0.5 rounded-md bg-red-600 text-[10px] font-black text-white">
+                <div className="absolute top-1.5 right-1.5 px-1 py-0.2 rounded bg-red-600 text-[9px] font-black text-white">
                   SHORTS
                 </div>
               </div>
 
-              {/* 카드 설명 */}
-              <div className="p-3 bg-slate-850 flex-1 flex flex-col justify-between">
-                <div>
-                  <h3 className="font-bold text-xs sm:text-sm text-white group-hover:text-emerald-300 transition-colors line-clamp-2 leading-snug">
-                    호텔·공장 사장님 주목! 불법 단속 걱정 없는 외국인 합법 채용의 모든 것
-                  </h3>
-                  <p className="text-[10px] sm:text-[11px] text-slate-400 mt-1 line-clamp-1">
-                    #E7비자 #호텔룸메이드 #제조업인력
-                  </p>
-                </div>
-                <div className="mt-2 pt-2 border-t border-slate-700/60 flex items-center justify-between text-[10px] text-slate-400">
-                  <span className="text-emerald-400 font-semibold">100% 합법 체류 보증</span>
-                  <span className="flex items-center gap-0.5 text-slate-300">
-                    <Play className="w-2.5 h-2.5 fill-current" /> 재생
+              {/* 카드 설명 (슬림 패딩) */}
+              <div className="p-2 bg-slate-850 flex flex-col justify-between">
+                <h3 className="font-bold text-[11px] sm:text-xs text-white group-hover:text-emerald-300 transition-colors line-clamp-1 leading-tight">
+                  외국인 합법 채용의 모든 것
+                </h3>
+                <div className="mt-1 flex items-center justify-between text-[9px] text-slate-400">
+                  <span className="text-emerald-400 font-semibold truncate">100% 합법 비자</span>
+                  <span className="flex items-center gap-0.5 text-slate-300 shrink-0">
+                    <Play className="w-2 h-2 fill-current" /> 재생
                   </span>
                 </div>
               </div>
             </div>
 
-            {/* 2차 쇼츠 카드 (준비 중 안내 슬롯) */}
-            <div className="bg-slate-800/40 rounded-2xl border border-dashed border-slate-700 p-4 flex flex-col items-center justify-center text-center aspect-[9/16] relative overflow-hidden group">
-              <div className="w-10 h-10 rounded-full bg-slate-700/50 flex items-center justify-center mb-2 text-slate-400 group-hover:text-emerald-400 transition-colors">
-                <Sparkles className="w-5 h-5" />
+            {/* 2차 쇼츠 카드 (준비 중) */}
+            <div className="bg-slate-800/40 rounded-xl border border-dashed border-slate-700 p-2.5 flex flex-col items-center justify-center text-center aspect-[9/13] relative overflow-hidden group">
+              <div className="w-8 h-8 rounded-full bg-slate-700/50 flex items-center justify-center mb-1 text-slate-400 group-hover:text-emerald-400 transition-colors">
+                <Sparkles className="w-4 h-4" />
               </div>
-              <span className="text-xs font-bold text-slate-300">제2편 곧 공개</span>
-              <p className="text-[10px] text-slate-400 mt-1 px-2 leading-tight">
-                외국인 유학생(D-2) 시간제 취업 및 글로벌 다국어 가이드
+              <span className="text-[11px] font-bold text-slate-300">제2편 곧 공개</span>
+              <p className="text-[9px] text-slate-400 mt-0.5 leading-tight line-clamp-2 px-1">
+                D-2 유학생 시간제 취업 가이드
               </p>
-              <span className="mt-3 text-[9px] px-2 py-0.5 rounded-full bg-slate-700/60 text-slate-400">
+              <span className="mt-2 text-[8px] px-1.5 py-0.2 rounded-full bg-slate-700/60 text-slate-400">
                 Coming Soon
               </span>
             </div>
 
-            {/* 3차 쇼츠 카드 (준비 중 안내 슬롯) */}
-            <div className="hidden sm:flex bg-slate-800/40 rounded-2xl border border-dashed border-slate-700 p-4 flex-col items-center justify-center text-center aspect-[9/16] relative overflow-hidden group">
-              <div className="w-10 h-10 rounded-full bg-slate-700/50 flex items-center justify-center mb-2 text-slate-400 group-hover:text-emerald-400 transition-colors">
-                <Building2 className="w-5 h-5" />
+            {/* 3차 쇼츠 카드 (준비 중) */}
+            <div className="hidden sm:flex bg-slate-800/40 rounded-xl border border-dashed border-slate-700 p-2.5 flex-col items-center justify-center text-center aspect-[9/13] relative overflow-hidden group">
+              <div className="w-8 h-8 rounded-full bg-slate-700/50 flex items-center justify-center mb-1 text-slate-400 group-hover:text-emerald-400 transition-colors">
+                <Building2 className="w-4 h-4" />
               </div>
-              <span className="text-xs font-bold text-slate-300">제3편 곧 공개</span>
-              <p className="text-[10px] text-slate-400 mt-1 px-2 leading-tight">
-                제주 특급 호텔 하우스키핑 및 룸메이드 파견 현장 스토리
+              <span className="text-[11px] font-bold text-slate-300">제3편 곧 공개</span>
+              <p className="text-[9px] text-slate-400 mt-0.5 leading-tight line-clamp-2 px-1">
+                호텔 하우스키핑 &amp; 룸메이드
               </p>
-              <span className="mt-3 text-[9px] px-2 py-0.5 rounded-full bg-slate-700/60 text-slate-400">
+              <span className="mt-2 text-[8px] px-1.5 py-0.2 rounded-full bg-slate-700/60 text-slate-400">
                 Coming Soon
               </span>
             </div>
 
-            {/* 4차 쇼츠 카드 (준비 중 안내 슬롯) */}
-            <div className="hidden lg:flex bg-slate-800/40 rounded-2xl border border-dashed border-slate-700 p-4 flex-col items-center justify-center text-center aspect-[9/16] relative overflow-hidden group">
-              <div className="w-10 h-10 rounded-full bg-slate-700/50 flex items-center justify-center mb-2 text-slate-400 group-hover:text-emerald-400 transition-colors">
-                <Globe2 className="w-5 h-5" />
+            {/* 4차 쇼츠 카드 (준비 중) */}
+            <div className="hidden sm:flex bg-slate-800/40 rounded-xl border border-dashed border-slate-700 p-2.5 flex-col items-center justify-center text-center aspect-[9/13] relative overflow-hidden group">
+              <div className="w-8 h-8 rounded-full bg-slate-700/50 flex items-center justify-center mb-1 text-slate-400 group-hover:text-emerald-400 transition-colors">
+                <Globe2 className="w-4 h-4" />
               </div>
-              <span className="text-xs font-bold text-slate-300">제4편 곧 공개</span>
-              <p className="text-[10px] text-slate-400 mt-1 px-2 leading-tight">
-                16개국 현지 송출 네트워크 선발 및 검증 프로세스
+              <span className="text-[11px] font-bold text-slate-300">제4편 곧 공개</span>
+              <p className="text-[9px] text-slate-400 mt-0.5 leading-tight line-clamp-2 px-1">
+                16개국 글로벌 송출 네트워크
               </p>
-              <span className="mt-3 text-[9px] px-2 py-0.5 rounded-full bg-slate-700/60 text-slate-400">
+              <span className="mt-2 text-[8px] px-1.5 py-0.2 rounded-full bg-slate-700/60 text-slate-400">
                 Coming Soon
               </span>
             </div>
