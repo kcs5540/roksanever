@@ -635,18 +635,45 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* 2차 쇼츠 카드 (준비 중) */}
-            <div className="bg-slate-800/40 rounded-xl border border-dashed border-slate-700 p-2.5 flex flex-col items-center justify-center text-center aspect-[9/13] relative overflow-hidden group">
-              <div className="w-8 h-8 rounded-full bg-slate-700/50 flex items-center justify-center mb-1 text-slate-400 group-hover:text-emerald-400 transition-colors">
-                <Sparkles className="w-4 h-4" />
+            {/* 2차 쇼츠 카드: D-2 유학생 시간제 취업 가이드 */}
+            <div 
+              onClick={() => setActiveShortsVideo('I1EzB1cCClA')}
+              className="group relative bg-slate-800 rounded-xl overflow-hidden border border-slate-700 shadow-md cursor-pointer transition-all duration-300 hover:scale-[1.02] hover:border-emerald-400 hover:shadow-emerald-500/20 flex flex-col"
+            >
+              <div className="relative aspect-[9/13] w-full overflow-hidden bg-slate-950">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img 
+                  src="/images/shorts_thumb_02.jpg" 
+                  alt="외국인 유학생 D-2, D-4 시간제 취업 가이드" 
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent flex items-center justify-center">
+                  <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-red-600/90 text-white flex items-center justify-center shadow-md group-hover:scale-110 group-hover:bg-red-600 transition-all">
+                    <Play className="w-4 h-4 fill-current ml-0.5" />
+                  </div>
+                </div>
+
+                {/* 뱃지 */}
+                <div className="absolute top-1.5 left-1.5 px-1.5 py-0.2 rounded bg-black/60 backdrop-blur-xs text-[9px] font-bold text-amber-300 border border-white/20">
+                  제2편
+                </div>
+                <div className="absolute top-1.5 right-1.5 px-1 py-0.2 rounded bg-red-600 text-[9px] font-black text-white">
+                  SHORTS
+                </div>
               </div>
-              <span className="text-[11px] font-bold text-slate-300">제2편 곧 공개</span>
-              <p className="text-[9px] text-slate-400 mt-0.5 leading-tight line-clamp-2 px-1">
-                D-2 유학생 시간제 취업 가이드
-              </p>
-              <span className="mt-2 text-[8px] px-1.5 py-0.2 rounded-full bg-slate-700/60 text-slate-400">
-                Coming Soon
-              </span>
+
+              {/* 카드 설명 */}
+              <div className="p-2 bg-slate-850 flex flex-col justify-between">
+                <h3 className="font-bold text-[11px] sm:text-xs text-white group-hover:text-emerald-300 transition-colors line-clamp-1 leading-tight">
+                  D-2 유학생 시간제 취업
+                </h3>
+                <div className="mt-1 flex items-center justify-between text-[9px] text-slate-400">
+                  <span className="text-emerald-400 font-semibold truncate">E-7 비자 원스톱</span>
+                  <span className="flex items-center gap-0.5 text-slate-300 shrink-0">
+                    <Play className="w-2 h-2 fill-current" /> 재생
+                  </span>
+                </div>
+              </div>
             </div>
 
             {/* 3차 쇼츠 카드 (준비 중) */}
