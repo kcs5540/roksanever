@@ -210,19 +210,31 @@
         padding: 32px 18px;
       }
       th, td {
-        padding: 12px 14px;
+        padding: 12px 10px;
         font-size: 13px;
         white-space: normal;
         word-break: keep-all;
       }
+      th:nth-child(1), td:nth-child(1) {
+        width: 80px;
+      }
+      th:nth-child(2), td:nth-child(2) {
+        width: 210px;
+      }
+      th:nth-child(3), td:nth-child(3) {
+        width: 190px;
+      }
       .table-container {
-        margin: 16px -8px;
+        margin: 16px -16px; /* 화면 좌우 끝까지 닿도록 확장 */
+        padding: 0 16px;
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
-        border-radius: 8px;
+        border-radius: 0;
+        border-left: none;
+        border-right: none;
       }
       table {
-        min-width: 580px; /* 모바일에서 표가 좁게 찌그러지는 현상 원천 방지 */
+        min-width: 480px; /* 추천 컬럼이 우측에 매력적으로 빼꼼 보이도록 황금 너비 */
       }
     }
 
@@ -595,7 +607,9 @@
       <section class="section">
         <h2 class="section-title"><span class="num-badge">3</span> 비용 분석: 사내 직원 채용 대비 압도적 절감 효과</h2>
         
-        <p style="font-size: 13px; color: #64748B; margin-bottom: 8px; text-align: right;">👉 <em>(모바일에서는 표를 좌우로 밀어서 전체 내용을 보실 수 있습니다)</em></p>
+        <p style="font-size: 13px; color: #2563EB; font-weight: 600; margin-bottom: 8px; text-align: right;">
+          👉 좌우로 스크롤하여 비교하기 ➔
+        </p>
         <div class="table-container">
           <table>
             <thead>
@@ -608,7 +622,7 @@
             <tbody>
               <tr>
                 <td><strong>정보통신 상시 기술자격</strong></td>
-                <td>자격 선임 기본급: <strong>월 50만 ~ 80만 원</strong></td>
+                <td>자격 선임 기본급: <strong>월 80만 원</strong></td>
                 <td class="highlight-col">기본 포함 (4대보험 상시 임직원 등록 유지)</td>
               </tr>
               <tr>
