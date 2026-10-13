@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>록산에버그린(주) & 황금낭 디지털 전환 및 IT 총괄 파트너십 제안서</title>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #1E3A8A; /* 록산 네이비 */
+      --primary-light: #3B82F6;
+      --secondary: #0D9488; /* 황금낭 청록 */
+      --accent: #F59E0B; /* 골드/오렌지 */
+      --dark: #0F172A;
+      --gray-800: #1E293B;
+      --gray-600: #475569;
+      --gray-100: #F1F5F9;
+      --gray-50: #F8FAFC;
+      --border: #E2E8F0;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+      background-color: #E2E8F0;
+      color: var(--dark);
+      line-height: 1.65;
+      padding: 40px 20px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .document-container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: #FFFFFF;
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+
+    /* Header */
+    .doc-header {
+      background: linear-gradient(135deg, #0F172A 0%, #1E3A8A 60%, #0D9488 100%);
+      color: #FFFFFF;
+      padding: 48px 44px;
+      position: relative;
+    }
+
+    .badge-top {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(8px);
+      padding: 6px 14px;
+      border-radius: 9999px;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      color: #93C5FD;
+      margin-bottom: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .doc-title {
+      font-size: 28px;
+      font-weight: 800;
+      line-height: 1.35;
+      margin-bottom: 12px;
+      letter-spacing: -0.5px;
+    }
+
+    .doc-subtitle {
+      font-size: 16px;
+      color: #CBD5E1;
+      font-weight: 500;
+      margin-bottom: 28px;
+    }
+
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px 28px;
+      padding-top: 22px;
+      border-top: 1px solid rgba(255, 255, 255, 0.15);
+      font-size: 14.5px;
+    }
+
+    .meta-item {
+      display: flex;
+      align-items: center;
+      white-space: nowrap;
+    }
+
+    .meta-item strong {
+      color: #94A3B8;
+      display: inline-block;
+      width: 72px;
+      font-weight: 600;
+      flex-shrink: 0;
+    }
+
+    .meta-item span {
+      color: #F8FAFC;
+      font-weight: 500;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    /* Content Body */
+    .doc-body {
+      padding: 44px;
+    }
+
+    .section {
+      margin-bottom: 48px;
+    }
+
+    .section-title {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--gray-100);
+      letter-spacing: -0.3px;
+    }
+
+    .section-title .num-badge {
+      background: var(--primary);
+      color: #FFF;
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    /* Card Box */
+    .highlight-card {
+      background: #F8FAFC;
+      border: 1px solid #E2E8F0;
+      border-left: 5px solid var(--secondary);
+      border-radius: 12px;
+      padding: 22px 24px;
+      margin-bottom: 24px;
+      font-size: 15px;
+      color: var(--gray-800);
+    }
+
+    .highlight-card strong {
+      color: var(--dark);
+    }
+
+    /* Site Showcase Grid */
+    .site-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-bottom: 24px;
+    }
+
+    @media (max-width: 768px) {
+      .meta-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+      .meta-item {
+        font-size: 13.5px;
+      }
+      .site-grid {
+        grid-template-columns: 1fr;
+      }
+      .doc-body {
+        padding: 24px 20px;
+      }
+      .doc-header {
+        padding: 32px 20px;
+      }
+    }
+
+    .site-card {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+      background: #FFF;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      position: relative;
+    }
+
+    .site-card.roksan {
+      border-top: 4px solid var(--primary);
+    }
+
+    .site-card.goldennang {
+      border-top: 4px solid var(--secondary);
+    }
+
+    .site-tag {
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 8px;
+      border-radius: 6px;
+      text-transform: uppercase;
+      display: inline-block;
+      margin-bottom: 8px;
+    }
+
+    .roksan .site-tag {
+      background: #EFF6FF;
+      color: var(--primary-light);
+    }
+
+    .goldennang .site-tag {
+      background: #CCFBF1;
+      color: var(--secondary);
+    }
+
+    .site-card h4 {
+      font-size: 17px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .site-card p {
+      font-size: 13.5px;
+      color: var(--gray-600);
+      margin-bottom: 12px;
+    }
+
+    .site-link {
+      font-size: 13px;
+      color: var(--primary-light);
+      text-decoration: none;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .site-link:hover {
+      text-decoration: underline;
+    }
+
+    /* R&R Box */
+    .work-item {
+      background: #FFFFFF;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin-bottom: 16px;
+      transition: transform 0.2s;
+    }
+
+    .work-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+
+    .work-badge {
+      font-size: 12px;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 6px;
+    }
+
+    .badge-blue { background: #DBEAFE; color: #1E40AF; }
+    .badge-teal { background: #CCFBF1; color: #0F766E; }
+    .badge-amber { background: #FEF3C7; color: #B45309; }
+    .badge-purple { background: #F3E8FF; color: #6B21A8; }
+    .badge-slate { background: #F1F5F9; color: #334155; }
+
+    .work-item h4 {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--dark);
+    }
+
+    .work-list {
+      list-style: none;
+      padding-left: 0;
+      font-size: 14px;
+      color: var(--gray-600);
+    }
+
+    .work-list li {
+      position: relative;
+      padding-left: 18px;
+      margin-bottom: 6px;
+    }
+
+    .work-list li::before {
+      content: "•";
+      position: absolute;
+      left: 4px;
+      color: var(--primary-light);
+      font-weight: bold;
+    }
+
+    .work-list strong {
+      color: var(--gray-800);
+    }
+
+    /* Comparison Table */
+    .table-container {
+      overflow-x: auto;
+      margin: 20px 0;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 13.5px;
+    }
+
+    th {
+      background: #F8FAFC;
+      padding: 14px 18px;
+      font-weight: 700;
+      color: var(--gray-800);
+      border-bottom: 2px solid var(--border);
+    }
+
+    td {
+      padding: 14px 18px;
+      border-bottom: 1px solid var(--border);
+      color: var(--gray-600);
+      vertical-align: middle;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    .highlight-col {
+      background: #F0FDF4;
+      font-weight: 600;
+      color: #166534;
+    }
+
+    th.highlight-col {
+      background: #DCFCE7;
+      color: #14532D;
+    }
+
+    .text-red {
+      color: #DC2626;
+      font-weight: 700;
+    }
+
+    .total-row td {
+      font-size: 15px;
+      font-weight: 800;
+      background: #F8FAFC;
+    }
+
+    .total-row td.highlight-col {
+      background: #BBF7D0;
+      font-size: 16px;
+      color: #14532D;
+    }
+
+    /* Action Tip Box */
+    .closing-box {
+      background: linear-gradient(135deg, #1E293B 0%, #0F172A 100%);
+      color: #FFF;
+      border-radius: 12px;
+      padding: 26px 30px;
+      margin-top: 36px;
+    }
+
+    .closing-box h4 {
+      font-size: 17px;
+      color: #FBBF24;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .closing-box p {
+      font-size: 14px;
+      color: #E2E8F0;
+      line-height: 1.7;
+    }
+
+    .print-btn {
+      display: block;
+      margin: 20px auto 0;
+      padding: 10px 24px;
+      background: #1E293B;
+      color: #FFF;
+      border: none;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+
+    @media print {
+      body {
+        background: #FFF;
+        padding: 0;
+      }
+      .document-container {
+        box-shadow: none;
+        border: none;
+        border-radius: 0;
+      }
+      .print-btn {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="document-container">
+    <!-- Header -->
+    <header class="doc-header">
+      <div class="badge-top">2026 BUSINESS PROPOSAL</div>
+      <h1 class="doc-title">록산에버그린(주) 플랫폼 운영 및<br>그룹사 디지털 전환 · IT 총괄 파트너십 제안서</h1>
+      <p class="doc-subtitle">정보통신 전문기술자격 · 록산 & 황금낭 플랫폼 시스템 운영 및 기능 고도화 · AI 숏폼 · IT 고문</p>
+      
+      <div class="meta-grid">
+        <div class="meta-item"><strong>수 신</strong> <span>록산에버그린(주) · 황금낭 대표이사 귀하</span></div>
+        <div class="meta-item"><strong>제안자</strong> <span>제주AI파트너 대표 김철수 (정보통신 기술자)</span></div>
+        <div class="meta-item"><strong>제안일</strong> <span>2026년 10월</span></div>
+        <div class="meta-item"><strong>협력범위</strong> <span>기술자격 선임 유지 + 2개사 IT/디지털 전담 총괄</span></div>
+      </div>
+    </header>
+
+    <!-- Body -->
+    <main class="doc-body">
+
+      <!-- Section 1 -->
+      <section class="section">
+        <h2 class="section-title"><span class="num-badge">1</span> 제안 배경 및 핵심 가치</h2>
+        <div class="highlight-card">
+          <p>
+            현재 록산에버그린(주)의 <strong>정보통신 기술자격(월 80만 원)</strong>으로 맺고 있는 두터운 신뢰를 바탕으로, 단순 자격 유지를 넘어 <strong>회사의 핵심 사업인 외국인·내국인 일자리 매칭 플랫폼의 본격 가동</strong>과 연계 법인인 <strong>‘황금낭’의 브랜드 디지털 전환</strong>까지 원스톱으로 책임지는 상생 파트너십을 제안드립니다.
+          </p>
+        </div>
+
+        <div class="site-grid">
+          <!-- 록산에버그린 -->
+          <div class="site-card roksan">
+            <span class="site-tag">메인 플랫폼 (구축 완료)</span>
+            <h4>록산에버그린(주)</h4>
+            <p>호텔/리조트 룸메이드, 제조업, 조선소 용접사 구인구직 및 외국인 유학생 D-2/E-7 비자 행정 대행 전문 플랫폼</p>
+            <a href="https://roksanever.vercel.app" target="_blank" class="site-link">🔗 roksanever.vercel.app 방문하기 →</a>
+          </div>
+
+          <!-- 황금낭 -->
+          <div class="site-card goldennang">
+            <span class="site-tag">연계 브랜드 (구축 완료)</span>
+            <h4>농업회사법인 황금낭</h4>
+            <p>서귀포 토평동 명품 애플망고/감귤 묘목 12종 스마트스토어 연동, 간편 전화주문·방문예약 접수 공식 웹사이트</p>
+            <a href="https://goldennang.vercel.app" target="_blank" class="site-link">🔗 goldennang.vercel.app 방문하기 →</a>
+          </div>
+        </div>
+
+        <p style="font-size: 14.5px; color: var(--gray-600); line-height: 1.7;">
+          💡 <strong>초기 구축비 전액 무상 지원</strong>: 일반 IT 에이전시 외주 시 <strong>최소 600만 ~ 800만 원 이상 소요되는 2개 플랫폼의 맞춤 개발을 이미 100% 완료</strong>하였으며, 초기 개발비는 일체 청구하지 않고(0원) 오직 월간 운영/관리 보수로만 전환합니다.
+        </p>
+      </section>
+
+      <!-- Section 2 -->
+      <section class="section">
+        <h2 class="section-title"><span class="num-badge">2</span> 월간 전담 업무 범위 (5대 핵심 R&R)</h2>
+        <p style="font-size: 14px; color: var(--gray-600); margin-bottom: 20px;">
+          일반 사내 직원이 수행할 수 없는 <strong>전문 엔지니어링, 검색엔진 최적화(SEO), 보안, 영상 제작 및 IT 기술 자문</strong>을 전담합니다.
+        </p>
+
+        <!-- Work 1 -->
+        <div class="work-item">
+          <div class="work-header">
+            <span class="work-badge badge-blue">록산에버그린 & 황금낭</span>
+            <h4>양사 웹 플랫폼 시스템 운영 및 기능 고도화</h4>
+          </div>
+          <ul class="work-list">
+            <li><strong>시스템 유지보수 & 기능 확장</strong>: 록산(구인/비자) 및 황금낭(스마트스토어/예약) 모바일 오류 수정, 신규 기능 코딩, Vercel 클라우드 무중단 운영 관리</li>
+            <li><strong>포털 검색 노출 최적화 (SEO)</strong>: 네이버/구글 포털에서 <em>'제주 호텔 룸메이드'</em>, <em>'외국인 비자 행정 대행'</em>, <em>'제주 애플망고나무'</em> 검색 시 최상단 노출되도록 검색엔진 규격 상시 최적화</li>
+            <li><strong>실시간 문의 자동 알림 연동</strong>: 웹상에서 비자 상담 및 기업 구인, 황금낭 전화주문 접수 시 사내 담당자에게 1초 만에 자동 전송되는 알림 인프라 유지</li>
+            <li><strong>고객 데이터 & DB 보안 통제</strong>: 이력서, 여권, 비자 서류 및 주문 고객 개인정보(Supabase DB) 보안 암호화 관리</li>
+          </ul>
+        </div>
+
+        <!-- Work 2 -->
+        <div class="work-item">
+          <div class="work-header">
+            <span class="work-badge badge-teal">록산에버그린 & 황금낭</span>
+            <h4>네이버 스마트플레이스 & 로컬 포털 생태계 전담 관리</h4>
+          </div>
+          <ul class="work-list">
+            <li><strong>네이버 스마트플레이스 상시 관리</strong>: 록산 에이전시(구인/비자) 신뢰도 제고 및 황금낭 서귀포 농장 방문객 유치를 위한 업체 정보, 대표 키워드 상시 최적화</li>
+            <li><strong>현장 사진 및 새소식 정기 발행</strong>: 비자/채용 소식, 농장 전경, 출하 소식 등 플레이스 피드 상시 발행을 통한 검색 순위 상승 유도</li>
+            <li><strong>웹사이트 & 스마트스토어 실시간 동기화</strong>: 록산 온라인 접수 연동 및 황금낭 12종 묘목 제철 출하/품절 상태 동기화 관리</li>
+            <li><strong>고객 리뷰 모니터링 & 평점 관리</strong>: 네이버 예약 및 영수증 리뷰 모니터링 및 브랜드 신뢰도 관리 가이드</li>
+          </ul>
+        </div>
+
+        <!-- Work 3 -->
+        <div class="work-item">
+          <div class="work-header">
+            <span class="work-badge badge-amber">공통 마케팅</span>
+            <h4>AI 기반 고효율 홍보 숏폼 영상 정기 제작 (월 총 4편)</h4>
+          </div>
+          <ul class="work-list">
+            <li><strong>록산에버그린 (월 2편)</strong>: 호텔/제조업 기업 고객 유치 및 외국인 유학생 합법 취업/비자 안내 영상 제작</li>
+            <li><strong>황금낭 (월 2편)</strong>: 베란다 애플망고 키우기 노하우 및 개업/기업 선물용 황금 귤나무 스토리텔링 영상 제작</li>
+            <li>유튜브 쇼츠 / 인스타그램 릴스 최적화 규격 제작 및 영상 하단 웹사이트 링크 유입 직결 (단독 황금 요약 자막 연출)</li>
+          </ul>
+        </div>
+
+        <!-- Work 4 -->
+        <div class="work-item">
+          <div class="work-header">
+            <span class="work-badge badge-purple">IT/AI 총괄 고문</span>
+            <h4>AI 전산 업무 자동화 및 정부 국비 지원사업 자문</h4>
+          </div>
+          <ul class="work-list">
+            <li><strong>사내 업무 자동화 지원</strong>: 비자 서류 및 인력 관리 수기 업무 간소화, 최신 AI 및 전산 도구 도입 가이드</li>
+            <li><strong>정부 국비 지원사업 모니터링</strong>: 소상공인/중소기업 대상 AI 바우처, 비대면 서비스 바우처 등 지자체/중기부 국비 공고 확인 및 기술 자문</li>
+          </ul>
+        </div>
+
+        <!-- Work 5 -->
+        <div class="work-item">
+          <div class="work-header">
+            <span class="work-badge badge-slate">법적 자격</span>
+            <h4>정보통신 상시 전문 기술인력 자격 선임 상태 안정적 유지</h4>
+          </div>
+          <ul class="work-list">
+            <li>록산에버그린(주)의 사업 영위에 필수적인 정보통신 중급기술자 상시 임직원(4대보험) 요건 완벽 준수</li>
+            <li>실태조사 및 자격 점검 시 실제 사내 전산/디지털 총괄 업무 수행에 따른 완벽한 적격 증빙 충족</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Section 3 -->
+      <section class="section">
+        <h2 class="section-title"><span class="num-badge">3</span> 비용 분석: 사내 직원 채용 대비 압도적 절감 효과</h2>
+        
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>구분 항목</th>
+                <th>일반적인 운영 방식 (직원채용 + 외주발주)</th>
+                <th class="highlight-col">본 통합 전담 파트너십 (추천)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>정보통신 상시 기술자격</strong></td>
+                <td>자격 선임 기본급: <strong>월 50만 ~ 80만 원</strong></td>
+                <td class="highlight-col">기본 포함 (4대보험 상시 임직원 등록 유지)</td>
+              </tr>
+              <tr>
+                <td><strong>사내 전담 인력</strong></td>
+                <td>웹/마케팅 전담 직원 1명 신규 채용: <strong>월 310만 원</strong><br><small style="color:#64748B;">(기본급 250만 + 4대보험/퇴직적립금 60만)</small></td>
+                <td class="highlight-col"><strong>별도 인력 신규 채용 불필요</strong><br>(기존 임직원 인력으로 디지털/전산 완벽 전담)</td>
+              </tr>
+              <tr>
+                <td><strong>개발 / 마케팅 외주 대행</strong><br><small style="color:#DC2626;">(일반 직원은 코딩/영상 불가)</small></td>
+                <td>• 플랫폼 유지보수/기능코딩 외주: 월 50만 원~<br>• 네이버 플레이스 대행 관리: 월 30만 원~<br>• 숏폼 영상(월 4편) 전문제작 외주: 월 70만 원~<br>👉 <strong>추가 외주비: 월 150만 원 상당</strong></td>
+                <td class="highlight-col"><strong>록산 & 황금낭 시스템 운영 및 기능 고도화 포함</strong><br><strong>네이버 플레이스 전담 관리 포함</strong><br><strong>숏폼 영상 제작(월 4편) 전액 포함</strong><br>👉 <strong>추가 외주비용 0원</strong></td>
+              </tr>
+              <tr>
+                <td><strong>AI 도입 & 정부지원사업 자문</strong></td>
+                <td>외부 전문 컨설팅비: <strong>월 50만 원 상당</strong></td>
+                <td class="highlight-col"><strong>사내 AI 자동화 & 국비 지원사업 자문 무료 지원</strong></td>
+              </tr>
+              <tr>
+                <td><strong>초기 플랫폼 구축비</strong></td>
+                <td>2개 플랫폼 개발비: <span class="text-red">600만 ~ 800만 원 (일시금)</span></td>
+                <td class="highlight-col"><strong style="font-size:15px; color:#15803D;">0원 (전액 무상 개발 완료)</strong></td>
+              </tr>
+              <tr class="total-row">
+                <td><strong>총 발생 비용</strong></td>
+                <td><span class="text-red">월 560만 원 상당 소요</span></td>
+                <td class="highlight-col">월 120만 ~ 150만 원 (통합 급여/수당)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p style="font-size: 14.5px; color: #15803D; font-weight: 700; text-align: right;">
+          💰 기업 관점 기대 효과: 매달 약 410만 ~ 440만 원 (연간 5,000만 원 이상)의 막대한 고정비 절감
+        </p>
+      </section>
+
+      <!-- Section 4 -->
+      <section class="section" style="margin-bottom: 0;">
+        <h2 class="section-title"><span class="num-badge">4</span> 제안 조건 및 계약 체계</h2>
+        
+        <div style="background:#F8FAFC; border:1px solid #E2E8F0; border-radius:12px; padding:24px; font-size:14.5px; line-height:1.8;">
+          <p>• <strong>제안 보수 체계</strong>: <strong>월 120만 ~ 150만 원</strong> (통신 기술자격 유지 + 사내 디지털/전산 총괄 직책수당 합산)</p>
+          <p>• <strong>계약 및 신분</strong>: 정보통신 상시 기술인력(4대보험 가입) 유지 및 디지털 총괄 업무 정기 계약 (6개월 ~ 1년 단위)</p>
+          <p>• <strong>업무 개시</strong>: 2026년 10월 면담 후 즉시 개시 (이미 사이트 및 운영 환경 준비 완료)</p>
+        </div>
+
+        <div class="closing-box">
+          <h4>🤝 상생 파트너십을 통한 기업 기대 효과</h4>
+          <p>
+            검증된 정보통신 전문 기술력과 최신 AI 디지털 역량을 바탕으로, 록산에버그린(주)의 일자리 매칭 플랫폼 경쟁력과 황금낭의 브랜드 가치를 극대화하겠습니다.
+            단순 명의 등록에 그치지 않고, 기업의 전산 인프라와 디지털 마케팅을 실질적으로 책임지는 가장 든든한 기술 파트너로서 실질적인 매출 성장을 함께 이루어낼 것을 약속드립니다.
+          </p>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <button class="print-btn" onclick="window.print()">🖨️ 제안서 인쇄 / PDF 저장하기</button>
+
+</body>
+</html>
